@@ -32,3 +32,5 @@ Thumbs.db
 # Notebook checkpoints
 .ipynb_checkpoints/
 notebooks/source/.ipynb_checkpoints/
+
+.vercel
