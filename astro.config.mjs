@@ -11,7 +11,7 @@ export default defineConfig({
   site: "https://cpjt.dev",
 
   build: {
-    format: "file",
+    format: "directory",
     inlineStylesheets: "auto",
   },
   integrations: [
