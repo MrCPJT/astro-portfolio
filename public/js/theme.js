@@ -1,49 +1,78 @@
-function setTheme(theme) {
-  const isDark = theme === "dark";
-
-  document.documentElement.classList.toggle("dark", isDark);
-  document.documentElement.dataset.theme = theme;
-  localStorage.setItem("theme", theme);
-
-  document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-    button.setAttribute("aria-pressed", String(isDark));
-  });
-
-  const giscus = document.querySelector("iframe.giscus-frame");
-  if (giscus?.contentWindow) {
-    giscus.contentWindow.postMessage(
-      {
-        giscus: {
-          setConfig: {
-            theme: isDark ? "dark" : "light",
-          },
-        },
-      },
-      "https://giscus.app",
-    );
-  }
-}
-
-function getInitialTheme() {
-  const storedTheme = localStorage.getItem("theme");
-
-  if (storedTheme === "dark" || storedTheme === "light") {
-    return storedTheme;
+(() => {
+  if (window.PortfolioTheme) {
+    window.PortfolioTheme.init();
+    return;
   }
 
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-}
+  const STORAGE_KEY = "theme";
+  const BOUND_ATTRIBUTE = "data-theme-toggle-bound";
 
-setTheme(getInitialTheme());
+  function getPreferredTheme() {
+    const storedTheme = localStorage.getItem(STORAGE_KEY);
 
-document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-  button.addEventListener("click", () => {
-    const nextTheme = document.documentElement.classList.contains("dark")
-      ? "light"
-      : "dark";
+    if (storedTheme === "dark" || storedTheme === "light") {
+      return storedTheme;
+    }
 
-    setTheme(nextTheme);
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  }
+
+  function setTheme(theme, options = {}) {
+    const nextTheme = theme === "dark" ? "dark" : "light";
+    const isDark = nextTheme === "dark";
+    const { persist = true, notify = true } = options;
+
+    document.documentElement.classList.toggle("dark", isDark);
+    document.documentElement.dataset.theme = nextTheme;
+
+    if (persist) {
+      localStorage.setItem(STORAGE_KEY, nextTheme);
+    }
+
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(isDark));
+    });
+
+    if (notify) {
+      window.dispatchEvent(
+        new CustomEvent("portfolio:theme-change", {
+          detail: { theme: nextTheme },
+        }),
+      );
+    }
+  }
+
+  function bindThemeToggles() {
+    setTheme(getPreferredTheme(), { persist: false, notify: false });
+
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+      if (button.getAttribute(BOUND_ATTRIBUTE) === "true") {
+        return;
+      }
+
+      button.setAttribute(BOUND_ATTRIBUTE, "true");
+      button.addEventListener("click", () => {
+        const nextTheme = document.documentElement.classList.contains("dark")
+          ? "light"
+          : "dark";
+
+        setTheme(nextTheme);
+      });
+    });
+  }
+
+  window.PortfolioTheme = {
+    getTheme: getPreferredTheme,
+    setTheme,
+    init: bindThemeToggles,
+  };
+
+  document.addEventListener("astro:page-load", bindThemeToggles);
+  document.addEventListener("astro:after-swap", () => {
+    setTheme(getPreferredTheme(), { persist: false, notify: true });
   });
-});
+
+  bindThemeToggles();
+})();

@@ -8,6 +8,7 @@ export default [
       "**/node_modules/**",
       "**/.astro/**",
       "**/dist/**",
+      "**/.vercel/**",
       "**/*.min.js",
       "**/*.d.ts",
       "**/*.astro",
