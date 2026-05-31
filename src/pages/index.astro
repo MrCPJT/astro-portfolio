@@ -1,0 +1,90 @@
+---
+import Layout from "@/app/layouts/Layout.astro";
+import { FaSolidChartLine, FaSolidFileLines } from "solid-icons/fa";
+import { getCollection } from "astro:content";
+import { BlogCard } from "@/components/blog/BlogCard";
+import Animation from "@/app/components/Animation.astro";
+
+const posts = await getCollection("blog");
+const recentPosts = posts
+  .filter((post) => !post.data.draft)
+  .sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  )
+  .slice(0, 3);
+---
+
+<Layout
+  title="Connor Tynan | Data Science Portfolio"
+  description="Portfolio, writing, and notebook-based analysis from a data scientist with two years of experience."
+>
+  <Animation>
+    <div class="flex flex-col items-start space-y-6">
+      <h1 class="text-3xl font-bold text-slate-800 dark:text-slate-100">
+        Connor Tynan
+      </h1>
+      <section>
+        <h2 class="text-xl text-slate-600 dark:text-slate-400">
+          Data scientist turning messy data into useful decisions.
+        </h2>
+
+        <article class="text-base text-gray">
+          <p>
+            I am a data scientist with two years of experience building
+            analytical workflows, machine learning prototypes, and clear
+            decision-support materials for technical and non-technical teams.
+          </p>
+
+          <p>
+            This site collects my project case studies, notebook-backed
+            analysis, writing, and resume as I prepare for my next data science
+            role.
+          </p>
+
+          <p>
+            Currently focused on <b>Python</b>, <b>SQL</b>, <b
+              >statistical modelling</b
+            >, <b>machine learning</b>, and communicating results in a way that
+            helps people act.
+          </p>
+
+          <p class="flex flex-wrap gap-3 pt-3">
+            <a
+              href="/projects"
+              class="inline-flex items-center gap-2 rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:border-slate-600 dark:hover:bg-slate-700"
+              aria-label="View data science projects"
+            >
+              Projects <FaSolidChartLine size={14} /></a
+            >
+            <a
+              href="/resume"
+              class="inline-flex items-center gap-2 rounded-md bg-slate-800 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200"
+              aria-label="View resume"
+            >
+              Resume <FaSolidFileLines size={14} /></a
+            >
+          </p>
+        </article>
+      </section>
+    </div>
+
+    <section>
+      <div class="mt-16">
+        <Animation delay={0.2}>
+          <h2 class="text-2xl mb-4 text-slate-600 dark:text-slate-400">
+            Recent Posts
+          </h2>
+        </Animation>
+        <div class="grid grid-cols-1 gap-6">
+          {
+            recentPosts.map((post, index) => (
+              <Animation delay={0.3 + index * 0.1}>
+                <BlogCard post={post} />
+              </Animation>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </Animation>
+</Layout>

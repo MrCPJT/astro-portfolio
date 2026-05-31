@@ -1,0 +1,59 @@
+---
+import Layout from "@/app/layouts/Layout.astro";
+import Animation from "@/app/components/Animation.astro";
+---
+
+<Layout
+  title="Resume | Connor Tynan"
+  description="Resume and professional profile for Connor Tynan, data scientist."
+>
+  <Animation>
+    <section class="space-y-8">
+      <div>
+        <h1 class="text-3xl font-bold text-slate-800 dark:text-slate-100">
+          Resume
+        </h1>
+        <p class="mt-3 text-slate-600 dark:text-slate-400">
+          A concise snapshot of my data science experience, technical toolkit,
+          and selected work. Replace the placeholder PDF in
+          <code>public/resume/</code> when the final resume is ready.
+        </p>
+      </div>
+
+      <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg space-y-4">
+        <h2 class="text-xl font-semibold">Download</h2>
+        <p>
+          The resume download target is prepared at
+          <code>/resume/connor-tynan-resume.pdf</code>.
+        </p>
+        <a
+          href="/resume/connor-tynan-resume.pdf"
+          class="inline-block text-blue-500 hover:underline"
+        >
+          Download resume PDF
+        </a>
+      </div>
+
+      <div class="space-y-3">
+        <h2 class="text-xl font-semibold">Profile</h2>
+        <p>
+          Data scientist with two years of experience across Python, SQL,
+          exploratory analysis, modelling prototypes, and communicating results
+          to stakeholders.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <h2 class="text-xl font-semibold">Focus areas</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Machine learning and statistical modelling</li>
+          <li>
+            Data cleaning, feature engineering, and reproducible notebooks
+          </li>
+          <li>Dashboards, reporting, and decision-support analysis</li>
+          <li>Clear technical writing for project outcomes and tradeoffs</li>
+        </ul>
+      </div>
+    </section>
+  </Animation>
+</Layout>

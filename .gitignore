@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Astro
+.astro/
+dist/
+
+# Search index output
+pagefind/
+
+# Logs
+*.log
+dev-server*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+notebooks/source/.ipynb_checkpoints/

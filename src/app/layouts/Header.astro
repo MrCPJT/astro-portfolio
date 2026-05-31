@@ -1,0 +1,111 @@
+---
+import Search from "../components/Search.astro";
+import { FaSolidBars, FaSolidMoon, FaSolidSun } from "solid-icons/fa";
+import { LINKS } from "@/app/config/route";
+
+const pathname = Astro.url.pathname;
+---
+
+<header>
+  <nav
+    class="fixed top-0 w-full backdrop-blur-md bg-[var(--color-background)]/95 border-b z-10"
+  >
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center space-x-8">
+          <a href="/" class="flex items-center" aria-label="Go to homepage">
+            <img src="/favicon.svg" alt="Logo" class="h-8 w-8 mr-2" />
+          </a>
+
+          <div class="hidden md:flex space-x-6">
+            {
+              LINKS.map(({ href, title }) => (
+                <a
+                  href={href}
+                  class:list={[
+                    "group flex items-center text-base transition-colors",
+                    {
+                      "text-black dark:text-white":
+                        pathname === href || pathname.startsWith(`${href}/`),
+                    },
+                    {
+                      "text-gray-500 dark:text-gray-400": !(
+                        pathname === href || pathname.startsWith(`${href}/`)
+                      ),
+                    },
+                  ]}
+                >
+                  <span class="hover-underline">{title}</span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <Search />
+          <button
+            type="button"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+            aria-label="Toggle color theme"
+            aria-pressed="false"
+            data-theme-toggle
+          >
+            <FaSolidSun
+              size={18}
+              class="hidden dark:inline-block"
+              data-theme-icon="sun"
+            />
+            <FaSolidMoon
+              size={18}
+              class="inline-block dark:hidden"
+              data-theme-icon="moon"
+            />
+          </button>
+          <button
+            class="text-gray-400 hover:text-gray-700 ml-2 md:hidden"
+            aria-label="Menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+            data-toggle-nav
+          >
+            <FaSolidBars size={20} />
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="nav-menu"
+        class="md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+        data-nav-menu
+      >
+        <div class="py-4 space-y-2">
+          {
+            LINKS.map(({ href, title }) => (
+              <a
+                href={href}
+                class:list={[
+                  "block py-2 px-4 text-base transition-colors",
+                  {
+                    "text-black dark:text-white":
+                      pathname === href || pathname.startsWith(`${href}/`),
+                  },
+                  {
+                    "text-gray-500 dark:text-gray-400": !(
+                      pathname === href || pathname.startsWith(`${href}/`)
+                    ),
+                  },
+                ]}
+              >
+                <span class="hover-underline">{title}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script is:inline src="/js/theme.js"></script>
+<script is:inline src="/js/navigation.js"></script>

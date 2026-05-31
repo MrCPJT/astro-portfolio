@@ -1,0 +1,94 @@
+---
+import Layout from "@/app/layouts/Layout.astro";
+import Animation from "@/app/components/Animation.astro";
+import { getCollection } from "astro:content";
+import Section from "@/components/about/Section.astro";
+import TimelineItem from "@/components/about/TimelineItem.astro";
+import ProjectList from "@/components/project/ProjectList.astro";
+import { Tag } from "@/components/common/Tag";
+
+const records = await getCollection("projects");
+---
+
+<Layout
+  title="About | Connor Tynan"
+  description="About Connor Tynan's data science background, skills, projects, and learning focus."
+>
+  <Animation>
+    <div class="space-y-12">
+      <Section id="experience" title="Experience">
+        <div class="space-y-4">
+          <TimelineItem
+            title="Current role"
+            subtitle="Data Scientist | 2024-Present"
+            startDate={new Date("2024-01-01")}
+            endDate={new Date()}
+            description="Building analytical workflows, modelling prototypes, and stakeholder-facing reporting for data-informed decision making."
+          />
+          <TimelineItem
+            title="Earlier data science experience"
+            subtitle="Data Scientist | 2022-2024"
+            startDate={new Date("2022-01-01")}
+            endDate={new Date("2023-12-31")}
+            description="Developed Python and SQL analysis, experimented with machine learning models, and translated results into practical recommendations."
+          />
+        </div>
+      </Section>
+
+      <Section id="projects" title="Projects">
+        <ProjectList projects={records} />
+      </Section>
+
+      <Section id="skills" title="Skills">
+        <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+          <h3 class="text-xl font-semibold mb-3">Core toolkit</h3>
+          <p class="mb-2">
+            A practical mix of analysis, modelling, data communication, and
+            reproducible workflow habits.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            {
+              [
+                "Python",
+                "SQL",
+                "Pandas",
+                "scikit-learn",
+                "Statistics",
+                "Jupyter",
+                "Data visualization",
+                "Experimentation",
+              ].map((tech) => <Tag>{tech}</Tag>)
+            }
+          </div>
+          <a
+            href="https://github.com/your-username"
+            class="inline-block mt-4 text-blue-400 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer">View GitHub profile</a
+          >
+        </div>
+      </Section>
+
+      <Section id="education" title="Education & Certifications">
+        <div class="space-y-4">
+          <TimelineItem
+            title="University or programme"
+            subtitle="Degree, major, or certificate | Graduation year"
+            startDate={new Date("2018-01-01")}
+            endDate={new Date("2022-12-31")}
+          />
+
+          <div class="mt-6">
+            <h3 class="text-xl font-semibold">Certifications and learning</h3>
+            <ul class="list-disc list-inside mt-2">
+              <li>
+                Add data science, cloud, or analytics certifications here.
+              </li>
+              <li>Add current learning goals or specialist topics here.</li>
+            </ul>
+          </div>
+        </div>
+      </Section>
+    </div>
+  </Animation>
+</Layout>

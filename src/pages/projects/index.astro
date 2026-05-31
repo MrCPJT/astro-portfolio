@@ -1,0 +1,29 @@
+---
+import Layout from "@/app/layouts/Layout.astro";
+import Animation from "@/app/components/Animation.astro";
+import ProjectList from "@/components/project/ProjectList.astro";
+import { getAllProjects } from "@/app/api/projects";
+
+const projects = await getAllProjects();
+---
+
+<Layout
+  title="Projects | Connor Tynan"
+  description="Data science case studies, notebook-backed analysis, and modelling projects."
+>
+  <Animation>
+    <section class="space-y-6">
+      <div>
+        <h1 class="text-3xl font-bold text-slate-800 dark:text-slate-100">
+          Projects
+        </h1>
+        <p class="mt-3 text-slate-600 dark:text-slate-400">
+          Selected data science work, written as case studies with context,
+          methods, tradeoffs, and outcomes.
+        </p>
+      </div>
+
+      <ProjectList projects={projects} />
+    </section>
+  </Animation>
+</Layout>

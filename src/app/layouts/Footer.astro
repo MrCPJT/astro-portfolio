@@ -1,0 +1,46 @@
+---
+import { FaSolidRss, FaBrandsLinkedinIn, FaBrandsGithub } from "solid-icons/fa";
+
+const today = new Date();
+---
+
+<footer class="border-t mt-12 py-8">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+      <span
+        class="text-sm text-gray-500 dark:text-gray-400 text-center sm:text-left"
+      >
+        &copy; {today.getFullYear()} Connor Tynan. All rights reserved.
+      </span>
+      <div class="flex justify-center gap-4">
+        <a
+          href="/rss.xml"
+          target="_blank"
+          class="transition-transform hover:rotate-6"
+          aria-label="Subscribe to RSS feed"
+        >
+          <FaSolidRss size={32} class="text-gray-800 dark:text-gray-200" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/your-profile"
+          target="_blank"
+          class="transition-transform hover:rotate-6"
+          aria-label="Follow on LinkedIn"
+        >
+          <FaBrandsLinkedinIn
+            size={32}
+            class="text-gray-800 dark:text-gray-200"
+          />
+        </a>
+        <a
+          href="https://github.com/your-username"
+          target="_blank"
+          class="transition-transform hover:rotate-6"
+          aria-label="View GitHub profile"
+        >
+          <FaBrandsGithub size={32} class="text-gray-800 dark:text-gray-200" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
