@@ -5,9 +5,17 @@ interface Props {
   description?: string;
   startDate: Date;
   endDate: Date;
+  endLabel?: string;
 }
 
-const { title, subtitle, description, startDate, endDate } = Astro.props;
+const { title, subtitle, description, startDate, endDate, endLabel } =
+  Astro.props;
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en-GB", {
+    month: "short",
+    year: "numeric",
+  }).format(date);
 ---
 
 <div class="border-l-4 border-[var(--color-primary)] pl-4">
@@ -16,7 +24,7 @@ const { title, subtitle, description, startDate, endDate } = Astro.props;
     {subtitle}
 
     <span class="ml-2">
-      {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
+      {formatDate(startDate)} – {endLabel ?? formatDate(endDate)}
     </span>
   </p>
   {description && <p class="mt-2">{description}</p>}
