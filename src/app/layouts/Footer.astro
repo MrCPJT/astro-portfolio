@@ -4,11 +4,11 @@ import { FaSolidRss, FaBrandsLinkedinIn, FaBrandsGithub } from "solid-icons/fa";
 const today = new Date();
 ---
 
-<footer class="border-t mt-12 py-8">
+<footer class="mt-12 border-t border-[var(--color-border)] py-8">
   <div class="max-w-3xl mx-auto px-4">
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
       <span
-        class="text-sm text-gray-500 dark:text-gray-400 text-center sm:text-left"
+        class="text-center text-sm text-[var(--color-text-muted)] sm:text-left"
       >
         &copy; {today.getFullYear()} Connor Tynan. All rights reserved.
       </span>
@@ -19,7 +19,7 @@ const today = new Date();
           class="transition-transform hover:rotate-6"
           aria-label="Subscribe to RSS feed"
         >
-          <FaSolidRss size={32} class="text-gray-800 dark:text-gray-200" />
+          <FaSolidRss size={32} class="text-[var(--color-text)]" />
         </a>
         <a
           href="https://www.linkedin.com/in/your-profile"
@@ -27,10 +27,7 @@ const today = new Date();
           class="transition-transform hover:rotate-6"
           aria-label="Follow on LinkedIn"
         >
-          <FaBrandsLinkedinIn
-            size={32}
-            class="text-gray-800 dark:text-gray-200"
-          />
+          <FaBrandsLinkedinIn size={32} class="text-[var(--color-text)]" />
         </a>
         <a
           href="https://github.com/your-username"
@@ -38,7 +35,7 @@ const today = new Date();
           class="transition-transform hover:rotate-6"
           aria-label="View GitHub profile"
         >
-          <FaBrandsGithub size={32} class="text-gray-800 dark:text-gray-200" />
+          <FaBrandsGithub size={32} class="text-[var(--color-text)]" />
         </a>
       </div>
     </div>

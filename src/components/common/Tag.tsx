@@ -4,7 +4,7 @@ interface TagProps {
 
 export function Tag(props: TagProps) {
   return (
-    <span class="px-2 py-1 bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-sm">
+    <span class="rounded border border-[var(--color-border)] bg-[var(--color-surface-muted)] px-2 py-1 text-sm text-[var(--color-text-muted)]">
       {props.children}
     </span>
   );

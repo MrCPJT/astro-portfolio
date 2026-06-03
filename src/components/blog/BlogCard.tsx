@@ -11,18 +11,18 @@ export function BlogCard(props: BlogCardProps) {
   return (
     <a
       href={`/${post.collection}/${post.slug}`}
-      class="group block relative border border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800 rounded-lg transition-transform duration-200 hover:-translate-y-1 shadow-sm dark:shadow-none"
+      class="surface-card group block relative rounded-lg border shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-[var(--color-primary)] dark:shadow-none"
     >
       <div class="p-6 h-full flex flex-col justify-between">
         <h3 class="text-xl font-medium  mb-3 transition-colors">
           {post.data.title}
         </h3>
 
-        <p class="text-sm text-gray-600 dark:text-gray mb-4 line-clamp-2">
+        <p class="text-sm text-[var(--color-text-muted)] mb-4 line-clamp-2">
           {post.data.summary}
         </p>
 
-        <div class="flex flex-col gap-4 text-sm text-gray-500 dark:text-gray-400">
+        <div class="flex flex-col gap-4 text-sm text-[var(--color-text-muted)]">
           <time datetime={post.data.date.toISOString()}>
             {new Date(post.data.date).toLocaleDateString()}
           </time>

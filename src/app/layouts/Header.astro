@@ -8,13 +8,23 @@ const pathname = Astro.url.pathname;
 
 <header>
   <nav
-    class="fixed top-0 w-full backdrop-blur-md bg-[var(--color-background)]/95 border-b z-10"
+    class="fixed top-0 w-full border-b border-[var(--color-border)] bg-[var(--color-background)]/95 backdrop-blur-md z-10"
   >
     <div class="max-w-3xl mx-auto px-4">
       <div class="flex justify-between h-16 items-center">
-        <div class="flex items-center space-x-8">
-          <a href="/" class="flex items-center" aria-label="Go to homepage">
-            <img src="/favicon.svg" alt="Logo" class="h-8 w-8 mr-2" />
+        <div class="flex items-center">
+          <a
+            href="/"
+            class="mr-8 flex items-center"
+            aria-label="Go to homepage"
+          >
+            <img
+              src="/favicon.svg"
+              alt="Connor Tynan logo"
+              class="h-11 w-11"
+              width="44"
+              height="44"
+            />
           </a>
 
           <div class="hidden md:flex space-x-6">
@@ -25,13 +35,12 @@ const pathname = Astro.url.pathname;
                   class:list={[
                     "group flex items-center text-base transition-colors",
                     {
-                      "text-black dark:text-white":
+                      "text-[var(--color-text)]":
                         pathname === href || pathname.startsWith(`${href}/`),
                     },
                     {
-                      "text-gray-500 dark:text-gray-400": !(
-                        pathname === href || pathname.startsWith(`${href}/`)
-                      ),
+                      "text-[var(--color-text-muted)] hover:text-[var(--color-primary)]":
+                        !(pathname === href || pathname.startsWith(`${href}/`)),
                     },
                   ]}
                 >
@@ -46,7 +55,7 @@ const pathname = Astro.url.pathname;
           <Search />
           <button
             type="button"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-md text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-primary)]"
             aria-label="Toggle color theme"
             aria-pressed="false"
             data-theme-toggle
@@ -63,7 +72,7 @@ const pathname = Astro.url.pathname;
             />
           </button>
           <button
-            class="text-gray-400 hover:text-gray-700 ml-2 md:hidden"
+            class="ml-2 text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-primary)] md:hidden"
             aria-label="Menu"
             aria-expanded="false"
             aria-controls="nav-menu"
@@ -87,13 +96,12 @@ const pathname = Astro.url.pathname;
                 class:list={[
                   "block py-2 px-4 text-base transition-colors",
                   {
-                    "text-black dark:text-white":
+                    "text-[var(--color-text)]":
                       pathname === href || pathname.startsWith(`${href}/`),
                   },
                   {
-                    "text-gray-500 dark:text-gray-400": !(
-                      pathname === href || pathname.startsWith(`${href}/`)
-                    ),
+                    "text-[var(--color-text-muted)] hover:text-[var(--color-primary)]":
+                      !(pathname === href || pathname.startsWith(`${href}/`)),
                   },
                 ]}
               >

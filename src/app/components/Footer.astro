@@ -14,15 +14,15 @@ interface Props {
 const { prevPost, nextPost, postType } = Astro.props;
 ---
 
-<footer class="mt-12 pt-6 border-t border-gray-200">
+<footer class="mt-12 border-t border-[var(--color-border)] pt-6">
   <nav class="grid grid-cols-2 gap-4">
     <div
-      class={`group p-4 ${prevPost ? "hover:bg-gray-50 dark:hover:bg-gray-800" : "opacity-50 cursor-not-allowed"} rounded-lg transition-colors`}
+      class={`group rounded-lg p-4 transition-colors ${prevPost ? "hover:bg-[var(--color-surface-muted)]" : "cursor-not-allowed opacity-50"}`}
     >
       {
         prevPost ? (
           <a href={`/${postType}/${prevPost.slug}`} class="block">
-            <div class="flex items-center text-gray-400 dark:text-gray-500 text-sm mb-2">
+            <div class="mb-2 flex items-center text-sm text-[var(--color-text-muted)]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-4 w-4 mr-1 transition-transform group-hover:-translate-x-1"
@@ -39,13 +39,13 @@ const { prevPost, nextPost, postType } = Astro.props;
               </svg>
               <span>Previous</span>
             </div>
-            <div class="text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100 line-clamp-2">
+            <div class="line-clamp-2 text-[var(--color-text-muted)] group-hover:text-[var(--color-primary)]">
               {prevPost.title}
             </div>
           </a>
         ) : (
           <div>
-            <div class="flex items-center text-gray-500 dark:text-gray-300 text-sm mb-2">
+            <div class="mb-2 flex items-center text-sm text-[var(--color-text-muted)]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-4 w-4 mr-1"
@@ -62,18 +62,18 @@ const { prevPost, nextPost, postType } = Astro.props;
               </svg>
               <span>Previous</span>
             </div>
-            <div class="text-gray-300 dark:text-gray-500">No previous post</div>
+            <div class="text-[var(--color-text-muted)]">No previous post</div>
           </div>
         )
       }
     </div>
     <div
-      class={`group p-4 ${nextPost ? "hover:bg-gray-50 dark:hover:bg-gray-800" : "opacity-50 cursor-not-allowed"} rounded-lg transition-colors`}
+      class={`group rounded-lg p-4 transition-colors ${nextPost ? "hover:bg-[var(--color-surface-muted)]" : "cursor-not-allowed opacity-50"}`}
     >
       {
         nextPost ? (
           <a href={`/${postType}/${nextPost.slug}`} class="block text-right">
-            <div class="flex items-center justify-end text-gray-500 dark:text-gray-300 text-sm mb-2">
+            <div class="mb-2 flex items-center justify-end text-sm text-[var(--color-text-muted)]">
               <span>Next</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -90,13 +90,13 @@ const { prevPost, nextPost, postType } = Astro.props;
                 />
               </svg>
             </div>
-            <div class="text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100 line-clamp-2">
+            <div class="line-clamp-2 text-[var(--color-text-muted)] group-hover:text-[var(--color-primary)]">
               {nextPost.title}
             </div>
           </a>
         ) : (
           <div class="text-right">
-            <div class="flex items-center justify-end text-gray-300 dark:text-gray-500 text-sm mb-2">
+            <div class="mb-2 flex items-center justify-end text-sm text-[var(--color-text-muted)]">
               <span>Next</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +113,7 @@ const { prevPost, nextPost, postType } = Astro.props;
                 />
               </svg>
             </div>
-            <div class="text-gray-300 dark:text-gray-500">No next post</div>
+            <div class="text-[var(--color-text-muted)]">No next post</div>
           </div>
         )
       }

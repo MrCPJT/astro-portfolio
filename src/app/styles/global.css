@@ -4,17 +4,39 @@
 
 @layer base {
   :root {
-    --color-background: #f9fafb;
-    --color-gray-text: #666666;
-    --color-gray-text-dark: #757575;
-    --color-gray-text-light: #475569;
+    --color-background: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface-muted: #f1f5f9;
+    --color-text: #0f172a;
+    --color-text-muted: #475569;
+    --color-border: #cbd5e1;
+    --color-primary: #0f766e;
+    --color-primary-hover: #115e59;
+    --color-primary-contrast: #ffffff;
+    --color-accent: #2563eb;
+    --color-accent-hover: #1d4ed8;
+    --color-focus: #0f766e;
+    --color-gray-text: var(--color-text-muted);
+    --color-gray-text-dark: #334155;
+    --color-gray-text-light: var(--color-text-muted);
   }
 
   html.dark {
-    --color-background: #111827;
-    --color-gray-text: #b8b8b8;
-    --color-gray-text-dark: #b0b0b0;
-    --color-gray-text-light: #e5e5e5;
+    --color-background: #0b1120;
+    --color-surface: #111827;
+    --color-surface-muted: #1e293b;
+    --color-text: #f8fafc;
+    --color-text-muted: #cbd5e1;
+    --color-border: #334155;
+    --color-primary: #5eead4;
+    --color-primary-hover: #2dd4bf;
+    --color-primary-contrast: #0b1120;
+    --color-accent: #93c5fd;
+    --color-accent-hover: #bfdbfe;
+    --color-focus: #5eead4;
+    --color-gray-text: var(--color-text-muted);
+    --color-gray-text-dark: #e2e8f0;
+    --color-gray-text-light: var(--color-text-muted);
   }
 }
 
@@ -78,7 +100,8 @@
 html {
   overflow-y: auto;
   color-scheme: light;
-  background-color: white;
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-family: "NotoSans", var(--font-fallback);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -88,14 +111,66 @@ html {
 
 html.dark {
   color-scheme: dark;
-  background-color: black;
+  background-color: var(--color-background);
 }
 
 article {
   @apply prose dark:prose-invert max-w-full pb-12;
 }
 
+a,
+button,
+input {
+  @apply outline-none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
 @layer components {
+  .surface-card {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  .surface-muted {
+    background-color: var(--color-surface-muted);
+    border-color: var(--color-border);
+  }
+
+  .link-accent {
+    color: var(--color-primary);
+  }
+
+  .link-accent:hover {
+    color: var(--color-primary-hover);
+  }
+
+  .button-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+  }
+
+  .button-primary:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  .button-secondary {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  .button-secondary:hover {
+    background-color: var(--color-surface-muted);
+    border-color: var(--color-primary);
+  }
+
   .hover-lift {
     @apply transform transition-all duration-300 hover:-translate-y-1;
   }
@@ -105,8 +180,8 @@ article {
   }
 
   .hover-underline::after {
-    @apply absolute bottom-[-1.5px] left-0 w-full h-0.5 bg-gray-700 dark:bg-gray-300
-    transition-transform transform scale-x-0;
+    @apply absolute bottom-[-1.5px] left-0 w-full h-0.5 transition-transform transform scale-x-0;
+    background-color: var(--color-primary);
     content: "";
     transform-origin: left;
     margin-left: 0px;

@@ -11,15 +11,15 @@ export function FilterTagList(props: FilterTagListProps) {
   const { tags, selectedTagsSignal, isAllSelectedSignal, onTagToggle } = props;
 
   return (
-    <div class="flex flex-col space-y-4 p-4  bg-gray-50/50 dark:bg-gray-800 rounded-lg shadow-sm">
+    <div class="surface-card flex flex-col space-y-4 rounded-lg border p-4 shadow-sm">
       <button
         onClick={() => {
           onTagToggle("all");
         }}
         class={`text-left font-bold transition-colors ${
           isAllSelectedSignal()
-            ? "text-slate-800 dark:text-slate-200"
-            : "text-slate-500 dark:text-slate-400"
+            ? "text-[var(--color-text)]"
+            : "text-[var(--color-text-muted)] hover:text-[var(--color-primary)]"
         }`}
       >
         All
@@ -33,13 +33,13 @@ export function FilterTagList(props: FilterTagListProps) {
                 type="checkbox"
                 checked={selectedTagsSignal().includes(tag)}
                 onChange={() => onTagToggle(tag)}
-                class="form-checkbox h-4 w-4 rounded accent-slate-600"
+                class="form-checkbox h-4 w-4 rounded accent-[var(--color-primary)]"
               />
               <span
                 class={`text-sm font-medium transition-colors ${
                   selectedTagsSignal().includes(tag)
-                    ? "text-slate-800 dark:text-slate-200"
-                    : "text-slate-500 dark:text-slate-400"
+                    ? "text-[var(--color-text)]"
+                    : "text-[var(--color-text-muted)]"
                 }`}
               >
                 {tag}

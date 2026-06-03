@@ -25,37 +25,37 @@ export default function LogList(props: Props) {
 
   return (
     <div class="flex flex-col gap-6">
-      <div class="flex gap-4 border-b border-slate-200 dark:border-slate-700">
+      <div class="flex gap-4 border-b border-[var(--color-border)]">
         <button
-          class={`px-4 py-2 text-sm transition-colors relative group ${
+          class={`relative group px-4 py-2 text-sm transition-colors ${
             selectedCategory() === "all"
-              ? "text-black dark:text-white"
-              : "text-gray-500 dark:text-gray-400"
+              ? "text-[var(--color-text)]"
+              : "text-[var(--color-text-muted)] hover:text-[var(--color-primary)]"
           }`}
           onClick={() => setSelectedCategory("all")}
         >
           All
           {selectedCategory() === "all" ? (
-            <div class="absolute bottom-0 left-0 w-full h-0.5 hover-underline"></div>
+            <div class="absolute bottom-0 left-0 h-0.5 w-full bg-[var(--color-primary)]"></div>
           ) : (
-            <div class="absolute bottom-0 left-0 w-full h-0.5 border-black"></div>
+            <div class="absolute bottom-0 left-0 h-0.5 w-full opacity-0"></div>
           )}
         </button>
         <For each={props.categories}>
           {(category) => (
             <button
-              class={`px-4 py-2 text-sm transition-colors relative group ${
+              class={`relative group px-4 py-2 text-sm transition-colors ${
                 selectedCategory() === category
-                  ? "text-black dark:text-white"
-                  : "text-gray-500 dark:text-gray-400"
+                  ? "text-[var(--color-text)]"
+                  : "text-[var(--color-text-muted)] hover:text-[var(--color-primary)]"
               }`}
               onClick={() => setSelectedCategory(category)}
             >
               {category}
               {selectedCategory() === category ? (
-                <div class="absolute bottom-0 left-0 w-full h-0.5 hover-underline"></div>
+                <div class="absolute bottom-0 left-0 h-0.5 w-full bg-[var(--color-primary)]"></div>
               ) : (
-                <div class="absolute bottom-0 left-0 w-full h-0.5 hover-underline opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div class="absolute bottom-0 left-0 h-0.5 w-full bg-[var(--color-primary)] opacity-0 transition-opacity group-hover:opacity-100"></div>
               )}
             </button>
           )}
@@ -67,18 +67,18 @@ export default function LogList(props: Props) {
           {(log) => (
             <a
               href={`/log/${log.slug}`}
-              class="block group space-y-4 hover:no-underline hover-lift"
+              class="hover-lift group block space-y-4 hover:no-underline"
               aria-labelledby={`log-title-${log.slug}`}
             >
-              <div class="flex justify-between items-baseline">
+              <div class="flex items-baseline justify-between">
                 <h3
                   id={`log-title-${log.slug}`}
-                  class="text-lg font-medium text-slate-800 dark:text-slate-200 transition-colors"
+                  class="text-lg font-medium text-[var(--color-text)] transition-colors group-hover:text-[var(--color-primary)]"
                 >
                   {log.data.title}
                 </h3>
                 <time
-                  class="text-sm text-slate-400"
+                  class="text-sm text-[var(--color-text-muted)]"
                   datetime={log.data.date.toISOString()}
                 >
                   {new Date(log.data.date).toLocaleDateString("en-US", {

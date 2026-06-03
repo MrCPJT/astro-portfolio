@@ -10,9 +10,9 @@ interface Props {
 const { title, subtitle, description, startDate, endDate } = Astro.props;
 ---
 
-<div class="border-l-4 border-gray-300 pl-4">
+<div class="border-l-4 border-[var(--color-primary)] pl-4">
   <h3 class="text-xl font-semibold">{title}</h3>
-  <p class="text-gray-600 dark:text-gray-400">
+  <p class="text-[var(--color-text-muted)]">
     {subtitle}
 
     <span class="ml-2">

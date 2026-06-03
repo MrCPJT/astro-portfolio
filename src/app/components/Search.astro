@@ -9,19 +9,21 @@ import { FaSolidMagnifyingGlass } from "solid-icons/fa";
     disabled
     aria-label="search"
     aria-keyshortcuts="Control+K"
-    class="flex items-center gap-2 h-10 px-3 text-gray hover:text-gray-200 transition-colors rounded-lg hover:bg-gray-800/50"
+    class="flex h-10 items-center gap-2 rounded-lg px-3 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-primary)]"
   >
     <FaSolidMagnifyingGlass size={20} />
     <span class="hidden md:block text-sm">Search</span>
   </button>
 
   <dialog
-    class="fixed inset-0 backdrop-blur-sm bg-gray-200 rounded-xl"
+    class="fixed inset-0 rounded-xl bg-[var(--color-surface)] text-[var(--color-text)] backdrop-blur-sm"
     style="padding:0"
     aria-label="search"
   >
-    <div class="border">
-      <div class="flex items-center gap-3 p-4 border-b">
+    <div class="border border-[var(--color-border)]">
+      <div
+        class="flex items-center gap-3 border-b border-[var(--color-border)] p-4"
+      >
         <SearchPageFind
           id="search"
           className="pagefind-ui w-full"
