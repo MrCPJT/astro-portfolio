@@ -8,11 +8,10 @@ summary: "A final-year project modelling interactions between Staphylococcus aur
 technologies:
   [
     "R",
-    "RStan",
     "Stan",
     "Hamiltonian Monte Carlo",
-    "MCMC diagnostics",
-    "generalized Lotka-Volterra models",
+    "MCMC",
+    "generalized Lotka-Volterra",
     "MATCONT",
   ]
 link: "https://github.com/MrCPJT/Mathematically-Modelling-Microbial-Interactions"

@@ -8,9 +8,7 @@ summary: "A student outcome prediction project using higher-education enrolment,
 technologies:
   [
     "Python",
-    "Pandas",
     "scikit-learn",
-    "Random Forest",
     "Flask",
     "waitress",
     "Docker",

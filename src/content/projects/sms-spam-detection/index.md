@@ -8,7 +8,6 @@ summary: "A machine learning project that classifies SMS messages as spam or leg
 technologies:
   [
     "Python",
-    "Pandas",
     "scikit-learn",
     "NLTK",
     "Docker",

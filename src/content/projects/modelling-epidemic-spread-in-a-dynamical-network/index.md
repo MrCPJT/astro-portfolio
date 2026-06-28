@@ -9,11 +9,9 @@ technologies:
   [
     "R",
     "EpiModel",
-    "SIR models",
-    "SIRS models",
+    "SIR/SIRS",
     "dynamic networks",
     "sensitivity analysis",
-    "simulation",
   ]
 link: "https://github.com/MrCPJT/Modelling-Epidemic-Spread-in-a-Dynamical-Network"
 ---

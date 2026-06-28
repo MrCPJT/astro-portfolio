@@ -49,26 +49,15 @@ const records = await getCollection("projects");
       <Section id="skills" title="Skills">
         <div class="surface-card rounded-lg border p-4">
           <h3 class="mb-3 text-xl font-semibold">Core toolkit</h3>
-          <p class="mb-2">
-            A practical mix of programming, modelling, scientific computing,
-            cloud tooling, and reproducible analysis.
-          </p>
           <div class="mt-3 flex flex-wrap gap-2">
             {
               [
                 "Python",
                 "MATLAB",
-                "R",
-                "pandas",
-                "NumPy",
                 "scikit-learn",
-                "seaborn",
-                "matplotlib",
                 "PyTorch",
                 "AWS",
-                "git",
-                "HPC",
-                "Jupyter",
+                "HPC (Slurm)",
                 "Docker",
               ].map((tech) => <Tag>{tech}</Tag>)
             }
@@ -90,14 +79,14 @@ const records = await getCollection("projects");
             startDate={new Date("2025-06-01")}
             endDate={new Date()}
             endLabel="Present"
-            description="Developing software for statistical methods, investigating correlated stochastic processes and uncertainty estimates, and acting as technical lead on customer-facing projects."
+            description="Led customer-facing data science work on statistical testing of quantum RNG pipelines with uncertainty-aware analysis. Ensembled GBDTs for long-term photovoltaic degradation forecasting. Generated synthetic measurement-data in ultra-low-data settings"
           />
           <TimelineItem
             title="Scientist (Data Science)"
             subtitle="National Physical Laboratory (NPL), London"
             startDate={new Date("2024-03-01")}
             endDate={new Date("2025-06-30")}
-            description="Built software for synthetic tabular data generation, statistical methods, and numerical analysis; contributed to work on inverse problems, hypothesis testing, trustworthy AI, and uncertainty quantification software."
+            description="Developed software for statistical modelling, numerical analysis, and uncertainty quantification; contributed to technical reports on inverse problems, hypothesis testing, and trustworthy AI; recipient of NPL's 2024 Early Career Scientist Award for Best Presentation."
           />
         </div>
       </Section>
