@@ -1,102 +1,31 @@
 ---
 import Layout from "@/app/layouts/Layout.astro";
 import Animation from "@/app/components/Animation.astro";
-import { getCollection } from "astro:content";
-import Section from "@/components/about/Section.astro";
-import TimelineItem from "@/components/about/TimelineItem.astro";
-import ProjectList from "@/components/project/ProjectList.astro";
-import { Tag } from "@/components/common/Tag";
-
-const records = await getCollection("projects");
 ---
 
 <Layout
   title="About | Connor Tynan"
-  description="About Connor Tynan's data science background, NPL experience, mathematical training, technical toolkit, and selected projects."
+  description="A more personal note from Connor Tynan about work, curiosity, and the person behind the portfolio."
 >
   <Animation>
-    <div class="space-y-12">
-      <Section id="profile" title="Profile">
-        <div class="surface-card space-y-4 rounded-lg border p-4">
-          <p>
-            Data scientist at the National Physical Laboratory with a mathematics
-            background and experience in statistical methods, generative modelling,
-            uncertainty quantification, and numerical analysis.
-          </p>
-        </div>
-      </Section>
+    <section class="space-y-8">
+      <div>
+        <h1 class="text-3xl font-bold text-[var(--color-text)]">About</h1>
+        <p class="mt-3 text-[var(--color-text-muted)]">
+          A more personal space for the parts of my story that do not fit neatly
+          into a resume.
+        </p>
+      </div>
 
-      <Section id="experience" title="Experience">
-        <div class="space-y-4">
-          <TimelineItem
-            title="Higher Scientist (Data Science)"
-            subtitle="National Physical Laboratory (NPL), London"
-            startDate={new Date("2025-06-01")}
-            endDate={new Date()}
-            endLabel="Present"
-            description="Developing software for statistical methods, investigating correlated stochastic processes and uncertainty estimates, and acting as technical lead on customer-facing projects."
-          />
-          <TimelineItem
-            title="Scientist (Data Science)"
-            subtitle="National Physical Laboratory (NPL), London"
-            startDate={new Date("2024-03-01")}
-            endDate={new Date("2025-06-30")}
-            description="Built software for synthetic tabular data generation, statistical methods, and numerical analysis; contributed to work on inverse problems, hypothesis testing, trustworthy AI, and uncertainty quantification software."
-          />
-        </div>
-      </Section>
-
-      <Section id="projects" title="Projects">
-        <ProjectList projects={records} />
-      </Section>
-
-      <Section id="skills" title="Skills">
-        <div class="surface-card rounded-lg border p-4">
-          <h3 class="mb-3 text-xl font-semibold">Core toolkit</h3>
-          <p class="mb-2">
-            A practical mix of programming, modelling, scientific computing,
-            cloud tooling, and reproducible analysis.
-          </p>
-          <div class="mt-3 flex flex-wrap gap-2">
-            {
-              [
-                "Python",
-                "MATLAB",
-                "R",
-                "pandas",
-                "NumPy",
-                "scikit-learn",
-                "seaborn",
-                "matplotlib",
-                "PyTorch",
-                "AWS",
-                "git",
-                "HPC",
-                "Jupyter",
-                "Docker",
-              ].map((tech) => <Tag>{tech}</Tag>)
-            }
-          </div>
-          <a
-            href="https://github.com/MrCPJT"
-            class="link-accent mt-4 inline-block hover:underline"
-            target="_blank"
-            rel="noopener noreferrer">View GitHub profile</a
-          >
-        </div>
-      </Section>
-
-      <Section id="education" title="Education">
-        <div class="space-y-4">
-          <TimelineItem
-            title="Master of Mathematics (MMath), First Class Honours"
-            subtitle="University of Exeter, Exeter"
-            startDate={new Date("2019-09-01")}
-            endDate={new Date("2023-06-30")}
-            description="Completed an integrated master's degree in mathematics, graduating with First Class Honours."
-          />
-        </div>
-      </Section>
-    </div>
+      <div class="surface-card space-y-4 rounded-lg border p-4">
+        <p>
+          I am using this page to write more directly about what I care about,
+          how I think, and the kinds of work that feel meaningful to me.
+        </p>
+        <p>
+          More soon.
+        </p>
+      </div>
+    </section>
   </Animation>
 </Layout>
