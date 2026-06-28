@@ -19,11 +19,18 @@ const pathname = Astro.url.pathname;
             aria-label="Go to homepage"
           >
             <img
-              src="/favicon.svg"
+              src="/origami-crane-logo-light.png"
               alt="Connor Tynan logo"
-              class="h-11 w-11"
-              width="44"
-              height="44"
+              class="block h-12 w-16 object-contain dark:hidden"
+              width="64"
+              height="48"
+            />
+            <img
+              src="/origami-crane-logo-dark.png"
+              alt="Connor Tynan logo"
+              class="hidden h-12 w-16 object-contain dark:block"
+              width="64"
+              height="48"
             />
           </a>
 
