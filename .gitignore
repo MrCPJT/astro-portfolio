@@ -3,11 +3,6 @@ node_modules/
 .pnpm-store/
 .local-bin/
 
-# Keep dependency manifests tracked so fresh clones can install Astro/Solid deps.
-!package.json
-!pnpm-lock.yaml
-!pnpm-workspace.yaml
-
 # Astro
 .astro/
 dist/
