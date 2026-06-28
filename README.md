@@ -14,6 +14,8 @@ The site is intended to support an upcoming job search by hosting a resume, proj
 
 ## Local Development
 
+After a fresh clone or pull on another machine, install dependencies before running Astro. Missing modules such as `solid-icons` or `astro:*` usually mean this step has not run yet.
+
 ```bash
 corepack pnpm install
 corepack pnpm run dev
