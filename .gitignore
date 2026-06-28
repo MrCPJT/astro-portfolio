@@ -3,10 +3,6 @@ node_modules/
 .pnpm-store/
 .local-bin/
 
-# Astro
-.astro/
-dist/
-
 # Search index output
 pagefind/
 
