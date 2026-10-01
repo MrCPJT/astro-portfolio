@@ -1,13 +1,9 @@
 ---
 import Layout from "@/app/layouts/Layout.astro";
 import Animation from "@/app/components/Animation.astro";
-import { getCollection } from "astro:content";
 import Section from "@/components/about/Section.astro";
 import TimelineItem from "@/components/about/TimelineItem.astro";
-import ProjectList from "@/components/project/ProjectList.astro";
 import { Tag } from "@/components/common/Tag";
-
-const records = await getCollection("projects");
 ---
 
 <Layout
@@ -19,8 +15,7 @@ const records = await getCollection("projects");
       <div>
         <h1 class="text-3xl font-bold text-[var(--color-text)]">Resume</h1>
         <p class="mt-3 text-[var(--color-text-muted)]">
-          A concise snapshot of my data science experience, technical toolkit,
-          and project experience.
+          A concise snapshot of my data science experience and technical toolkit.
         </p>
       </div>
 
@@ -89,10 +84,6 @@ const records = await getCollection("projects");
             description="Developed software for statistical modelling, numerical analysis, and uncertainty quantification; contributed to technical reports on inverse problems, hypothesis testing, and trustworthy AI; recipient of NPL's 2024 Early Career Scientist Award for Best Presentation."
           />
         </div>
-      </Section>
-
-      <Section id="projects" title="Projects">
-        <ProjectList projects={records} />
       </Section>
     </section>
   </Animation>
