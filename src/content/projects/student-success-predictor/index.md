@@ -41,7 +41,9 @@ The dataset includes academic path, demographic, socioeconomic, and first-year p
 
 ## Results
 
-The final Random Forest model remained consistent when trained on the extended training split and evaluated on held-out test data. The project also produced a working deployment path from trained model artifact to local service, Docker image, and cloud-hosted endpoint.
+The dataset covers 4,424 students with 34 features and three outcomes (graduate 2,209, dropout 1,421, enrolled 794). It was split 60/20/20 into 2,654 training, 885 validation and 885 test students.
+
+Ten classifiers were compared on the validation set. Random Forest scored best overall, with 76 % accuracy and macro-averaged precision 0.72, recall 0.67 and F1 0.68. Logistic regression matched its accuracy, SVC and linear SVC came within one point, and the decision tree, nearest-neighbour and Naive Bayes models scored 66–71 %. A baseline that always predicted "graduate" would score 49.9 %, so the result is well above chance. Dropping the 20 weakest features changed scores very little, so all 34 were kept.
 
 ## Technical Notes
 
