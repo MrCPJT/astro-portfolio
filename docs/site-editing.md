@@ -15,7 +15,6 @@ Use this when you want to make small manual updates without hunting through the 
 
 - Blog posts live in `src/content/blog/<post-slug>/index.md`.
 - Project pages live in `src/content/projects/<project-slug>/index.md`.
-- Log entries live in `src/content/log/<entry-slug>/index.md`.
 
 Most content files start with frontmatter between `---` lines. Edit fields such as `title`, `summary`, `date`, `tags`, `technologies`, and `link` there.
 
