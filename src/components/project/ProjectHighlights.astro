@@ -40,6 +40,10 @@ const tiles = await Promise.all(
             href={tile.href}
             target="_blank"
             rel="noopener noreferrer"
+            data-highlight
+            data-title={tile.title}
+            data-alt={tile.alt}
+            data-caption={tile.caption}
             class="surface-card group flex h-full w-full min-w-0 flex-col rounded-lg border p-2 transition-transform duration-200 hover:-translate-y-0.5 hover:border-[var(--color-primary)]"
             aria-label={`${tile.title}: open larger figure`}
           >
@@ -63,3 +67,84 @@ const tiles = await Promise.all(
     }
   </ul>
 </section>
+
+<dialog
+  id="highlight-dialog"
+  aria-label="Figure preview"
+  class="m-auto w-[min(56rem,calc(100%-2rem))] rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-0 text-[var(--color-text)]"
+>
+  <div class="flex items-start justify-between gap-4 p-4 pb-2">
+    <p id="highlight-dialog-title" class="font-semibold"></p>
+    <button
+      type="button"
+      data-highlight-close
+      aria-label="Close preview"
+      class="-mr-1 -mt-1 rounded-md px-2 py-1 text-xl leading-none text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-primary)]"
+    >
+      &times;
+    </button>
+  </div>
+  <div class="px-4">
+    <div
+      class="flex max-h-[70vh] items-center justify-center overflow-auto rounded bg-white p-2"
+    >
+      <img
+        id="highlight-dialog-image"
+        alt=""
+        class="h-auto max-h-[66vh] w-auto max-w-full"
+      />
+    </div>
+  </div>
+  <p
+    id="highlight-dialog-caption"
+    class="p-4 pt-2 text-sm text-[var(--color-text-muted)]"
+  >
+  </p>
+</dialog>
+
+<script>
+  // Delegated so it keeps working after client-side navigation swaps the DOM.
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const dialog = document.getElementById(
+      "highlight-dialog",
+    ) as HTMLDialogElement | null;
+    if (!dialog) return;
+
+    const tile = target.closest<HTMLAnchorElement>("a[data-highlight]");
+
+    if (tile) {
+      event.preventDefault();
+
+      const image = dialog.querySelector<HTMLImageElement>(
+        "#highlight-dialog-image",
+      );
+      const title = dialog.querySelector("#highlight-dialog-title");
+      const caption = dialog.querySelector("#highlight-dialog-caption");
+
+      if (image) {
+        image.src = tile.href;
+        image.alt = tile.dataset.alt ?? "";
+      }
+      if (title) title.textContent = tile.dataset.title ?? "";
+      if (caption) caption.textContent = tile.dataset.caption ?? "";
+
+      dialog.showModal();
+      return;
+    }
+
+    // Clicks on the backdrop land on the dialog element itself.
+    if (target === dialog || target.closest("[data-highlight-close]")) {
+      dialog.close();
+    }
+  });
+</script>
+
+<style is:global>
+  #highlight-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+  }
+</style>
