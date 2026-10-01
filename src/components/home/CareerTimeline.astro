@@ -1,0 +1,38 @@
+---
+import type { TimelineEntry } from "@/app/static/experience";
+
+interface Props {
+  entries: TimelineEntry[];
+}
+
+const { entries } = Astro.props;
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en-GB", { month: "short", year: "numeric" }).format(
+    date,
+  );
+---
+
+<ol class="ml-1.5 border-l-2 border-[var(--color-border)] pl-6">
+  {
+    entries.map((entry) => (
+      <li class="relative pb-6 last:pb-0">
+        <span
+          class="absolute -left-[34px] top-1.5 h-3 w-3 rounded-full border-2 border-[var(--color-background)] bg-[var(--color-primary)]"
+          aria-hidden="true"
+        />
+        <p class="text-sm text-[var(--color-text-muted)]">
+          {formatDate(entry.start)} –{" "}
+          {entry.end ? formatDate(entry.end) : "Present"}
+        </p>
+        <h3 class="text-lg font-semibold">{entry.title}</h3>
+        <p class="text-[var(--color-text-muted)]">{entry.organisation}</p>
+        {entry.award && (
+          <p class="mt-2 inline-block rounded bg-[var(--color-surface-muted)] px-2 py-0.5 text-sm text-[var(--color-primary)]">
+            {entry.award}
+          </p>
+        )}
+      </li>
+    ))
+  }
+</ol>

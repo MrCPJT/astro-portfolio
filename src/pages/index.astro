@@ -1,17 +1,33 @@
 ---
 import Layout from "@/app/layouts/Layout.astro";
 import { FaSolidChartLine, FaSolidFileLines } from "solid-icons/fa";
-import { getCollection } from "astro:content";
-import { BlogCard } from "@/components/blog/BlogCard";
 import Animation from "@/app/components/Animation.astro";
+import CareerTimeline from "@/components/home/CareerTimeline.astro";
+import FeaturedProjectCard from "@/components/home/FeaturedProjectCard.astro";
+import { getAllBlogPosts } from "@/app/api/blog";
+import { getAllProjects } from "@/app/api/projects";
+import { EDUCATION, EXPERIENCE } from "@/app/static/experience";
+import { FEATURED_PROJECTS } from "@/app/static/consts";
 
-const posts = await getCollection("blog");
-const recentPosts = posts
+const timeline = [...EXPERIENCE, ...EDUCATION].sort(
+  (a, b) => b.start.getTime() - a.start.getTime(),
+);
+
+const projects = await getAllProjects();
+const featuredProjects = FEATURED_PROJECTS.flatMap((slug) =>
+  projects.filter((project) => project.slug === slug),
+);
+
+const recentPosts = (await getAllBlogPosts())
   .filter((post) => !post.data.draft)
-  .sort(
-    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-  )
   .slice(0, 3);
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(date);
 ---
 
 <Layout
@@ -34,8 +50,8 @@ const recentPosts = posts
           </p>
 
           <p>
-            This site collects some of my personal projects, writings,
-            and resume.
+            This site collects some of my personal projects, writings, and
+            resume.
           </p>
 
           <p class="flex flex-wrap gap-3 pt-3">
@@ -58,23 +74,66 @@ const recentPosts = posts
       </section>
     </div>
 
-    <section>
-      <div class="mt-16">
-        <Animation delay={0.2}>
-          <h2 class="text-2xl mb-4 text-[var(--color-text-muted)]">
-            Recent Posts
+    <section class="mt-12">
+      <Animation delay={0.2}>
+        <h2 class="mb-4 text-2xl text-[var(--color-text-muted)]">Experience</h2>
+        <CareerTimeline entries={timeline} />
+      </Animation>
+    </section>
+
+    <section class="mt-12">
+      <Animation delay={0.3}>
+        <div class="mb-4 flex items-baseline justify-between">
+          <h2 class="text-2xl text-[var(--color-text-muted)]">
+            Selected projects
           </h2>
-        </Animation>
-        <div class="grid grid-cols-1 gap-6">
+          <a href="/projects" class="link-accent text-sm hover:underline">
+            All projects
+          </a>
+        </div>
+        <div class="grid grid-cols-1 gap-4 tablet:grid-cols-2">
           {
-            recentPosts.map((post, index) => (
-              <Animation delay={0.3 + index * 0.1}>
-                <BlogCard post={post} />
-              </Animation>
+            featuredProjects.map((project) => (
+              <FeaturedProjectCard project={project} />
             ))
           }
         </div>
-      </div>
+      </Animation>
+    </section>
+
+    <section class="mt-12">
+      <Animation delay={0.4}>
+        <div class="mb-4 flex items-baseline justify-between">
+          <h2 class="text-2xl text-[var(--color-text-muted)]">
+            Latest writing
+          </h2>
+          <a href="/blog" class="link-accent text-sm hover:underline">
+            All posts
+          </a>
+        </div>
+        <ul class="border-b border-[var(--color-border)]">
+          {
+            recentPosts.map((post) => (
+              <li class="border-t border-[var(--color-border)]">
+                <a
+                  href={`/blog/${post.slug}`}
+                  class="group flex flex-col gap-1 py-3 tablet:flex-row tablet:items-baseline tablet:justify-between tablet:gap-4"
+                >
+                  <span class="font-medium transition-colors group-hover:text-[var(--color-primary)]">
+                    {post.data.title}
+                  </span>
+                  <time
+                    datetime={post.data.date.toISOString()}
+                    class="shrink-0 text-sm text-[var(--color-text-muted)]"
+                  >
+                    {formatDate(post.data.date)}
+                  </time>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </Animation>
     </section>
   </Animation>
 </Layout>
