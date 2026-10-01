@@ -34,43 +34,53 @@ const formatDate = (date: Date) =>
   description="Portfolio and writings from a data scientist."
 >
   <Animation>
-    <div class="flex flex-col items-start space-y-6">
-      <h1 class="text-3xl font-bold text-[var(--color-text)]">Connor Tynan</h1>
-      <section>
-        <h2 class="text-xl text-[var(--color-text-muted)]">
+    <header class="space-y-5">
+      <div class="border-l-[3px] border-[var(--color-primary)] pl-4">
+        <h1 class="text-3xl font-bold text-[var(--color-text)]">
+          Connor Tynan
+        </h1>
+        <p class="mt-1.5 text-xl text-[var(--color-text-muted)]">
           Research scientist interested in Applied AI.
-        </h2>
+        </p>
+        <p class="mt-3 max-w-xl text-base text-gray">
+          Data scientist with two years of experience working across several
+          domains, including MRI, photovoltaics, QRNG, and healthcare.
+        </p>
+      </div>
 
-        <article class="text-base text-gray">
-          <p>
-            Data scientist with two years of experience working across several
-            domains, including MRI, photovoltaics, QRNG, and healthcare.
-          </p>
-
-          <p>
-            This site collects some of my personal projects, writings, and
-            resume.
-          </p>
-
-          <p class="not-prose flex flex-wrap gap-3 pt-5">
-            <a
-              href="/resume"
-              class="button-primary inline-flex items-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
-              aria-label="View resume"
-            >
-              Resume
-            </a>
-            <a
-              href="/projects"
-              class="button-secondary inline-flex items-center rounded-md border px-4 py-2 text-sm font-medium transition-colors"
-              aria-label="View data science projects"
-            >
-              Projects
-            </a>
-          </p>
-        </article>
-      </section>
-    </div>
+      <div class="flex flex-wrap items-center gap-3">
+        <a
+          href="/resume"
+          class="button-primary inline-flex items-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
+          aria-label="View resume"
+        >
+          Resume
+        </a>
+        <a
+          href="/projects"
+          class="button-secondary inline-flex items-center rounded-md border px-4 py-2 text-sm font-medium transition-colors"
+          aria-label="View data science projects"
+        >
+          Projects
+        </a>
+        <a
+          href="https://github.com/MrCPJT"
+          class="ml-1 text-sm text-[var(--color-text-muted)] underline transition-colors hover:text-[var(--color-primary)]"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://www.linkedin.com/in/cpjt"
+          class="text-sm text-[var(--color-text-muted)] underline transition-colors hover:text-[var(--color-primary)]"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+      </div>
+    </header>
 
     <section class="mt-12">
       <Animation delay={0.2}>
