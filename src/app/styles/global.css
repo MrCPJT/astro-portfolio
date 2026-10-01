@@ -193,10 +193,6 @@ input:focus-visible {
 }
 
 /* Project pages */
-.project-body {
-  counter-reset: project-section;
-}
-
 .project-body .project-section {
   margin-top: 2.5rem;
 }
@@ -206,25 +202,12 @@ input:focus-visible {
 }
 
 .project-body h2 {
-  counter-increment: project-section;
   display: flex;
   align-items: center;
   gap: 0.65rem;
   margin: 0 0 0.75rem;
   font-size: 1.25rem;
   font-weight: 600;
-}
-
-.project-body h2::before {
-  content: counter(project-section, decimal-leading-zero);
-  flex: none;
-  border-radius: 0.3rem;
-  padding: 0.1rem 0.4rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--color-primary);
-  background-color: color-mix(in srgb, var(--color-primary) 14%, transparent);
 }
 
 .project-body h2::after {
