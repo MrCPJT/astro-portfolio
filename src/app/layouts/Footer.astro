@@ -7,20 +7,18 @@ const today = new Date();
 <footer class="mt-12 border-t border-[var(--color-border)] py-8">
   <div class="max-w-3xl mx-auto px-4">
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div
+      <p
         class="text-center text-sm text-[var(--color-text-muted)] sm:text-left"
       >
-        <p>&copy; {today.getFullYear()} Connor Tynan. All rights reserved.</p>
-        <p>
-          Adapted from the
-          <a
-            href="https://astro.build/themes/details/astro-fox/"
-            class="underline hover:text-[var(--color-primary)]"
-            target="_blank"
-            rel="noopener noreferrer">Astro Fox</a
-          > theme.
-        </p>
-      </div>
+        &copy; {today.getFullYear()} Connor Tynan. All rights reserved. Adapted from
+        the
+        <a
+          href="https://astro.build/themes/details/astro-fox/"
+          class="underline hover:text-[var(--color-primary)]"
+          target="_blank"
+          rel="noopener noreferrer">Astro Fox</a
+        > theme.
+      </p>
       <div class="flex justify-center gap-4">
         <a
           href="/rss.xml"
