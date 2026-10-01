@@ -7,8 +7,6 @@ categories: "notebooks"
 draft: true
 ---
 
-# Sample Model Diagnostics
-
 This tiny notebook exists to verify the portfolio conversion workflow.
 
 ```python

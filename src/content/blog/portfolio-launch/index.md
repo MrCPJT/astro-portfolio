@@ -7,8 +7,6 @@ categories: "meta"
 draft: false
 ---
 
-# Building a Data Science Portfolio
-
 This site started as a fairly practical idea: I wanted a single place for projects, writing, notebooks, and a resume. The first version of that idea was mostly about collecting material. Over time, though, the more interesting problem became the site itself: how should a technical portfolio feel, how should it be structured, and how much design should sit between a reader and the work?
 
 I built the portfolio with Astro because it fits that shape well. Most of the site is content-led and static, but it still benefits from components, typed content collections, reusable layouts, and small interactive touches. Astro gives the site enough structure to grow without making the simple pages feel like an application pretending to be a document.

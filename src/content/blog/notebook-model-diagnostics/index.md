@@ -7,8 +7,6 @@ categories: "notebooks"
 draft: true
 ---
 
-# Notebook Example: Model Diagnostics
-
 This draft represents the shape of a notebook converted into a publishable post.
 
 When converting a real notebook, keep the narrative useful outside the notebook environment: introduce the question, explain the data, show the most important code and outputs, and finish with the decision or takeaway.
