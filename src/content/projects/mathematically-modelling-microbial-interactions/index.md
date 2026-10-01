@@ -49,10 +49,10 @@ Grown alone, _S. aureus_ had the higher estimated growth rate, 1.01 (95 % credib
 
 A transcritical bifurcation in MATCONT marks where _P. aeruginosa_ has an equal effect on itself and on _S. aureus_. Past it, the species stop co-existing and _P. aeruginosa_ out-competes _S. aureus_. In all four fitted cases the model ended with _S. aureus_ dying out.
 
-## Technical Notes
-
-The repository documents the modelling workflow and points to the full project PDF for detailed derivations and discussion. Supporting work included implementations of higher-dimensional generalized Lotka-Volterra models, pairwise models, and metabolite-mediated interaction cases.
-
 ## Next Steps
 
 Future work could compare alternative model structures, test sensitivity to prior choices, and validate fitted dynamics against additional experimental conditions.
+
+## Technical Notes
+
+The repository documents the modelling workflow and points to the full project PDF for detailed derivations and discussion. Supporting work included implementations of higher-dimensional generalized Lotka-Volterra models, pairwise models, and metabolite-mediated interaction cases.

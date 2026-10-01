@@ -52,10 +52,10 @@ Only 13.4 % of messages are spam, so a model that labelled everything as not spa
 
 The final SGD model was trained on 80 % of the data and scored once on 1,115 held-out messages. It reached 97.9 % accuracy and an F1 of 0.919. The untuned SGD baseline scored 97.8 % and 0.912, so tuning only provided a marginal gain. A test invocation of the deployed Lambda function took about 109 ms after an 8.5 s cold start.
 
-## Technical Notes
-
-The repository documents the Poetry environment, NLTK dependency handling, Docker build commands, ECR push workflow, Lambda setup, and API Gateway integration. A Kaggle notebook version is also referenced from the original resume entry for the exploratory and modelling work.
-
 ## Next Steps
 
 The most useful next iteration would be to add a lightweight monitoring loop for prediction distributions, false-positive review, and retraining triggers so the model could be maintained after deployment.
+
+## Technical Notes
+
+The repository documents the Poetry environment, NLTK dependency handling, Docker build commands, ECR push workflow, Lambda setup, and API Gateway integration. A Kaggle notebook version is also referenced from the original resume entry for the exploratory and modelling work.

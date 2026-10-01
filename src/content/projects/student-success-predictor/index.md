@@ -50,10 +50,10 @@ The dataset covers 4,424 students with 34 features and three outcomes (graduate 
 
 Ten classifiers were compared on the validation set. Random Forest scored best overall, with 76 % accuracy and macro-averaged precision 0.72, recall 0.67 and F1 0.68. Logistic regression matched its accuracy, SVC and linear SVC came within one point, and the decision tree, nearest-neighbour and Naive Bayes models scored 66–71 %. A baseline that always predicted "graduate" would score 49.9 %, so the result is well above chance. Dropping the 20 weakest features changed scores very little, so all 34 were kept.
 
-## Technical Notes
-
-The repository includes the original notebook, train and validation splits, model export workflow, Flask prediction service, Dockerfile, and Elastic Beanstalk deployment notes. The cloud service referenced in the README was later terminated to avoid ongoing cost.
-
 ## Next Steps
 
 A stronger production version would add calibration analysis, fairness review across student groups, and clearer intervention thresholds so the model output could be tied to support decisions rather than used as a standalone score.
+
+## Technical Notes
+
+The repository includes the original notebook, train and validation splits, model export workflow, Flask prediction service, Dockerfile, and Elastic Beanstalk deployment notes. The cloud service referenced in the README was later terminated to avoid ongoing cost.

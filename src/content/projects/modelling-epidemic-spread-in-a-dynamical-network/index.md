@@ -41,10 +41,10 @@ On a 100-person network, connectivity mattered most. Averaged over partnership d
 
 The SIRS extension added waning immunity (1/90 per day), two groups of 500 people with different connectivity, and scheduled changes for lockdowns, vaccination and variants. Infection was still present on day 1,000 in 28 of the 30 runs, with 8 % to 12 % of the population infected on average.
 
-## Technical Notes
-
-The repository contains the README and supporting project material, with the full detail kept in the linked PDF noted by the project. The core technical stack centred on R and EpiModel for stochastic network-based epidemic simulation.
-
 ## Next Steps
 
 A natural next step would be to formalise the sensitivity analysis outputs into a reproducible report and compare dynamic-network results against simpler homogeneous-mixing simulations.
+
+## Technical Notes
+
+The repository contains the README and supporting project material, with the full detail kept in the linked PDF noted by the project. The core technical stack centred on R and EpiModel for stochastic network-based epidemic simulation.
