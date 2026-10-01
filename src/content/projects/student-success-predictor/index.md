@@ -6,10 +6,19 @@ endDate: "2023-11-30"
 domain: "Education analytics and multiclass classification"
 summary: "A student outcome prediction project using higher-education enrolment, demographic, socioeconomic, and academic performance data."
 outcome: "Random Forest scored best of ten classifiers on the validation set, with 76 % accuracy and a macro-averaged F1 of 0.68 across three student outcomes."
-figure:
-  src: "./figure.png"
-  alt: "Bar chart of student outcome counts: graduate 2,209, dropout 1,421, enrolled 794"
-  caption: "Outcome classes across the 4,424 students. Graduate is the most common outcome and enrolled the least."
+highlights:
+  - src: "./highlights/outcome-classes.png"
+    alt: "Bar chart of student outcome counts: graduate 2,209, dropout 1,421, enrolled 794"
+    title: "Outcome classes"
+    caption: "Graduate 2,209, dropout 1,421 and enrolled 794."
+  - src: "./highlights/application-mode.png"
+    alt: "Stacked bars showing outcome percentages for each application mode"
+    title: "Application mode"
+    caption: "Graduation rate runs from about 29 % to 62 % across application modes."
+  - src: "./highlights/model-comparison.svg"
+    alt: "Bar chart of macro F1 for ten classifiers, led by Random Forest at 0.68"
+    title: "Model comparison"
+    caption: "Random Forest led ten classifiers on macro F1 at 0.68."
 technologies:
   [
     "Python",

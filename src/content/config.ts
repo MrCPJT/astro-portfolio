@@ -25,12 +25,16 @@ const projects = defineCollection({
       summary: z.string().optional(),
       outcome: z.string().optional(),
       image: z.string().optional(),
-      figure: z
-        .object({
-          src: image(),
-          alt: z.string(),
-          caption: z.string(),
-        })
+      highlights: z
+        .array(
+          z.object({
+            src: image(),
+            alt: z.string(),
+            title: z.string(),
+            caption: z.string(),
+          }),
+        )
+        .max(4)
         .optional(),
       technologies: z.array(z.string()),
       link: z.string().optional(),

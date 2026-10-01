@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@/app/layouts/Layout.astro";
 import Animation from "@/app/components/Animation.astro";
 import Footer from "@/app/components/Footer.astro";
-import ProjectFigure from "@/components/project/ProjectFigure.astro";
+import ProjectHighlights from "@/components/project/ProjectHighlights.astro";
 import ProjectSidebar from "@/components/project/ProjectSidebar.astro";
 
 export async function getStaticPaths() {
@@ -82,15 +82,11 @@ const contents = headings.filter((heading) => heading.depth === 2);
           headings={contents}
         />
         {
-          project.data.figure && (
-            <ProjectFigure
-              src={project.data.figure.src}
-              alt={project.data.figure.alt}
-              caption={project.data.figure.caption}
-            />
+          project.data.highlights && (
+            <ProjectHighlights highlights={project.data.highlights} />
           )
         }
-        <article class="[&_h2]:scroll-mt-24">
+        <article class="project-body [&_h2]:scroll-mt-24">
           <Content />
         </article>
       </div>
