@@ -5,6 +5,11 @@ startDate: "2023-11-01"
 endDate: "2023-12-31"
 domain: "Natural language processing and cloud deployment"
 summary: "A machine learning project that classifies SMS messages as spam or legitimate text, then packages the trained model for serverless inference on AWS."
+outcome: "An SGD classifier reached 97.9 % accuracy and a spam F1 of 0.919 on 1,115 held-out messages, then shipped as a Docker image behind AWS Lambda and API Gateway."
+figure:
+  src: "./figure.png"
+  alt: "Density plot of message length for spam and not-spam messages"
+  caption: "Message length by class (0 is not spam, 1 is spam). Spam messages are longer and more tightly clustered than legitimate ones, averaging 139 characters against 71."
 technologies:
   [
     "Python",
