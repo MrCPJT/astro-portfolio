@@ -6,13 +6,12 @@ interface Props {
   startDate: Date;
   endDate?: Date;
   domain?: string;
-  context: string;
   technologies: string[];
   link?: string;
   headings: { slug: string; text: string }[];
 }
 
-const { startDate, endDate, domain, context, technologies, link, headings } =
+const { startDate, endDate, domain, technologies, link, headings } =
   Astro.props;
 
 const linkLabel = link?.includes("github.com")
@@ -33,14 +32,6 @@ const linkLabel = link?.includes("github.com")
             Period
           </dt>
           <dd>{formatPeriod(startDate, endDate)}</dd>
-        </div>
-        <div>
-          <dt
-            class="text-xs uppercase tracking-wide text-[var(--color-text-muted)]"
-          >
-            Context
-          </dt>
-          <dd>{context}</dd>
         </div>
         {
           domain && (
