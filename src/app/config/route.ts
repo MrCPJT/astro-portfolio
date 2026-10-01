@@ -1,5 +1,5 @@
 type Link = {
-  title: "Home" | "About" | "Blog" | "Projects" | "Resume";
+  title: "Home" | "Blog" | "Projects" | "Resume";
   href: string;
 };
 
@@ -19,9 +19,5 @@ export const LINKS: Link[] = [
   {
     title: "Resume",
     href: "/resume",
-  },
-  {
-    title: "About",
-    href: "/about",
   },
 ];
