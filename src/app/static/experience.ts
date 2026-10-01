@@ -16,7 +16,7 @@ export const EXPERIENCE: TimelineEntry[] = [
     location: "London",
     start: new Date("2025-06-01"),
     description:
-      "Led customer-facing data science work on statistical testing of quantum RNG pipelines with uncertainty-aware analysis. Ensembled GBDTs for long-term photovoltaic degradation forecasting. Generated synthetic measurement-data in ultra-low-data settings",
+      "Led customer-facing data science work on statistical testing of quantum RNG pipelines with uncertainty-aware analysis. Ensembled GBDTs for long-term photovoltaic degradation forecasting. Generated synthetic measurement-data in ultra-low-data settings.",
   },
   {
     title: "Scientist (Data Science)",
