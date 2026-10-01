@@ -1,10 +1,11 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
+import { getAllBlogPosts } from "../app/api/blog";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../app/static/consts";
 
 export async function GET(context) {
   const [posts, logs] = await Promise.all([
-    getCollection("blog"),
+    getAllBlogPosts(),
     getCollection("log"),
   ]);
 
