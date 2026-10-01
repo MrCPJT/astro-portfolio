@@ -30,7 +30,11 @@ Network assumptions can strongly influence epidemic simulations. The project inv
 
 ## Results
 
-The project demonstrated how network structure and parameter choices can materially change epidemic trajectories. The extension from SIR to SIRS also highlighted how additional biological assumptions can improve model realism, while increasing simulation complexity.
+Each simulation ran for 1,000 daily steps from one infected person, with a transmission probability of 0.05, an act rate of 9.6 and a recovery rate of 0.05. Each network setting was run 10 times, giving 5,450 simulations across the saved sweeps. An outbreak was short-term if infections peaked above 20 % of the population, and long-term if more people had been infected or recovered than remained susceptible on day 1,000.
+
+On a 100-person network, connectivity mattered most. Averaged over partnership durations, the share of runs ending in a long-term epidemic rose from 1 % at a mean of 0.5 partners to 61 % at 1.5. Longer partnerships lowered it, from 54 % at a mean duration of 10 days to about 10 % at 100 days. Population size from 100 to 1,000 had a minimal effect.
+
+The SIRS extension added waning immunity (1/90 per day), two groups of 500 people with different connectivity, and scheduled changes for lockdowns, vaccination and variants. Infection was still present on day 1,000 in 28 of the 30 runs, with 8 % to 12 % of the population infected on average.
 
 ## Technical Notes
 
