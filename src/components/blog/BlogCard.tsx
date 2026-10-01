@@ -24,7 +24,11 @@ export function BlogCard(props: BlogCardProps) {
 
         <div class="flex flex-col gap-4 text-sm text-[var(--color-text-muted)]">
           <time datetime={post.data.date.toISOString()}>
-            {new Date(post.data.date).toLocaleDateString()}
+            {new Date(post.data.date).toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            })}
           </time>
 
           <div class="flex gap-2 flex-wrap">

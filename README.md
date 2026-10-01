@@ -36,7 +36,6 @@ corepack pnpm run notebook:convert -- notebooks/source/sample-model-diagnostics.
 ```text
 src/content/blog/        Blog posts, writing, and notebook-derived articles
 src/content/projects/    Data science case studies
-src/content/log/         Optional short notes or learning logs from Astro Fox
 src/pages/resume.astro   Resume landing page
 public/resume/           Downloadable resume PDF assets
 notebooks/source/        Original Jupyter notebooks
