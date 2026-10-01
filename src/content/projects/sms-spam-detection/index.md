@@ -41,7 +41,11 @@ The goal was to classify incoming SMS messages as either spam or ham. The projec
 
 ## Results
 
-The project produced a complete prototype path from notebook analysis to API-backed model inference. The final implementation demonstrated that the model could be invoked through a REST endpoint after being built, containerised, pushed to ECR, and connected to AWS Lambda.
+The data featured 5,572 messages, of which 747 (13.4 %) were spam. Six models were compared with default settings on a validation set of 1,115 messages. All scored 97–98 % accuracy, so they were ranked on spam-class F1, where a stochastic gradient descent (SGD) classifier came first at 0.89.
+
+Only 13.4 % of messages are spam, so a model that labelled everything as not spam would already score 86.6 % accuracy.
+
+The final SGD model was trained on 80 % of the data and scored once on 1,115 held-out messages. It reached 97.9 % accuracy and an F1 of 0.919. The untuned SGD baseline scored 97.8 % and 0.912, so tuning only provided a marginal gain. A test invocation of the deployed Lambda function took about 109 ms after an 8.5 s cold start.
 
 ## Technical Notes
 
