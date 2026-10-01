@@ -6,13 +6,7 @@ endDate: "2022-04-30"
 domain: "Epidemic simulation and dynamic network modelling"
 summary: "A third-year project studying how changing network structure affects SIR and SIRS epidemic simulations."
 technologies:
-  [
-    "R",
-    "EpiModel",
-    "SIR/SIRS",
-    "dynamic networks",
-    "sensitivity analysis",
-  ]
+  ["R", "EpiModel", "SIR/SIRS", "dynamic networks", "sensitivity analysis"]
 link: "https://github.com/MrCPJT/Modelling-Epidemic-Spread-in-a-Dynamical-Network"
 ---
 
