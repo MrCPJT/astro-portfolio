@@ -81,7 +81,7 @@ export default function LogList(props: Props) {
                   class="text-sm text-[var(--color-text-muted)]"
                   datetime={log.data.date.toISOString()}
                 >
-                  {new Date(log.data.date).toLocaleDateString("en-US", {
+                  {new Date(log.data.date).toLocaleDateString("en-GB", {
                     year: "numeric",
                     month: "short",
                     day: "numeric",
