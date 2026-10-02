@@ -2,7 +2,7 @@
 import Layout from "@/app/layouts/Layout.astro";
 import Animation from "@/app/components/Animation.astro";
 import CareerTimeline from "@/components/home/CareerTimeline.astro";
-import FeaturedProjectCard from "@/components/home/FeaturedProjectCard.astro";
+import ProjectCard from "@/components/project/ProjectCard.astro";
 import { getAllBlogPosts } from "@/app/api/blog";
 import { getAllProjects } from "@/app/api/projects";
 import { EDUCATION, EXPERIENCE } from "@/app/static/experience";
@@ -100,11 +100,7 @@ const formatDate = (date: Date) =>
           </a>
         </div>
         <div class="grid grid-cols-1 gap-4 tablet:grid-cols-2">
-          {
-            featuredProjects.map((project) => (
-              <FeaturedProjectCard project={project} />
-            ))
-          }
+          {featuredProjects.map((project) => <ProjectCard project={project} />)}
         </div>
       </Animation>
     </section>

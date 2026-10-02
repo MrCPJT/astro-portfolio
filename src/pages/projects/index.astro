@@ -1,7 +1,7 @@
 ---
 import Layout from "@/app/layouts/Layout.astro";
 import Animation from "@/app/components/Animation.astro";
-import ProjectList from "@/components/project/ProjectList.astro";
+import ProjectCard from "@/components/project/ProjectCard.astro";
 import { getAllProjects } from "@/app/api/projects";
 
 const projects = await getAllProjects();
@@ -21,7 +21,15 @@ const projects = await getAllProjects();
         </p>
       </div>
 
-      <ProjectList projects={projects} />
+      <ul class="list-none space-y-5 p-0">
+        {
+          projects.map((project) => (
+            <li>
+              <ProjectCard project={project} variant="full" level={2} />
+            </li>
+          ))
+        }
+      </ul>
     </section>
   </Animation>
 </Layout>
