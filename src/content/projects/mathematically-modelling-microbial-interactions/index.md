@@ -5,6 +5,24 @@ startDate: "2022-09-01"
 endDate: "2023-05-31"
 domain: "Mathematical biology, Bayesian inference, and dynamical systems"
 summary: "A final-year project modelling interactions between Staphylococcus aureus and Pseudomonas aeruginosa in co-culture."
+outcome: "Bayesian fits of a two-species Lotka-Volterra model, plus a bifurcation analysis, showed the switch from co-existence to P. aeruginosa out-competing S. aureus."
+highlights:
+  - src: "./highlights/co-culture-data.png"
+    alt: "Four bar charts of mean bacterial counts over time for each species grown alone and together"
+    title: "Growth data"
+    caption: "In co-culture, S. aureus collapses while P. aeruginosa surges."
+  - src: "./highlights/model-fits.png"
+    alt: "Time series of four model fits against co-culture data for each species"
+    title: "Model fits"
+    caption: "Only the fully refitted case follows the late P. aeruginosa surge."
+  - src: "./highlights/phase-planes.png"
+    alt: "Phase planes for the four co-culture cases, each ending at a stable node"
+    title: "Phase planes"
+    caption: "All four cases settle where S. aureus dies out."
+  - src: "./highlights/workflow.png"
+    alt: "Flowchart of the four parameter estimation cases"
+    title: "Estimation workflow"
+    caption: "Four cases differ in which parameters are refitted."
 technologies:
   [
     "R",
@@ -38,12 +56,16 @@ Microbial communities are complex systems where species can compete, cooperate, 
 
 ## Results
 
-The project connected experimental growth data with a fitted mathematical model and used dynamical systems analysis to interpret possible interaction changes. The final analysis showed how parameter estimates, steady-state behaviour, and bifurcation theory could be used together to reason about microbial co-culture dynamics.
+The data held four sets of bacterial counts (each species grown alone and together), with six replicates and 14 hourly measurements per set. A two-species generalised Lotka-Volterra model was fitted in Stan with weakly informative Cauchy priors, using 15 to 20 chains of 25,000 to 30,000 iterations with half discarded as warmup. Rhat was 1.00 or 1.01 for every parameter.
 
-## Technical Notes
+Grown alone, _S. aureus_ had the higher estimated growth rate, 1.01 (95 % credible interval 0.91 to 1.14) against 0.88 (0.77 to 1.01) for _P. aeruginosa_. Four co-culture set-ups were compared, differing in which parameters were refitted. Only the set-up that refitted everything captured the late surge in _P. aeruginosa_, and it moved the growth rates to 0.97 and 1.12. The report reads this as the interaction directly affecting growth.
 
-The repository documents the modelling workflow and points to the full project PDF for detailed derivations and discussion. Supporting work included implementations of higher-dimensional generalized Lotka-Volterra models, pairwise models, and metabolite-mediated interaction cases.
+A transcritical bifurcation in MATCONT marks where _P. aeruginosa_ has an equal effect on itself and on _S. aureus_. Past it, the species stop co-existing and _P. aeruginosa_ out-competes _S. aureus_. In all four fitted cases the model ended with _S. aureus_ dying out.
 
 ## Next Steps
 
 Future work could compare alternative model structures, test sensitivity to prior choices, and validate fitted dynamics against additional experimental conditions.
+
+## Technical Notes
+
+The repository documents the modelling workflow and points to the full project PDF for detailed derivations and discussion. Supporting work included implementations of higher-dimensional generalized Lotka-Volterra models, pairwise models, and metabolite-mediated interaction cases.

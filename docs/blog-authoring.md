@@ -27,11 +27,9 @@ Use `draft: true` while writing. Change it to `draft: false` when the post is re
 
 ## Suggested structure for the introductory post
 
-A good first post should quickly tell visitors what this site is for and what they can expect from future writing:
+A good first post should quickly tell visitors what this site is for and what they can expect from future writing. The title comes from the frontmatter, so start the body at `##` rather than `#`:
 
 ```md
-# Introducing My Data Science Portfolio
-
 ## Why I built this site
 
 Explain the purpose of the portfolio and what kind of roles or work you are interested in.
@@ -68,7 +66,7 @@ corepack pnpm run dev
 Then open the post at:
 
 ```text
-http://localhost:4324/blog/my-first-post
+http://localhost:4321/blog/my-first-post
 ```
 
 Before publishing, run:

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 328" width="560" height="328" role="img" aria-label="Spam-class F1 by model">
+<rect width="560" height="328" fill="#ffffff"/>
+<text x="20" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="600" fill="#1f1d1a">Spam-class F1 by model</text>
+<text x="20" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#5c5852">Validation set, 1,115 messages</text>
+<line x1="140" y1="70" x2="140" y2="300" stroke="#d6d1c7" stroke-width="1"/>
+<text x="140" y="320" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">0.00</text>
+<line x1="231.0" y1="70" x2="231.0" y2="300" stroke="#d6d1c7" stroke-width="1"/>
+<text x="231.0" y="320" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">0.25</text>
+<line x1="322.0" y1="70" x2="322.0" y2="300" stroke="#d6d1c7" stroke-width="1"/>
+<text x="322.0" y="320" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">0.50</text>
+<line x1="413.0" y1="70" x2="413.0" y2="300" stroke="#d6d1c7" stroke-width="1"/>
+<text x="413.0" y="320" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">0.75</text>
+<line x1="504.0" y1="70" x2="504.0" y2="300" stroke="#d6d1c7" stroke-width="1"/>
+<text x="504.0" y="320" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">1.00</text>
+<text x="130" y="99" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">SGD</text>
+<rect x="140" y="84" width="324.0" height="24" rx="3" fill="#bc3f0b"/>
+<text x="472.0" y="101" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">0.89</text>
+<text x="130" y="135" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">SVM</text>
+<rect x="140" y="120" width="320.3" height="24" rx="3" fill="#c9c3b6"/>
+<text x="468.3" y="137" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">0.88</text>
+<text x="130" y="171" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Random forest</text>
+<rect x="140" y="156" width="316.7" height="24" rx="3" fill="#c9c3b6"/>
+<text x="464.7" y="173" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">0.87</text>
+<text x="130" y="207" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">KNN</text>
+<rect x="140" y="192" width="309.4" height="24" rx="3" fill="#c9c3b6"/>
+<text x="457.4" y="209" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">0.85</text>
+<text x="130" y="243" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Naive Bayes</text>
+<rect x="140" y="228" width="298.5" height="24" rx="3" fill="#c9c3b6"/>
+<text x="446.5" y="245" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">0.82</text>
+<text x="130" y="279" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Logistic reg.</text>
+<rect x="140" y="264" width="294.8" height="24" rx="3" fill="#c9c3b6"/>
+<text x="442.8" y="281" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">0.81</text>
+</svg>
