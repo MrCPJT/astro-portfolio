@@ -5,7 +5,8 @@ import CareerTimeline from "@/components/home/CareerTimeline.astro";
 import FeaturedProjectCard from "@/components/home/FeaturedProjectCard.astro";
 import { getAllBlogPosts } from "@/app/api/blog";
 import { getAllProjects } from "@/app/api/projects";
-import { EDUCATION, EXPERIENCE } from "@/app/static/experience";
+import { Tag } from "@/components/common/Tag";
+import { EDUCATION, EXPERIENCE, SKILLS } from "@/app/static/experience";
 import { FEATURED_PROJECTS } from "@/app/static/consts";
 
 const timeline = [...EXPERIENCE, ...EDUCATION].sort(
@@ -86,6 +87,15 @@ const formatDate = (date: Date) =>
       <Animation delay={0.2}>
         <h2 class="mb-4 text-2xl text-[var(--color-text-muted)]">Experience</h2>
         <CareerTimeline entries={timeline} />
+      </Animation>
+    </section>
+
+    <section class="mt-12">
+      <Animation delay={0.25}>
+        <h2 class="mb-4 text-2xl text-[var(--color-text-muted)]">Skills</h2>
+        <div class="surface-card flex flex-wrap gap-2 rounded-lg border p-5">
+          {SKILLS.map((skill) => <Tag>{skill}</Tag>)}
+        </div>
       </Animation>
     </section>
 
