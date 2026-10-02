@@ -5,6 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import solidJs from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
 import pagefind from "astro-pagefind";
+import { rehypeProjectSections } from "./src/app/utils/rehypeProjectSections.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,6 +23,7 @@ export default defineConfig({
     pagefind(),
   ],
   markdown: {
+    rehypePlugins: [rehypeProjectSections],
     shikiConfig: {
       theme: "github-dark",
       wrap: true,

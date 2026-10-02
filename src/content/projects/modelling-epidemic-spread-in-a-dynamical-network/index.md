@@ -5,6 +5,24 @@ startDate: "2022-01-01"
 endDate: "2022-04-30"
 domain: "Epidemic simulation and dynamic network modelling"
 summary: "A third-year project studying how changing network structure affects SIR and SIRS epidemic simulations."
+outcome: "Across 5,450 simulated outbreaks, epidemic risk rose with the number of partners per person and fell with longer partnerships."
+highlights:
+  - src: "./highlights/risk-long-term.png"
+    alt: "Heatmap of the proportion of long-term epidemics by mean degree and mean partnership duration"
+    title: "Long-term risk"
+    caption: "Share of runs ending in a long-term epidemic, by degree and duration."
+  - src: "./highlights/risk-short-term.png"
+    alt: "Heatmap of the proportion of short-term epidemics by mean degree and mean partnership duration"
+    title: "Short-term risk"
+    caption: "Share of runs where infections peak above 20 % of the population."
+  - src: "./highlights/population-size.png"
+    alt: "Heatmap of the proportion of long-term epidemics by mean degree and number of nodes"
+    title: "Population size"
+    caption: "Mean degree matters far more than the number of nodes."
+  - src: "./highlights/sirs-waves.png"
+    alt: "Time series of susceptible, infected and recovered counts in the SIRS model, showing repeated waves"
+    title: "SIRS waves"
+    caption: "With waning immunity, infection returns in repeated waves."
 technologies:
   ["R", "EpiModel", "SIR/SIRS", "dynamic networks", "sensitivity analysis"]
 link: "https://github.com/MrCPJT/Modelling-Epidemic-Spread-in-a-Dynamical-Network"
@@ -36,10 +54,10 @@ On a 100-person network, connectivity mattered most. Averaged over partnership d
 
 The SIRS extension added waning immunity (1/90 per day), two groups of 500 people with different connectivity, and scheduled changes for lockdowns, vaccination and variants. Infection was still present on day 1,000 in 28 of the 30 runs, with 8 % to 12 % of the population infected on average.
 
-## Technical Notes
-
-The repository contains the README and supporting project material, with the full detail kept in the linked PDF noted by the project. The core technical stack centred on R and EpiModel for stochastic network-based epidemic simulation.
-
 ## Next Steps
 
 A natural next step would be to formalise the sensitivity analysis outputs into a reproducible report and compare dynamic-network results against simpler homogeneous-mixing simulations.
+
+## Technical Notes
+
+The repository contains the README and supporting project material, with the full detail kept in the linked PDF noted by the project. The core technical stack centred on R and EpiModel for stochastic network-based epidemic simulation.

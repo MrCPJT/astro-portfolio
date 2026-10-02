@@ -5,6 +5,24 @@ startDate: "2022-09-01"
 endDate: "2023-05-31"
 domain: "Mathematical biology, Bayesian inference, and dynamical systems"
 summary: "A final-year project modelling interactions between Staphylococcus aureus and Pseudomonas aeruginosa in co-culture."
+outcome: "Bayesian fits of a two-species Lotka-Volterra model, plus a bifurcation analysis, showed the switch from co-existence to P. aeruginosa out-competing S. aureus."
+highlights:
+  - src: "./highlights/co-culture-data.png"
+    alt: "Four bar charts of mean bacterial counts over time for each species grown alone and together"
+    title: "Growth data"
+    caption: "In co-culture, S. aureus collapses while P. aeruginosa surges."
+  - src: "./highlights/model-fits.png"
+    alt: "Time series of four model fits against co-culture data for each species"
+    title: "Model fits"
+    caption: "Only the fully refitted case follows the late P. aeruginosa surge."
+  - src: "./highlights/phase-planes.png"
+    alt: "Phase planes for the four co-culture cases, each ending at a stable node"
+    title: "Phase planes"
+    caption: "All four cases settle where S. aureus dies out."
+  - src: "./highlights/workflow.png"
+    alt: "Flowchart of the four parameter estimation cases"
+    title: "Estimation workflow"
+    caption: "Four cases differ in which parameters are refitted."
 technologies:
   [
     "R",
@@ -44,10 +62,10 @@ Grown alone, _S. aureus_ had the higher estimated growth rate, 1.01 (95 % credib
 
 A transcritical bifurcation in MATCONT marks where _P. aeruginosa_ has an equal effect on itself and on _S. aureus_. Past it, the species stop co-existing and _P. aeruginosa_ out-competes _S. aureus_. In all four fitted cases the model ended with _S. aureus_ dying out.
 
-## Technical Notes
-
-The repository documents the modelling workflow and points to the full project PDF for detailed derivations and discussion. Supporting work included implementations of higher-dimensional generalized Lotka-Volterra models, pairwise models, and metabolite-mediated interaction cases.
-
 ## Next Steps
 
 Future work could compare alternative model structures, test sensitivity to prior choices, and validate fitted dynamics against additional experimental conditions.
+
+## Technical Notes
+
+The repository documents the modelling workflow and points to the full project PDF for detailed derivations and discussion. Supporting work included implementations of higher-dimensional generalized Lotka-Volterra models, pairwise models, and metabolite-mediated interaction cases.
