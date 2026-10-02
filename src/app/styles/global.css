@@ -16,6 +16,9 @@
     --color-accent: #bc3f0b;
     --color-accent-hover: #9a3412;
     --color-focus: #bc3f0b;
+    --color-button: #bc3f0b;
+    --color-button-hover: #9a3412;
+    --color-button-contrast: #ffffff;
     --color-gray-text: var(--color-text-muted);
     --color-gray-text-dark: #3f3b36;
     --color-gray-text-light: var(--color-text-muted);
@@ -34,6 +37,9 @@
     --color-accent: #fb923c;
     --color-accent-hover: #fdba74;
     --color-focus: #fb923c;
+    --color-button: #bc3f0b;
+    --color-button-hover: #9a3412;
+    --color-button-contrast: #ffffff;
     --color-gray-text: var(--color-text-muted);
     --color-gray-text-dark: #e7e2d9;
     --color-gray-text-light: var(--color-text-muted);
@@ -152,12 +158,12 @@ input:focus-visible {
   }
 
   .button-primary {
-    background-color: var(--color-primary);
-    color: var(--color-primary-contrast);
+    background-color: var(--color-button);
+    color: var(--color-button-contrast);
   }
 
   .button-primary:hover {
-    background-color: var(--color-primary-hover);
+    background-color: var(--color-button-hover);
   }
 
   .button-secondary {
@@ -249,4 +255,11 @@ input:focus-visible {
 .project-body :not(pre) > code::before,
 .project-body :not(pre) > code::after {
   content: none;
+}
+
+/* Switching themes should be instant, so nothing lags behind the page. */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
 }

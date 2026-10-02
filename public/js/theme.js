@@ -24,12 +24,18 @@
     const isDark = nextTheme === "dark";
     const { persist = true, notify = true } = options;
 
-    document.documentElement.classList.toggle("dark", isDark);
+    const root = document.documentElement;
+
+    // Suspend transitions for the switch so every element changes together.
+    root.classList.add("theme-switching");
+    root.classList.toggle("dark", isDark);
     document.documentElement.dataset.theme = nextTheme;
 
     if (persist) {
       localStorage.setItem(STORAGE_KEY, nextTheme);
     }
+
+    setTimeout(() => root.classList.remove("theme-switching"), 100);
 
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
       button.setAttribute("aria-pressed", String(isDark));
