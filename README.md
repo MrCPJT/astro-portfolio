@@ -80,6 +80,16 @@ link: "https://github.com/your-username/project"
 ---
 ```
 
+## Social card
+
+Links to the site show `public/og-card.png` (1200 by 630). It is rendered from `scripts/og-card.html`. After changing the tagline, regenerate it with any Chromium browser.
+
+```bash
+chromium --headless --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --allow-file-access-from-files --screenshot=public/og-card.png scripts/og-card.html
+```
+
+Platforms cache cards by image URL. If a card does not refresh after a change, rename the file and update `BaseHead.astro`, or re-scrape the page with the platform's debugger.
+
 ## Notebook Publishing Workflow
 
 Keep original notebooks in `notebooks/source/`. Convert a notebook into a publishable Astro content entry with:
