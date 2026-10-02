@@ -35,3 +35,6 @@ Thumbs.db
 notebooks/source/.ipynb_checkpoints/
 
 .vercel
+
+# Claude Code local config
+.claude/

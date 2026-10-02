@@ -191,3 +191,62 @@ input:focus-visible {
     @apply scale-x-100;
   }
 }
+
+/* Project pages */
+.project-body .project-section {
+  margin-top: 2.5rem;
+}
+
+.project-body .project-section:first-child {
+  margin-top: 0;
+}
+
+.project-body h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.project-body h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.project-body .project-section[data-section="results"],
+.project-body .project-section[data-section="technical-notes"] {
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.project-body .project-section[data-section="results"] {
+  background-color: var(--color-surface);
+}
+
+.project-body .project-section[data-section="technical-notes"] {
+  background-color: var(--color-surface-muted);
+  font-size: 0.9rem;
+}
+
+.project-body .project-section > :last-child {
+  margin-bottom: 0;
+}
+
+.project-body :not(pre) > code {
+  border: 1px solid var(--color-border);
+  border-radius: 0.3rem;
+  padding: 0.05rem 0.35rem;
+  font-size: 0.85em;
+  font-weight: 500;
+  background-color: var(--color-surface-muted);
+}
+
+.project-body :not(pre) > code::before,
+.project-body :not(pre) > code::after {
+  content: none;
+}

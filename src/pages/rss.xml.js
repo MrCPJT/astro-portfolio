@@ -5,23 +5,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../app/static/consts";
 export async function GET(context) {
   const posts = await getAllBlogPosts();
 
-  const allItems = posts.map((item) => ({
-    title: item.data.title,
-    pubDate: item.data.pubDate,
-    description: item.data.description,
-    link: `/${item.collection}/${item.slug}/`,
-    content: item.body,
-    categories: item.data.tags || [],
-    author: item.data.author || "jt_fox",
-  }));
-
-  allItems.sort((a, b) => b.pubDate - a.pubDate);
-
   return rss({
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     site: context.site,
-    items: allItems,
-    customData: `<language>en</language>`,
+    items: posts.map((post) => ({
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: post.data.summary,
+      link: `/blog/${post.slug}/`,
+      categories: post.data.tags,
+    })),
+    customData: `<language>en-gb</language>`,
   });
 }

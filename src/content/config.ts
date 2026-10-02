@@ -15,17 +15,30 @@ const blog = defineCollection({
 
 const projects = defineCollection({
   type: "content",
-  schema: z.object({
-    title: z.string(),
-    company: z.string(),
-    startDate: z.coerce.date(),
-    endDate: z.coerce.date().optional(),
-    domain: z.string().optional(),
-    summary: z.string().optional(),
-    image: z.string().optional(),
-    technologies: z.array(z.string()),
-    link: z.string().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      company: z.string(),
+      startDate: z.coerce.date(),
+      endDate: z.coerce.date().optional(),
+      domain: z.string().optional(),
+      summary: z.string().optional(),
+      outcome: z.string().optional(),
+      image: z.string().optional(),
+      highlights: z
+        .array(
+          z.object({
+            src: image(),
+            alt: z.string(),
+            title: z.string(),
+            caption: z.string(),
+          }),
+        )
+        .max(4)
+        .optional(),
+      technologies: z.array(z.string()),
+      link: z.string().optional(),
+    }),
 });
 
 export const collections = {

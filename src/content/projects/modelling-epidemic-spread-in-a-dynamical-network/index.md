@@ -5,14 +5,26 @@ startDate: "2022-01-01"
 endDate: "2022-04-30"
 domain: "Epidemic simulation and dynamic network modelling"
 summary: "A third-year project studying how changing network structure affects SIR and SIRS epidemic simulations."
+outcome: "Across 5,450 simulated outbreaks, epidemic risk rose with the number of partners per person and fell with longer partnerships."
+highlights:
+  - src: "./highlights/risk-long-term.png"
+    alt: "Heatmap of the proportion of long-term epidemics by mean degree and mean partnership duration"
+    title: "Long-term risk"
+    caption: "Share of runs ending in a long-term epidemic, by degree and duration."
+  - src: "./highlights/risk-short-term.png"
+    alt: "Heatmap of the proportion of short-term epidemics by mean degree and mean partnership duration"
+    title: "Short-term risk"
+    caption: "Share of runs where infections peak above 20 % of the population."
+  - src: "./highlights/population-size.png"
+    alt: "Heatmap of the proportion of long-term epidemics by mean degree and number of nodes"
+    title: "Population size"
+    caption: "Mean degree matters far more than the number of nodes."
+  - src: "./highlights/sirs-waves.png"
+    alt: "Time series of susceptible, infected and recovered counts in the SIRS model, showing repeated waves"
+    title: "SIRS waves"
+    caption: "With waning immunity, infection returns in repeated waves."
 technologies:
-  [
-    "R",
-    "EpiModel",
-    "SIR/SIRS",
-    "dynamic networks",
-    "sensitivity analysis",
-  ]
+  ["R", "EpiModel", "SIR/SIRS", "dynamic networks", "sensitivity analysis"]
 link: "https://github.com/MrCPJT/Modelling-Epidemic-Spread-in-a-Dynamical-Network"
 ---
 
@@ -36,12 +48,16 @@ Network assumptions can strongly influence epidemic simulations. The project inv
 
 ## Results
 
-The project demonstrated how network structure and parameter choices can materially change epidemic trajectories. The extension from SIR to SIRS also highlighted how additional biological assumptions can improve model realism, while increasing simulation complexity.
+Each simulation ran for 1,000 daily steps from one infected person, with a transmission probability of 0.05, an act rate of 9.6 and a recovery rate of 0.05. Each network setting was run 10 times, giving 5,450 simulations across the saved sweeps. An outbreak was short-term if infections peaked above 20 % of the population, and long-term if more people had been infected or recovered than remained susceptible on day 1,000.
 
-## Technical Notes
+On a 100-person network, connectivity mattered most. Averaged over partnership durations, the share of runs ending in a long-term epidemic rose from 1 % at a mean of 0.5 partners to 61 % at 1.5. Longer partnerships lowered it, from 54 % at a mean duration of 10 days to about 10 % at 100 days. Population size from 100 to 1,000 had a minimal effect.
 
-The repository contains the README and supporting project material, with the full detail kept in the linked PDF noted by the project. The core technical stack centred on R and EpiModel for stochastic network-based epidemic simulation.
+The SIRS extension added waning immunity (1/90 per day), two groups of 500 people with different connectivity, and scheduled changes for lockdowns, vaccination and variants. Infection was still present on day 1,000 in 28 of the 30 runs, with 8 % to 12 % of the population infected on average.
 
 ## Next Steps
 
 A natural next step would be to formalise the sensitivity analysis outputs into a reproducible report and compare dynamic-network results against simpler homogeneous-mixing simulations.
+
+## Technical Notes
+
+The repository contains the README and supporting project material, with the full detail kept in the linked PDF noted by the project. The core technical stack centred on R and EpiModel for stochastic network-based epidemic simulation.
