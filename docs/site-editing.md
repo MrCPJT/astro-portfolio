@@ -5,7 +5,8 @@ Use this when you want to make small manual updates without hunting through the 
 ## Common Details
 
 - Home page intro: edit `src/pages/index.astro`.
-- Resume page copy, download link, experience, skills, and education: edit `src/pages/resume.astro`.
+- Roles, education, and skills on the home page: edit `src/app/static/experience.ts`.
+- Resume page copy: edit `src/pages/resume.astro`. It links to the PDF below.
 - Uploaded resume PDF: replace `public/resume/connor-tynan-resume.pdf`.
 - Header logo: edit `src/app/layouts/Header.astro` and the logo files in `public/`.
 - Browser tab icons: replace `public/favicon.svg`, `public/favicon-32.png`, `public/favicon-96.png`, and `public/favicon-192.png`.

@@ -38,7 +38,7 @@ src/content/blog/        Blog posts, writing, and notebook-derived articles
 src/content/projects/    Data science case studies
 src/app/static/          Site constants, featured projects, roles and education
 src/pages/index.astro    Home page (hero, timeline, featured projects, latest posts)
-src/pages/resume.astro   Resume page
+src/pages/resume.astro   Resume download page
 public/resume/           Downloadable resume PDF
 notebooks/source/        Original Jupyter notebooks
 notebooks/published/     Optional reviewed conversion outputs
@@ -49,7 +49,7 @@ docs/                    Project and content workflow notes
 
 Where to change common things:
 
-- Roles and education: `src/app/static/experience.ts`. The home timeline and the resume page both read from it.
+- Roles, education and skills on the home page: `src/app/static/experience.ts`.
 - Featured projects on the home page: `FEATURED_PROJECTS` in `src/app/static/consts.ts`.
 - Colours: the `--color-*` variables in `src/app/styles/global.css`, for light and dark mode.
 

@@ -1,94 +1,46 @@
 ---
+import fs from "node:fs";
 import Layout from "@/app/layouts/Layout.astro";
 import Animation from "@/app/components/Animation.astro";
-import Section from "@/components/about/Section.astro";
-import TimelineItem from "@/components/about/TimelineItem.astro";
-import { Tag } from "@/components/common/Tag";
-import { EDUCATION, EXPERIENCE } from "@/app/static/experience";
+
+const PDF_PATH = "/resume/connor-tynan-resume.pdf";
+const sizeKb = Math.round(fs.statSync(`public${PDF_PATH}`).size / 1024);
 ---
 
 <Layout
   title="Resume | Connor Tynan"
-  description="Resume and professional profile for Connor Tynan."
+  description="Download the resume of Connor Tynan as a PDF."
 >
   <Animation>
-    <section class="space-y-8">
+    <section class="space-y-6">
       <div>
         <h1 class="text-3xl font-bold text-[var(--color-text)]">Resume</h1>
         <p class="mt-3 text-[var(--color-text-muted)]">
-          A concise snapshot of my data science experience and technical
-          toolkit.
+          My experience, education and skills in a single document.
         </p>
       </div>
 
-      <div class="surface-card space-y-4 rounded-lg border p-4">
-        <h2 class="text-xl font-semibold">Download</h2>
+      <div
+        class="surface-card flex flex-col gap-4 rounded-lg border p-5 tablet:flex-row tablet:items-center tablet:justify-between"
+      >
+        <div>
+          <p class="font-semibold">Connor Tynan, resume</p>
+          <p class="text-sm text-[var(--color-text-muted)]">PDF, {sizeKb} KB</p>
+        </div>
         <a
-          href="/resume/connor-tynan-resume.pdf"
-          class="link-accent inline-block hover:underline"
+          href={PDF_PATH}
+          download
+          type="application/pdf"
+          class="button-primary inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-medium transition-colors"
         >
-          Download resume PDF
+          Download resume
         </a>
       </div>
 
-      <Section id="education" title="Education">
-        <div class="space-y-4">
-          {
-            EDUCATION.map((entry) => (
-              <TimelineItem
-                title={entry.title}
-                subtitle={`${entry.organisation}, ${entry.location}`}
-                startDate={entry.start}
-                endDate={entry.end ?? new Date()}
-                endLabel={entry.end ? undefined : "Present"}
-                description={entry.description}
-              />
-            ))
-          }
-        </div>
-      </Section>
-
-      <Section id="skills" title="Skills">
-        <div class="surface-card rounded-lg border p-4">
-          <h3 class="mb-3 text-xl font-semibold">Core toolkit</h3>
-          <div class="mt-3 flex flex-wrap gap-2">
-            {
-              [
-                "Python",
-                "MATLAB",
-                "scikit-learn",
-                "PyTorch",
-                "AWS",
-                "HPC (Slurm)",
-                "Docker",
-              ].map((tech) => <Tag>{tech}</Tag>)
-            }
-          </div>
-          <a
-            href="https://github.com/MrCPJT"
-            class="link-accent mt-4 inline-block hover:underline"
-            target="_blank"
-            rel="noopener noreferrer">View GitHub profile</a
-          >
-        </div>
-      </Section>
-
-      <Section id="experience" title="Work Experience">
-        <div class="space-y-4">
-          {
-            EXPERIENCE.map((entry) => (
-              <TimelineItem
-                title={entry.title}
-                subtitle={`${entry.organisation}, ${entry.location}`}
-                startDate={entry.start}
-                endDate={entry.end ?? new Date()}
-                endLabel={entry.end ? undefined : "Present"}
-                description={entry.description}
-              />
-            ))
-          }
-        </div>
-      </Section>
+      <p class="text-sm text-[var(--color-text-muted)]">
+        Looking for the short version? My experience and skills are on the
+        <a href="/" class="link-accent hover:underline">home page</a>.
+      </p>
     </section>
   </Animation>
 </Layout>

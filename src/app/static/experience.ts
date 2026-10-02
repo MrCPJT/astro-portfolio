@@ -41,3 +41,13 @@ export const EDUCATION: TimelineEntry[] = [
       "Completed an integrated master's degree in mathematics, graduating with First Class Honours.",
   },
 ];
+
+export const SKILLS = [
+  "Python",
+  "MATLAB",
+  "scikit-learn",
+  "PyTorch",
+  "AWS",
+  "HPC (Slurm)",
+  "Docker",
+];
