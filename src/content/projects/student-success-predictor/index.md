@@ -5,6 +5,20 @@ startDate: "2023-10-01"
 endDate: "2023-11-30"
 domain: "Education analytics and multiclass classification"
 summary: "A student outcome prediction project using higher-education enrolment, demographic, socioeconomic, and academic performance data."
+outcome: "Random Forest scored best of ten classifiers on the validation set, with 76 % accuracy and a macro-averaged F1 of 0.68 across three student outcomes."
+highlights:
+  - src: "./highlights/outcome-classes.png"
+    alt: "Bar chart of student outcome counts: graduate 2,209, dropout 1,421, enrolled 794"
+    title: "Outcome classes"
+    caption: "Graduate 2,209, dropout 1,421 and enrolled 794."
+  - src: "./highlights/application-mode.png"
+    alt: "Stacked bars showing outcome percentages for each application mode"
+    title: "Application mode"
+    caption: "Graduation rate runs from about 29 % to 62 % across application modes."
+  - src: "./highlights/model-comparison.svg"
+    alt: "Bar chart of macro F1 for ten classifiers, led by Random Forest at 0.68"
+    title: "Model comparison"
+    caption: "Random Forest led ten classifiers on macro F1 at 0.68."
 technologies:
   [
     "Python",
@@ -41,12 +55,14 @@ The dataset includes academic path, demographic, socioeconomic, and first-year p
 
 ## Results
 
-The final Random Forest model remained consistent when trained on the extended training split and evaluated on held-out test data. The project also produced a working deployment path from trained model artifact to local service, Docker image, and cloud-hosted endpoint.
+The dataset covers 4,424 students with 34 features and three outcomes (graduate 2,209, dropout 1,421, enrolled 794). It was split 60/20/20 into 2,654 training, 885 validation and 885 test students.
 
-## Technical Notes
-
-The repository includes the original notebook, train and validation splits, model export workflow, Flask prediction service, Dockerfile, and Elastic Beanstalk deployment notes. The cloud service referenced in the README was later terminated to avoid ongoing cost.
+Ten classifiers were compared on the validation set. Random Forest scored best overall, with 76 % accuracy and macro-averaged precision 0.72, recall 0.67 and F1 0.68. Logistic regression matched its accuracy, SVC and linear SVC came within one point, and the decision tree, nearest-neighbour and Naive Bayes models scored 66–71 %. A baseline that always predicted "graduate" would score 49.9 %, so the result is well above chance. Dropping the 20 weakest features changed scores very little, so all 34 were kept.
 
 ## Next Steps
 
 A stronger production version would add calibration analysis, fairness review across student groups, and clearer intervention thresholds so the model output could be tied to support decisions rather than used as a standalone score.
+
+## Technical Notes
+
+The repository includes the original notebook, train and validation splits, model export workflow, Flask prediction service, Dockerfile, and Elastic Beanstalk deployment notes. The cloud service referenced in the README was later terminated to avoid ongoing cost.

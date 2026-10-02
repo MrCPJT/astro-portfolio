@@ -5,6 +5,20 @@ startDate: "2023-11-01"
 endDate: "2023-12-31"
 domain: "Natural language processing and cloud deployment"
 summary: "A machine learning project that classifies SMS messages as spam or legitimate text, then packages the trained model for serverless inference on AWS."
+outcome: "An SGD classifier reached 97.9 % accuracy and a spam F1 of 0.919 on 1,115 held-out messages, then shipped as a Docker image behind AWS Lambda and API Gateway."
+highlights:
+  - src: "./highlights/message-length.png"
+    alt: "Density plot of message length for spam and not-spam messages"
+    title: "Message length"
+    caption: "Spam is longer and more tightly clustered, at 139 characters on average against 71."
+  - src: "./highlights/model-comparison.svg"
+    alt: "Bar chart of spam-class F1 for six models, led by SGD at 0.89"
+    title: "Model comparison"
+    caption: "SGD led six models on spam F1 at 0.89."
+  - src: "./highlights/deployment-pipeline.svg"
+    alt: "Diagram of the deployment pipeline from notebook to Docker image, ECR, Lambda and API Gateway"
+    title: "Deployment"
+    caption: "A Docker image on ECR, run by Lambda behind API Gateway."
 technologies:
   [
     "Python",
@@ -41,12 +55,16 @@ The goal was to classify incoming SMS messages as either spam or ham. The projec
 
 ## Results
 
-The project produced a complete prototype path from notebook analysis to API-backed model inference. The final implementation demonstrated that the model could be invoked through a REST endpoint after being built, containerised, pushed to ECR, and connected to AWS Lambda.
+The data featured 5,572 messages, of which 747 (13.4 %) were spam. Six models were compared with default settings on a validation set of 1,115 messages. All scored 97–98 % accuracy, so they were ranked on spam-class F1, where a stochastic gradient descent (SGD) classifier came first at 0.89.
 
-## Technical Notes
+Only 13.4 % of messages are spam, so a model that labelled everything as not spam would already score 86.6 % accuracy.
 
-The repository documents the Poetry environment, NLTK dependency handling, Docker build commands, ECR push workflow, Lambda setup, and API Gateway integration. A Kaggle notebook version is also referenced from the original resume entry for the exploratory and modelling work.
+The final SGD model was trained on 80 % of the data and scored once on 1,115 held-out messages. It reached 97.9 % accuracy and an F1 of 0.919. The untuned SGD baseline scored 97.8 % and 0.912, so tuning only provided a marginal gain. A test invocation of the deployed Lambda function took about 109 ms after an 8.5 s cold start.
 
 ## Next Steps
 
 The most useful next iteration would be to add a lightweight monitoring loop for prediction distributions, false-positive review, and retraining triggers so the model could be maintained after deployment.
+
+## Technical Notes
+
+The repository documents the Poetry environment, NLTK dependency handling, Docker build commands, ECR push workflow, Lambda setup, and API Gateway integration. A Kaggle notebook version is also referenced from the original resume entry for the exploratory and modelling work.
