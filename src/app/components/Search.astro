@@ -1,5 +1,4 @@
 ---
-import SearchPageFind from "astro-pagefind/components/Search";
 import { FaSolidMagnifyingGlass } from "solid-icons/fa";
 ---
 
@@ -15,65 +14,155 @@ import { FaSolidMagnifyingGlass } from "solid-icons/fa";
     <span class="hidden md:block text-sm">Search</span>
   </button>
 
-  <dialog
-    class="fixed inset-0 rounded-xl bg-[var(--color-surface)] text-[var(--color-text)] backdrop-blur-sm"
-    style="padding:0"
-    aria-label="search"
-  >
-    <div class="border border-[var(--color-border)]">
-      <div
-        class="flex items-center gap-3 border-b border-[var(--color-border)] p-4"
-      >
-        <SearchPageFind
-          id="search"
-          className="pagefind-ui w-full"
-          uiOptions={{
-            showImages: true,
-            autofocus: true,
-            pageSize: 10,
-            translations: {
-              placeholder: "Search blog content...",
-              clear_search: "Clear search",
-              load_more: "Show more search results",
-              search_label: "Search blog content",
-              filters_label: "Search filters",
-              zero_results: "No results found for [SEARCH_TERM]",
-              many_results: "[COUNT] results found for [SEARCH_TERM]",
-              one_result: "[COUNT] result found for [SEARCH_TERM]",
-              alt_search:
-                "No results for [SEARCH_TERM]. Showing results for [DIFFERENT_TERM] instead",
-              search_suggestion:
-                "No results for [SEARCH_TERM]. Try these search terms:",
-              searching: "Searching for [SEARCH_TERM]...",
-            },
-          }}
-        />
-      </div>
+  <dialog class="site-search-dialog" aria-label="Search">
+    <div class="site-search-box" role="search">
+      <input
+        type="search"
+        class="site-search-input"
+        placeholder="Search the site"
+        aria-label="Search the site"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <p class="site-search-status" role="status" aria-live="polite"></p>
+      <ul class="site-search-results"></ul>
+      <button type="button" class="site-search-more" hidden>
+        Show more results
+      </button>
     </div>
   </dialog>
 </site-search>
 
 <script is:inline src="/js/search.js"></script>
 
-<style>
-  dialog::backdrop {
+<style is:global>
+  .site-search-dialog {
+    position: fixed;
+    inset: 8vh 0 auto 0;
+    margin: 0 auto;
+    padding: 0;
+    width: min(40rem, calc(100% - 2rem));
+    max-height: 80vh;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  .site-search-dialog[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .site-search-dialog::backdrop {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
   }
 
-  .dialog-frame {
-    width: 100%;
-    max-width: 640px;
-    margin: 2rem auto;
-    transform: translateY(-8px);
-    opacity: 0;
-    animation: slideIn 0.2s ease-out forwards;
+  .site-search-box {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 1rem;
   }
 
-  @keyframes slideIn {
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  .site-search-input {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    font: inherit;
+    color: inherit;
+    background: var(--color-background);
+  }
+
+  .site-search-input:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  .site-search-status {
+    margin: 0.75rem 0 0;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .site-search-status:empty {
+    display: none;
+  }
+
+  .site-search-results {
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transition: opacity 0.15s;
+  }
+
+  .site-search-results:empty {
+    display: none;
+  }
+
+  .site-search-results[aria-busy="true"] {
+    opacity: 0.55;
+  }
+
+  .site-search-results li + li {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .site-search-result {
+    display: block;
+    padding: 0.75rem 0.5rem;
+    border-radius: 0.375rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .site-search-result:hover,
+  .site-search-result:focus-visible {
+    background: var(--color-surface-muted);
+  }
+
+  .site-search-result-title {
+    display: block;
+    font-weight: 600;
+  }
+
+  .site-search-result:hover .site-search-result-title,
+  .site-search-result:focus-visible .site-search-result-title {
+    color: var(--color-primary);
+  }
+
+  .site-search-result-excerpt {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .site-search-result-excerpt mark {
+    border-radius: 0.2rem;
+    padding: 0 0.1rem;
+    color: inherit;
+    background: color-mix(in srgb, var(--color-primary) 22%, transparent);
+  }
+
+  .site-search-more {
+    margin-top: 0.5rem;
+    align-self: flex-start;
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+  }
+
+  .site-search-more:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 </style>
