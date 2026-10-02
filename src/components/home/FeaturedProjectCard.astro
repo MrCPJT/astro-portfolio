@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Tag } from "@/components/common/Tag";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+---
+
+<a
+  href={`/projects/${project.slug}`}
+  class="surface-card group block h-full rounded-lg border p-5 shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:border-[var(--color-primary)] dark:shadow-none"
+>
+  <h3 class="text-lg font-semibold">{project.data.title}</h3>
+  <p class="mt-2 text-sm text-[var(--color-text-muted)]">
+    {project.data.summary}
+  </p>
+  <div class="mt-4 flex flex-wrap gap-2">
+    {project.data.technologies.slice(0, 4).map((tech) => <Tag>{tech}</Tag>)}
+  </div>
+</a>

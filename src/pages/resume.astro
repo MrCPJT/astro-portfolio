@@ -4,6 +4,7 @@ import Animation from "@/app/components/Animation.astro";
 import Section from "@/components/about/Section.astro";
 import TimelineItem from "@/components/about/TimelineItem.astro";
 import { Tag } from "@/components/common/Tag";
+import { EDUCATION, EXPERIENCE } from "@/app/static/experience";
 ---
 
 <Layout
@@ -15,7 +16,8 @@ import { Tag } from "@/components/common/Tag";
       <div>
         <h1 class="text-3xl font-bold text-[var(--color-text)]">Resume</h1>
         <p class="mt-3 text-[var(--color-text-muted)]">
-          A concise snapshot of my data science experience and technical toolkit.
+          A concise snapshot of my data science experience and technical
+          toolkit.
         </p>
       </div>
 
@@ -31,13 +33,18 @@ import { Tag } from "@/components/common/Tag";
 
       <Section id="education" title="Education">
         <div class="space-y-4">
-          <TimelineItem
-            title="Master of Mathematics (MMath), First Class Honours"
-            subtitle="University of Exeter, Exeter"
-            startDate={new Date("2019-09-01")}
-            endDate={new Date("2023-06-30")}
-            description="Completed an integrated master's degree in mathematics, graduating with First Class Honours."
-          />
+          {
+            EDUCATION.map((entry) => (
+              <TimelineItem
+                title={entry.title}
+                subtitle={`${entry.organisation}, ${entry.location}`}
+                startDate={entry.start}
+                endDate={entry.end ?? new Date()}
+                endLabel={entry.end ? undefined : "Present"}
+                description={entry.description}
+              />
+            ))
+          }
         </div>
       </Section>
 
@@ -68,21 +75,18 @@ import { Tag } from "@/components/common/Tag";
 
       <Section id="experience" title="Work Experience">
         <div class="space-y-4">
-          <TimelineItem
-            title="Higher Scientist (Data Science)"
-            subtitle="National Physical Laboratory (NPL), London"
-            startDate={new Date("2025-06-01")}
-            endDate={new Date()}
-            endLabel="Present"
-            description="Led customer-facing data science work on statistical testing of quantum RNG pipelines with uncertainty-aware analysis. Ensembled GBDTs for long-term photovoltaic degradation forecasting. Generated synthetic measurement-data in ultra-low-data settings"
-          />
-          <TimelineItem
-            title="Scientist (Data Science)"
-            subtitle="National Physical Laboratory (NPL), London"
-            startDate={new Date("2024-03-01")}
-            endDate={new Date("2025-06-30")}
-            description="Developed software for statistical modelling, numerical analysis, and uncertainty quantification; contributed to technical reports on inverse problems, hypothesis testing, and trustworthy AI; recipient of NPL's 2024 Early Career Scientist Award for Best Presentation."
-          />
+          {
+            EXPERIENCE.map((entry) => (
+              <TimelineItem
+                title={entry.title}
+                subtitle={`${entry.organisation}, ${entry.location}`}
+                startDate={entry.start}
+                endDate={entry.end ?? new Date()}
+                endLabel={entry.end ? undefined : "Present"}
+                description={entry.description}
+              />
+            ))
+          }
         </div>
       </Section>
     </section>
