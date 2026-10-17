@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" width="560" height="340" role="img" aria-label="Sonnet accuracy when told to answer wrongly, by prompt wording">
+<rect width="560" height="340" fill="#ffffff"/>
+<text x="20" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="600" fill="#1f1d1a">Positive control by wording</text>
+<text x="20" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#5c5852">Sonnet 5.5 accuracy when told to answer wrongly</text>
+<line x1="54" y1="290.0" x2="540" y2="290.0" stroke="#5c5852" stroke-width="1"/>
+<text x="48.0" y="294.0" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">0.00</text>
+<line x1="54" y1="237.5" x2="540" y2="237.5" stroke="#d6d1c7" stroke-width="1"/>
+<text x="48.0" y="241.5" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">0.25</text>
+<line x1="54" y1="185.0" x2="540" y2="185.0" stroke="#d6d1c7" stroke-width="1"/>
+<text x="48.0" y="189.0" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">0.50</text>
+<line x1="54" y1="132.5" x2="540" y2="132.5" stroke="#d6d1c7" stroke-width="1"/>
+<text x="48.0" y="136.5" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">0.75</text>
+<line x1="54" y1="80.0" x2="540" y2="80.0" stroke="#d6d1c7" stroke-width="1"/>
+<text x="48.0" y="84.0" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">1.00</text>
+<rect x="70" y="288.6" width="34" height="1.5" rx="2" fill="#c9c3b6"/>
+<text x="87.0" y="308.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#1f1d1a">0</text>
+<rect x="118" y="110.8" width="34" height="179.2" rx="2" fill="#bc3f0b"/>
+<text x="135.0" y="308.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#1f1d1a">1</text>
+<rect x="166" y="290.0" width="34" height="1.5" rx="2" fill="#c9c3b6"/>
+<text x="183.0" y="308.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#1f1d1a">2</text>
+<rect x="214" y="288.6" width="34" height="1.5" rx="2" fill="#c9c3b6"/>
+<text x="231.0" y="308.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#1f1d1a">3</text>
+<rect x="262" y="290.0" width="34" height="1.5" rx="2" fill="#c9c3b6"/>
+<text x="279.0" y="308.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#1f1d1a">4</text>
+<rect x="310" y="197.6" width="34" height="92.4" rx="2" fill="#bc3f0b"/>
+<text x="327.0" y="308.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#1f1d1a">5</text>
+<rect x="358" y="288.6" width="34" height="1.5" rx="2" fill="#c9c3b6"/>
+<text x="375.0" y="308.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#1f1d1a">6</text>
+<rect x="406" y="101.0" width="34" height="189.0" rx="2" fill="#bc3f0b"/>
+<text x="423.0" y="308.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#1f1d1a">7</text>
+<rect x="454" y="141.6" width="34" height="148.4" rx="2" fill="#bc3f0b"/>
+<text x="471.0" y="308.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#1f1d1a">8</text>
+<rect x="502" y="284.4" width="34" height="5.6" rx="2" fill="#c9c3b6"/>
+<text x="519.0" y="308.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#1f1d1a">9</text>
+<text x="300.0" y="328.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">Prompt wording</text>
+</svg>

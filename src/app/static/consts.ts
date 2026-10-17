@@ -4,6 +4,7 @@ export const SITE_DESCRIPTION =
 
 /** Project slugs shown on the home page, in display order. */
 export const FEATURED_PROJECTS = [
+  "sandbagging-eval",
   "sms-spam-detection",
   "student-success-predictor",
 ];

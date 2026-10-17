@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 310" width="560" height="310" role="img" aria-label="Wording 8 incentive effect on main and fresh items">
+<rect width="560" height="310" fill="#ffffff"/>
+<text x="20" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="600" fill="#1f1d1a">Wording 8, replicated</text>
+<text x="20" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#5c5852">Neutral minus incentive accuracy, bootstrap 95% interval</text>
+<line x1="170.0" y1="70" x2="170.0" y2="270" stroke="#d6d1c7" stroke-width="1"/>
+<text x="170.0" y="288.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">-0.05</text>
+<line x1="240.0" y1="70" x2="240.0" y2="270" stroke="#5c5852" stroke-width="1"/>
+<text x="240.0" y="288.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">0</text>
+<line x1="310.0" y1="70" x2="310.0" y2="270" stroke="#d6d1c7" stroke-width="1"/>
+<text x="310.0" y="288.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">+0.05</text>
+<line x1="380.0" y1="70" x2="380.0" y2="270" stroke="#d6d1c7" stroke-width="1"/>
+<text x="380.0" y="288.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">+0.10</text>
+<line x1="450.0" y1="70" x2="450.0" y2="270" stroke="#d6d1c7" stroke-width="1"/>
+<text x="450.0" y="288.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">+0.15</text>
+<line x1="520.0" y1="70" x2="520.0" y2="270" stroke="#d6d1c7" stroke-width="1"/>
+<text x="520.0" y="288.0" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">+0.20</text>
+<text x="158.0" y="97.0" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Haiku, main items</text>
+<line x1="357.6" y1="92" x2="501.8" y2="92" stroke="#bc3f0b" stroke-width="3" stroke-linecap="round"/>
+<circle cx="430.4" cy="92" r="6" fill="#bc3f0b"/>
+<text x="158.0" y="147.0" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Haiku, fresh items</text>
+<line x1="280.6" y1="142" x2="395.4" y2="142" stroke="#bc3f0b" stroke-width="3" stroke-linecap="round"/>
+<circle cx="336.6" cy="142" r="6" fill="#bc3f0b"/>
+<text x="158.0" y="197.0" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Sonnet, main items</text>
+<line x1="193.8" y1="192" x2="277.8" y2="192" stroke="#5c5852" stroke-width="3" stroke-linecap="round"/>
+<circle cx="230.2" cy="192" r="6" fill="#5c5852"/>
+<text x="158.0" y="247.0" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Sonnet, fresh items</text>
+<line x1="224.6" y1="242" x2="252.6" y2="242" stroke="#5c5852" stroke-width="3" stroke-linecap="round"/>
+<circle cx="237.2" cy="242" r="6" fill="#5c5852"/>
+</svg>
