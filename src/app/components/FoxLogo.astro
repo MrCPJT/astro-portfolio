@@ -1,0 +1,72 @@
+---
+// Header logo. Shows the sitting fox and swishes its tail once per hover or
+// keyboard focus. Sprite: public/sprites/fox-logo.png, 11 frames of 28×26,
+// drawn at 2x. Frame timings come from the sprite kit's logo/timeline.json.
+---
+
+<span class="fox-logo" data-fox-logo aria-hidden="true"></span>
+
+<style>
+  .fox-logo {
+    display: block;
+    width: 56px;
+    height: 52px;
+    background: url("/sprites/fox-logo.png") 0 0 / 616px 52px no-repeat;
+    image-rendering: pixelated;
+  }
+
+  .fox-logo.is-swishing {
+    animation: fox-swish 1880ms step-end;
+  }
+
+  /* Frames 2–11 twice, then back to the resting frame. */
+
+  @keyframes fox-swish {
+    0% { background-position: -56px 0; }
+    4.79% { background-position: -112px 0; }
+    9.57% { background-position: -168px 0; }
+    15.43% { background-position: -224px 0; }
+    20.21% { background-position: -280px 0; }
+    25% { background-position: -336px 0; }
+    29.79% { background-position: -392px 0; }
+    34.57% { background-position: -448px 0; }
+    40.43% { background-position: -504px 0; }
+    45.21% { background-position: -560px 0; }
+    50% { background-position: -56px 0; }
+    54.79% { background-position: -112px 0; }
+    59.57% { background-position: -168px 0; }
+    65.43% { background-position: -224px 0; }
+    70.21% { background-position: -280px 0; }
+    75% { background-position: -336px 0; }
+    79.79% { background-position: -392px 0; }
+    84.57% { background-position: -448px 0; }
+    90.43% { background-position: -504px 0; }
+    95.21% { background-position: -560px 0; }
+    100% { background-position: 0 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fox-logo.is-swishing {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  // Delegated on document so it survives client-side page swaps.
+  // A swish always plays to the end, and the next hover starts a new one.
+
+  const start = (event: Event) => {
+    const link = (event.target as Element | null)?.closest?.("a");
+    const fox = link?.querySelector<HTMLElement>("[data-fox-logo]");
+    if (!fox || fox.classList.contains("is-swishing")) return;
+    fox.classList.add("is-swishing");
+  };
+
+  document.addEventListener("pointerover", start);
+  document.addEventListener("focusin", start);
+  document.addEventListener("animationend", (event) => {
+    const el = event.target as HTMLElement;
+    if (el.matches?.("[data-fox-logo]")) el.classList.remove("is-swishing");
+  });
+</script>

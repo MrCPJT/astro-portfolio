@@ -1,0 +1,100 @@
+---
+// Pixel pets walking right to left along the top edge of the footer.
+// Each sprite is a 4-frame walk strip in public/sprites/pets/, drawn at 2x.
+//
+// Every pet covers the same TRAVEL distance at the same SPEED, starting
+// SPACING px behind the one before. TRAVEL is longer than the widest track
+// (max-w-6xl), so the parade loops without bunching on any screen width.
+
+const SCALE = 2;
+const SPEED = 30; // px per second
+const SPACING = 140; // px between pets
+
+const PETS = [
+  { name: "elephant", width: 21, height: 17 },
+  { name: "duck", width: 17, height: 18 },
+  { name: "crane", width: 21, height: 24 },
+  { name: "frog", width: 20, height: 15 },
+  { name: "fox", width: 23, height: 17 },
+  { name: "penguin", width: 17, height: 17 },
+  { name: "flamingo", width: 20, height: 23 },
+  { name: "bunny", width: 21, height: 18 },
+  { name: "toucan", width: 21, height: 17 },
+  { name: "turtle", width: 22, height: 14 },
+];
+
+const TRAVEL = PETS.length * SPACING;
+const duration = TRAVEL / SPEED;
+---
+
+<div class="pets" style={`--travel: ${TRAVEL}px; --duration: ${duration}s`}>
+  {
+    PETS.map((pet, i) => (
+      <span
+        class="pet"
+        aria-hidden="true"
+        style={[
+          `width: ${pet.width * SCALE}px`,
+          `height: ${pet.height * SCALE}px`,
+          `--sheet: ${pet.width * SCALE * 4}px`,
+          `background-image: url(/sprites/pets/${pet.name}.png)`,
+          `background-size: ${pet.width * SCALE * 4}px ${pet.height * SCALE}px`,
+          `animation-delay: ${-((i * 0.17) % 0.56).toFixed(2)}s, ${(-i * duration) / PETS.length}s`,
+        ].join("; ")}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .pets {
+    position: relative;
+    height: 48px;
+    overflow: hidden;
+    container-type: inline-size;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 48px,
+      black calc(100% - 48px),
+      transparent
+    );
+  }
+
+  .pet {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    animation:
+      pet-walk 560ms steps(4) infinite,
+      pet-travel var(--duration) linear infinite;
+  }
+
+  @keyframes pet-walk {
+    from { background-position: 0 0; }
+    to { background-position: calc(var(--sheet) * -1) 0; }
+  }
+
+  @keyframes pet-travel {
+    from { transform: translateX(100cqw); }
+    to { transform: translateX(calc(100cqw - var(--travel))); }
+  }
+
+  /* Without motion, the pets stand in a row. */
+
+  @media (prefers-reduced-motion: reduce) {
+    .pets {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .pet {
+      position: static;
+      animation: none;
+    }
+  }
+</style>

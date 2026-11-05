@@ -1,5 +1,6 @@
 ---
 import Search from "../components/Search.astro";
+import FoxLogo from "../components/FoxLogo.astro";
 import { FaSolidBars, FaSolidMoon, FaSolidSun } from "solid-icons/fa";
 import { LINKS } from "@/app/config/route";
 
@@ -18,20 +19,7 @@ const pathname = Astro.url.pathname;
             class="mr-8 flex items-center"
             aria-label="Go to homepage"
           >
-            <img
-              src="/origami-crane-logo-light.png"
-              alt="Connor Tynan logo"
-              class="block h-12 w-16 object-contain dark:hidden"
-              width="64"
-              height="48"
-            />
-            <img
-              src="/origami-crane-logo-dark.png"
-              alt="Connor Tynan logo"
-              class="hidden h-12 w-16 object-contain dark:block"
-              width="64"
-              height="48"
-            />
+            <FoxLogo />
           </a>
 
           <div class="hidden md:flex space-x-6">
