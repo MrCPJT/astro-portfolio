@@ -1,0 +1,18 @@
+---
+interface Props {
+  hasLogo: boolean;
+}
+
+const { hasLogo } = Astro.props;
+
+// Sits inside the entry's bold heading and reaches back to the timeline rule.
+// Offsets: 31px to the rule, plus the 72px logo and 16px gap when present.
+
+const left = hasLogo ? "-119px" : "-31px";
+---
+
+<span
+  class="absolute top-1/2 h-3 w-3 -translate-y-1/2 rounded-full border-2 border-[var(--color-background)] bg-[var(--color-primary)]"
+  style={{ left }}
+  aria-hidden="true"
+/>

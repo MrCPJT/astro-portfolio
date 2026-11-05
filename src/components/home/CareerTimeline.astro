@@ -1,5 +1,6 @@
 ---
 import type { TimelineEntry } from "@/app/static/experience";
+import TimelineDot from "./TimelineDot.astro";
 
 interface Props {
   entries: TimelineEntry[];
@@ -11,28 +12,102 @@ const formatDate = (date: Date) =>
   new Intl.DateTimeFormat("en-GB", { month: "short", year: "numeric" }).format(
     date,
   );
+
+const formatSpan = (start: Date, end?: Date) =>
+  `${formatDate(start)} – ${end ? formatDate(end) : "Present"}`;
+
+// Consecutive entries at the same organisation share one timeline item.
+
+const groups = entries.reduce<TimelineEntry[][]>((acc, entry) => {
+  const last = acc.at(-1);
+  if (last && last[0].organisation === entry.organisation) last.push(entry);
+  else acc.push([entry]);
+  return acc;
+}, []);
+
+const groupSpan = (roles: TimelineEntry[]) => {
+  const start = new Date(Math.min(...roles.map((r) => r.start.getTime())));
+  const end = roles.some((r) => !r.end)
+    ? undefined
+    : new Date(Math.max(...roles.map((r) => r.end!.getTime())));
+  return formatSpan(start, end);
+};
 ---
 
 <ol class="ml-1.5 border-l-2 border-[var(--color-border)] pl-6">
   {
-    entries.map((entry) => (
-      <li class="relative pb-6 last:pb-0">
-        <span
-          class="absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 border-[var(--color-background)] bg-[var(--color-primary)]"
-          aria-hidden="true"
-        />
-        <p class="text-sm text-[var(--color-text-muted)]">
-          {formatDate(entry.start)} –{" "}
-          {entry.end ? formatDate(entry.end) : "Present"}
-        </p>
-        <h3 class="text-lg font-semibold">{entry.title}</h3>
-        <p class="text-[var(--color-text-muted)]">{entry.organisation}</p>
-        {entry.award && (
-          <p class="mt-2 inline-block rounded bg-[var(--color-surface-muted)] px-2 py-0.5 text-sm text-[var(--color-primary)]">
-            {entry.award}
-          </p>
-        )}
-      </li>
-    ))
+    groups.map((roles) => {
+      const [first] = roles;
+      return (
+        <li class="relative pb-6 last:pb-0">
+          <div class="flex items-start gap-4">
+            {first.logo && (
+              <img
+                src={first.logo}
+                alt={`${first.organisation} logo`}
+                width="72"
+                height="72"
+                loading="lazy"
+                class="mt-1 h-[72px] w-[72px] shrink-0 rounded-md object-cover"
+              />
+            )}
+            {roles.length === 1 ? (
+              <div class="min-w-0">
+                <p class="text-sm text-[var(--color-text-muted)]">
+                  {formatSpan(first.start, first.end)}
+                </p>
+                <h3 class="relative text-lg font-semibold">
+                  <TimelineDot hasLogo={!!first.logo} />
+                  {first.title}
+                </h3>
+                <p class="text-[var(--color-text-muted)]">
+                  {first.organisation}
+                </p>
+                {first.award && (
+                  <p class="mt-2 inline-block rounded bg-[var(--color-surface-muted)] px-2 py-0.5 text-sm text-[var(--color-primary)]">
+                    {first.award}
+                  </p>
+                )}
+              </div>
+            ) : (
+              <div class="min-w-0">
+                <p class="text-sm text-[var(--color-text-muted)]">
+                  {groupSpan(roles)}
+                </p>
+                <h3 class="relative text-lg font-semibold">
+                  <TimelineDot hasLogo={!!first.logo} />
+                  {first.organisation}
+                </h3>
+                <ol class="mt-3">
+                  {roles.map((role, i) => (
+                    <li class="relative pb-4 pl-5 last:pb-0">
+                      <span
+                        class="absolute left-0 top-2 h-2 w-2 rounded-full bg-[var(--color-text-muted)]"
+                        aria-hidden="true"
+                      />
+                      {i < roles.length - 1 && (
+                        <span
+                          class="absolute bottom-0 left-[3px] top-5 w-0.5 bg-[var(--color-border)]"
+                          aria-hidden="true"
+                        />
+                      )}
+                      <h4 class="font-semibold">{role.title}</h4>
+                      <p class="text-sm text-[var(--color-text-muted)]">
+                        {formatSpan(role.start, role.end)}
+                      </p>
+                      {role.award && (
+                        <p class="mt-2 inline-block rounded bg-[var(--color-surface-muted)] px-2 py-0.5 text-sm text-[var(--color-primary)]">
+                          {role.award}
+                        </p>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+          </div>
+        </li>
+      );
+    })
   }
 </ol>

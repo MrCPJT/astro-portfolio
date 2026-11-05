@@ -5,10 +5,13 @@ Use this when you want to make small manual updates without hunting through the 
 ## Common Details
 
 - Home page intro: edit `src/pages/index.astro`.
-- Roles, education, and skills on the home page: edit `src/app/static/experience.ts`.
+- Roles and education on the home page: edit `src/app/static/experience.ts`.
+- Home page bio ("About me"): edit `src/pages/index.astro`.
+- Organisation logos on the timeline: add a square PNG to `public/logos/` and set `logo` on the entry in `experience.ts`.
 - Resume page copy: edit `src/pages/resume.astro`. It links to the PDF below.
 - Uploaded resume PDF: replace `public/resume/connor-tynan-resume.pdf`.
-- Header logo: edit `src/app/layouts/Header.astro` and the logo files in `public/`.
+- Header logo: edit `src/app/components/FoxLogo.astro` and its sprite strip `public/sprites/fox-logo.png`.
+- Footer pets: edit `src/app/components/FooterPets.astro` and the walk strips in `public/sprites/pets/`.
 - Browser tab icons: replace `public/favicon.svg`, `public/favicon-32.png`, `public/favicon-96.png`, and `public/favicon-192.png`.
 - Footer social links: edit `src/app/layouts/Footer.astro`.
 
