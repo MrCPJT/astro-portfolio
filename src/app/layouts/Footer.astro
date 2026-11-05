@@ -1,11 +1,18 @@
 ---
 import { FaSolidRss, FaBrandsLinkedinIn, FaBrandsGithub } from "solid-icons/fa";
 
+import FooterPets from "../components/FooterPets.astro";
+
 const today = new Date();
 ---
 
-<footer class="mt-12 border-t border-[var(--color-border)] py-8">
-  <div class="max-w-3xl mx-auto px-4">
+<footer class="relative mt-12 border-t border-[var(--color-border)] py-8">
+  <div class="pointer-events-none absolute inset-x-0 bottom-[calc(100%+1px)]">
+    <div class="max-w-6xl mx-auto px-4">
+      <FooterPets />
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-4">
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
       <p
         class="text-center text-sm text-[var(--color-text-muted)] sm:text-left"

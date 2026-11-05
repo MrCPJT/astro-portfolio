@@ -1,6 +1,9 @@
 export type TimelineEntry = {
   title: string;
   organisation: string;
+
+  /** Path under public/, e.g. "/logos/npl.png". */
+  logo?: string;
   location: string;
   start: Date;
   /** Omit for a current role. */
@@ -13,6 +16,7 @@ export const EXPERIENCE: TimelineEntry[] = [
   {
     title: "Higher Scientist (Data Science)",
     organisation: "National Physical Laboratory (NPL)",
+    logo: "/logos/npl.png",
     location: "London",
     start: new Date("2025-06-01"),
     description:
@@ -21,6 +25,7 @@ export const EXPERIENCE: TimelineEntry[] = [
   {
     title: "Scientist (Data Science)",
     organisation: "National Physical Laboratory (NPL)",
+    logo: "/logos/npl.png",
     location: "London",
     start: new Date("2024-03-01"),
     end: new Date("2025-06-30"),
@@ -34,20 +39,11 @@ export const EDUCATION: TimelineEntry[] = [
   {
     title: "Master of Mathematics (MMath), First Class Honours",
     organisation: "University of Exeter",
+    logo: "/logos/university-of-exeter.png",
     location: "Exeter",
     start: new Date("2019-09-01"),
     end: new Date("2023-06-30"),
     description:
       "Completed an integrated master's degree in mathematics, graduating with First Class Honours.",
   },
-];
-
-export const SKILLS = [
-  "Python",
-  "MATLAB",
-  "scikit-learn",
-  "PyTorch",
-  "AWS",
-  "HPC (Slurm)",
-  "Docker",
 ];

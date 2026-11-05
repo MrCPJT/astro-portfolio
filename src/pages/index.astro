@@ -5,8 +5,7 @@ import CareerTimeline from "@/components/home/CareerTimeline.astro";
 import ProjectCard from "@/components/project/ProjectCard.astro";
 import { getAllBlogPosts } from "@/app/api/blog";
 import { getAllProjects } from "@/app/api/projects";
-import { Tag } from "@/components/common/Tag";
-import { EDUCATION, EXPERIENCE, SKILLS } from "@/app/static/experience";
+import { EDUCATION, EXPERIENCE } from "@/app/static/experience";
 import { FEATURED_PROJECTS } from "@/app/static/consts";
 
 const timeline = [...EXPERIENCE, ...EDUCATION].sort(
@@ -93,9 +92,25 @@ const formatDate = (date: Date) =>
 
     <section class="mt-12">
       <Animation delay={0.25}>
-        <h2 class="mb-4 text-2xl text-[var(--color-text-muted)]">Skills</h2>
-        <div class="flex flex-wrap gap-2">
-          {SKILLS.map((skill) => <Tag>{skill}</Tag>)}
+        <h2 class="mb-4 text-2xl text-[var(--color-text-muted)]">About me</h2>
+
+        <!-- Placeholder bio: replace before publishing. -->
+
+        <div class="max-w-3xl space-y-4 text-[var(--color-text)]">
+          <p>
+            Placeholder: a sentence or two on what you work on now and the kind
+            of problems you like. For example, building statistical and machine
+            learning methods that say how far their answers can be trusted.
+          </p>
+          <p>
+            Placeholder: how you got here. The maths degree at Exeter, what
+            drew you to uncertainty quantification, and what you've picked up at
+            NPL along the way.
+          </p>
+          <p>
+            Placeholder: something outside work, and what you're open to
+            hearing about, whether that's collaborations, roles or a chat.
+          </p>
         </div>
       </Animation>
     </section>
@@ -110,7 +125,7 @@ const formatDate = (date: Date) =>
             All projects
           </a>
         </div>
-        <div class="grid grid-cols-1 gap-4 tablet:grid-cols-2">
+        <div class="grid grid-cols-1 gap-4 tablet:grid-cols-2 laptop:grid-cols-3">
           {featuredProjects.map((project) => <ProjectCard project={project} />)}
         </div>
       </Animation>

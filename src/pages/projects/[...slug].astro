@@ -46,7 +46,7 @@ const contents = headings.filter((heading) => heading.depth === 2);
   title={`${project.data.title} | Connor Tynan`}
   description={project.data.summary}
 >
-  <div class="max-w-3xl mx-auto">
+  <div>
     <Animation>
       <header class="mb-8">
         <h1 class="text-3xl font-bold text-[var(--color-text)]">
@@ -72,7 +72,7 @@ const contents = headings.filter((heading) => heading.depth === 2);
       </header>
     </Animation>
     <Animation delay={0.2}>
-      <div class="relative">
+      <div class="desktop:flex desktop:gap-8">
         <ProjectSidebar
           startDate={project.data.startDate}
           endDate={project.data.endDate}
@@ -81,14 +81,16 @@ const contents = headings.filter((heading) => heading.depth === 2);
           link={project.data.link}
           headings={contents}
         />
-        {
-          project.data.highlights && (
-            <ProjectHighlights highlights={project.data.highlights} />
-          )
-        }
-        <article class="project-body [&_h2]:scroll-mt-24">
-          <Content />
-        </article>
+        <div class="min-w-0 flex-1">
+          {
+            project.data.highlights && (
+              <ProjectHighlights highlights={project.data.highlights} />
+            )
+          }
+          <article class="project-body [&_h2]:scroll-mt-24">
+            <Content />
+          </article>
+        </div>
       </div>
     </Animation>
   </div>
