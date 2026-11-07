@@ -30,26 +30,35 @@ const today = new Date();
         <a
           href="/rss.xml"
           target="_blank"
-          class="transition-transform hover:rotate-6"
+          class="group"
           aria-label="Subscribe to RSS feed"
         >
-          <FaSolidRss size={32} class="text-[var(--color-text)]" />
+          <FaSolidRss
+            size={32}
+            class="text-[var(--color-text)] transition-colors group-hover:text-[#F26522] group-focus-visible:text-[#F26522]"
+          />
         </a>
         <a
           href="https://www.linkedin.com/in/cpjt"
           target="_blank"
-          class="transition-transform hover:rotate-6"
+          class="group"
           aria-label="Follow on LinkedIn"
         >
-          <FaBrandsLinkedinIn size={32} class="text-[var(--color-text)]" />
+          <FaBrandsLinkedinIn
+            size={32}
+            class="text-[var(--color-text)] transition-colors group-hover:text-[#0A66C2] group-focus-visible:text-[#0A66C2]"
+          />
         </a>
         <a
           href="https://github.com/MrCPJT"
           target="_blank"
-          class="transition-transform hover:rotate-6"
+          class="group"
           aria-label="View GitHub profile"
         >
-          <FaBrandsGithub size={32} class="text-[var(--color-text)]" />
+          <FaBrandsGithub
+            size={32}
+            class="text-[var(--color-text)] transition-colors group-hover:text-[#8250DF] group-focus-visible:text-[#8250DF]"
+          />
         </a>
       </div>
     </div>
