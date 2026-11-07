@@ -6,6 +6,7 @@ endDate: "2023-11-30"
 domain: "Education analytics and multiclass classification"
 summary: "A student outcome prediction project using higher-education enrolment, demographic, socioeconomic, and academic performance data."
 outcome: "Random Forest scored best of ten classifiers on the validation set, with 76 % accuracy and a macro-averaged F1 of 0.68 across three student outcomes."
+thumbnail: "/sprites/projects/student-success-predictor.png"
 highlights:
   - src: "./highlights/outcome-classes.png"
     alt: "Bar chart of student outcome counts: graduate 2,209, dropout 1,421, enrolled 794"

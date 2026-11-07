@@ -6,6 +6,7 @@ endDate: "2023-05-31"
 domain: "Mathematical biology, Bayesian inference, and dynamical systems"
 summary: "A final-year project modelling interactions between Staphylococcus aureus and Pseudomonas aeruginosa in co-culture."
 outcome: "Bayesian fits of a two-species Lotka-Volterra model, plus a bifurcation analysis, showed the switch from co-existence to P. aeruginosa out-competing S. aureus."
+thumbnail: "/sprites/projects/mathematically-modelling-microbial-interactions.png"
 highlights:
   - src: "./highlights/co-culture-data.png"
     alt: "Four bar charts of mean bacterial counts over time for each species grown alone and together"

@@ -6,6 +6,7 @@ endDate: "2022-04-30"
 domain: "Epidemic simulation and dynamic network modelling"
 summary: "A third-year project studying how changing network structure affects SIR and SIRS epidemic simulations."
 outcome: "Across 5,450 simulated outbreaks, epidemic risk rose with the number of partners per person and fell with longer partnerships."
+thumbnail: "/sprites/projects/modelling-epidemic-spread-in-a-dynamical-network.png"
 highlights:
   - src: "./highlights/risk-long-term.png"
     alt: "Heatmap of the proportion of long-term epidemics by mean degree and mean partnership duration"
