@@ -6,19 +6,32 @@ import { formatPeriod } from "@/app/utils/formatPeriod";
 
 interface Props {
   project: CollectionEntry<"projects">;
-  /** "compact" shows text only. "full" adds the cover figure and outcome. */
+  /** "compact" adds a small thumbnail. "full" adds a large one and the outcome. */
   variant?: "compact" | "full";
   /** Heading level, so the card fits the page outline. */
   level?: 2 | 3;
 }
 
 const { project, variant = "compact", level = 3 } = Astro.props;
-const { title, summary, outcome, domain, startDate, endDate, technologies } =
-  project.data;
+const {
+  title,
+  summary,
+  outcome,
+  domain,
+  startDate,
+  endDate,
+  technologies,
+  thumbnail,
+} = project.data;
 
 const Heading = `h${level}` as "h2" | "h3";
 const cover = project.data.highlights?.[0];
 const full = variant === "full";
+
+// Thumbnails are 32×24 pixel art, scaled by whole numbers so pixels stay square.
+
+const THUMB = { width: 32, height: 24 };
+const thumbScale = full ? 6 : 4;
 ---
 
 <a
@@ -29,7 +42,28 @@ const full = variant === "full";
   ]}
 >
   {
-    full && cover && (
+    thumbnail && (
+      <span
+        class:list={[
+          "flex items-center justify-center rounded bg-[var(--color-surface-muted)]",
+          full
+            ? "mb-4 aspect-[4/3] tablet:mb-0 tablet:w-52 tablet:flex-none"
+            : "mb-4 py-4",
+        ]}
+      >
+        <img
+          src={thumbnail}
+          alt=""
+          width={THUMB.width * thumbScale}
+          height={THUMB.height * thumbScale}
+          decoding="async"
+          class="[image-rendering:pixelated]"
+        />
+      </span>
+    )
+  }
+  {
+    full && !thumbnail && cover && (
       <span class="mb-4 flex aspect-[4/3] items-center justify-center overflow-hidden rounded bg-white tablet:mb-0 tablet:w-52 tablet:flex-none">
         <Image
           src={cover.src}

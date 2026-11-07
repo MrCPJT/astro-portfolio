@@ -1,7 +1,7 @@
 ---
 import Search from "../components/Search.astro";
 import FoxLogo from "../components/FoxLogo.astro";
-import { FaSolidBars, FaSolidMoon, FaSolidSun } from "solid-icons/fa";
+import { FaSolidBars } from "solid-icons/fa";
 import { LINKS } from "@/app/config/route";
 
 const pathname = Astro.url.pathname;
@@ -50,21 +50,17 @@ const pathname = Astro.url.pathname;
           <Search />
           <button
             type="button"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-md text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-primary)]"
+            class="theme-toggle inline-flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-[var(--color-surface-muted)]"
             aria-label="Toggle color theme"
             aria-pressed="false"
             data-theme-toggle
           >
-            <FaSolidSun
-              size={18}
-              class="hidden dark:inline-block"
-              data-theme-icon="sun"
-            />
-            <FaSolidMoon
-              size={18}
-              class="inline-block dark:hidden"
-              data-theme-icon="moon"
-            />
+            <span
+              class="theme-icon theme-icon-sun hidden dark:inline-block"
+              data-theme-icon="sun"></span>
+            <span
+              class="theme-icon theme-icon-moon inline-block dark:hidden"
+              data-theme-icon="moon"></span>
           </button>
           <button
             class="ml-2 text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-primary)] md:hidden"
@@ -109,6 +105,48 @@ const pathname = Astro.url.pathname;
     </div>
   </nav>
 </header>
+
+<style>
+  /*
+   * Pixel sun and moon from public/sprites/*-toggle.png: 3 frames of 11×11,
+   * drawn at 2x. The icon shows the mode a click switches to. Hover or focus
+   * plays frames 2, 3, 2, 1 once, timed from art-work/sun-moon/toggle/.
+   */
+
+  .theme-icon {
+    width: 22px;
+    height: 22px;
+    background: 0 0 / 66px 22px no-repeat;
+    image-rendering: pixelated;
+  }
+
+  .theme-icon-sun {
+    background-image: url("/sprites/sun-toggle.png");
+  }
+
+  .theme-icon-moon {
+    background-image: url("/sprites/moon-toggle.png");
+  }
+
+  .theme-toggle:hover .theme-icon,
+  .theme-toggle:focus-visible .theme-icon {
+    animation: theme-icon-play 370ms step-end;
+  }
+
+  @keyframes theme-icon-play {
+    0% { background-position: -22px 0; }
+    18.92% { background-position: -44px 0; }
+    62.16% { background-position: -22px 0; }
+    81.08% { background-position: 0 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .theme-toggle:hover .theme-icon,
+    .theme-toggle:focus-visible .theme-icon {
+      animation: none;
+    }
+  }
+</style>
 
 <script is:inline src="/js/theme.js"></script>
 <script is:inline src="/js/navigation.js"></script>

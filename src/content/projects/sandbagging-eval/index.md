@@ -5,6 +5,7 @@ startDate: "2026-10-17"
 domain: "LLM evaluation and AI safety"
 summary: "An Inspect evaluation of whether telling a model that a high score will trigger unlearning makes it score lower, and whether any drop is larger than the variation caused by harmless rewording of the same prompt."
 outcome: "Neither Haiku 5.5 nor Sonnet 5.5 showed an average incentive effect, but on Haiku rewording moved accuracy more than the incentive did, and one ordinary wording produced a drop that replicated on 150 fresh items."
+thumbnail: "/sprites/projects/sandbagging-eval.png"
 highlights:
   - src: "./highlights/effect-by-wording.svg"
     alt: "Diverging bar chart of Haiku's incentive effect for ten prompt wordings, near zero for nine and +0.136 for wording 8"

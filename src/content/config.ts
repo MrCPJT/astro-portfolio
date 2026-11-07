@@ -25,6 +25,8 @@ const projects = defineCollection({
       summary: z.string().optional(),
       outcome: z.string().optional(),
       image: z.string().optional(),
+      /** Pixel-art thumbnail, 32×24, under public/sprites/projects/. */
+      thumbnail: z.string().optional(),
       highlights: z
         .array(
           z.object({
