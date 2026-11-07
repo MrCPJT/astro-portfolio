@@ -1,33 +1,54 @@
 ---
 // Pixel pets walking right to left along the top edge of the footer.
-// Each sprite is a 4-frame walk strip in public/sprites/pets/, drawn at 2x.
+// Each sprite is a walk strip in public/sprites/pets/ (8 frames, or 16 for
+// the hoppers), drawn at 2x.
 //
-// Every pet covers the same TRAVEL distance at the same SPEED, starting
-// SPACING px behind the one before. TRAVEL is longer than the widest track
-// (max-w-6xl), so the parade loops without bunching on any screen width.
+// The strips are ground-locked: a planted foot moves back 1 native px per
+// frame. So the pets travel in SCALE px steps, one per frame, and their feet
+// stay put. Frames and travel steps share FRAME_MS, and every delay is a
+// whole number of frames, so both animations step at the same instant.
+//
+// Every pet covers the same TRAVEL distance, starting SPACING px behind the
+// one before. TRAVEL is longer than the widest track (max-w-6xl), so the
+// parade loops without bunching on any screen width.
 
 const SCALE = 2;
-const SPEED = 30; // px per second
+const FRAME_MS = 70;
 const SPACING = 140; // px between pets
 
 const PETS = [
-  { name: "elephant", width: 21, height: 17 },
-  { name: "duck", width: 17, height: 18 },
-  { name: "crane", width: 21, height: 24 },
-  { name: "frog", width: 20, height: 15 },
-  { name: "fox", width: 23, height: 17 },
-  { name: "penguin", width: 17, height: 17 },
-  { name: "flamingo", width: 20, height: 23 },
-  { name: "bunny", width: 21, height: 18 },
-  { name: "toucan", width: 21, height: 17 },
-  { name: "turtle", width: 22, height: 14 },
+  { name: "elephant", width: 24, height: 18, frames: 8 },
+  { name: "trex", width: 20, height: 21, frames: 8 },
+  { name: "duck", width: 19, height: 20, frames: 8 },
+  { name: "crane", width: 20, height: 23, frames: 8 },
+  { name: "triceratops", width: 26, height: 17, frames: 8 },
+  { name: "frog", width: 32, height: 16, frames: 16 },
+  { name: "fox", width: 26, height: 18, frames: 8 },
+  { name: "pteranodon", width: 23, height: 23, frames: 8 },
+  { name: "penguin", width: 18, height: 17, frames: 8 },
+  { name: "stegosaurus", width: 24, height: 18, frames: 8 },
+  { name: "flamingo", width: 16, height: 22, frames: 8 },
+  { name: "brachiosaurus", width: 21, height: 21, frames: 8 },
+  { name: "bunny", width: 32, height: 19, frames: 16 },
+  { name: "velociraptor", width: 21, height: 21, frames: 8 },
+  { name: "toucan", width: 22, height: 18, frames: 16 },
+  { name: "ankylosaurus", width: 23, height: 14, frames: 8 },
+  { name: "turtle", width: 21, height: 16, frames: 8 },
 ];
 
 const TRAVEL = PETS.length * SPACING;
-const duration = TRAVEL / SPEED;
+const STEPS = TRAVEL / SCALE;
+const duration = (STEPS * FRAME_MS) / 1000;
 ---
 
-<div class="pets" style={`--travel: ${TRAVEL}px; --duration: ${duration}s`}>
+<div
+  class="pets"
+  style={[
+    `--travel: ${TRAVEL}px`,
+    `--steps: ${STEPS}`,
+    `--duration: ${duration}s`,
+  ].join("; ")}
+>
   {
     PETS.map((pet, i) => (
       <span
@@ -36,10 +57,12 @@ const duration = TRAVEL / SPEED;
         style={[
           `width: ${pet.width * SCALE}px`,
           `height: ${pet.height * SCALE}px`,
-          `--sheet: ${pet.width * SCALE * 4}px`,
+          `--frames: ${pet.frames}`,
+          `--cycle: ${pet.frames * FRAME_MS}ms`,
+          `--sheet: ${pet.width * SCALE * pet.frames}px`,
           `background-image: url(/sprites/pets/${pet.name}.png)`,
-          `background-size: ${pet.width * SCALE * 4}px ${pet.height * SCALE}px`,
-          `animation-delay: ${-((i * 0.17) % 0.56).toFixed(2)}s, ${(-i * duration) / PETS.length}s`,
+          `background-size: ${pet.width * SCALE * pet.frames}px ${pet.height * SCALE}px`,
+          `animation-delay: ${-((i * 3) % pet.frames) * FRAME_MS}ms, ${-(i * STEPS * FRAME_MS) / PETS.length}ms`,
         ].join("; ")}
       />
     ))
@@ -68,8 +91,8 @@ const duration = TRAVEL / SPEED;
     background-repeat: no-repeat;
     image-rendering: pixelated;
     animation:
-      pet-walk 560ms steps(4) infinite,
-      pet-travel var(--duration) linear infinite;
+      pet-walk var(--cycle) steps(var(--frames)) infinite,
+      pet-travel var(--duration) steps(var(--steps)) infinite;
   }
 
   @keyframes pet-walk {
