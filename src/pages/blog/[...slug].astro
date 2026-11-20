@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 import { getAllBlogPosts } from "@/app/api/blog";
 import Layout from "@/app/layouts/Layout.astro";
 import Animation from "@/app/components/Animation.astro";
@@ -17,20 +17,20 @@ export async function getStaticPaths() {
   const sortedPosts = await getAllBlogPosts();
 
   return sortedPosts.map((post, index) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: {
       ...post,
       prev:
         index + 1 < sortedPosts.length
           ? {
-              slug: sortedPosts[index + 1].slug,
+              slug: sortedPosts[index + 1].id,
               title: sortedPosts[index + 1].data.title,
             }
           : null,
       next:
         index > 0
           ? {
-              slug: sortedPosts[index - 1].slug,
+              slug: sortedPosts[index - 1].id,
               title: sortedPosts[index - 1].data.title,
             }
           : null,
@@ -39,9 +39,9 @@ export async function getStaticPaths() {
 }
 
 const post = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
-const estimatedReadTimeText = readingTime(post.body);
+const estimatedReadTimeText = readingTime(post.body ?? "");
 
 const tags = post.data.tags || [];
 ---

@@ -1,9 +1,9 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import solidJs from "@astrojs/solid-js";
-import tailwind from "@astrojs/tailwind";
 import pagefind from "astro-pagefind";
 import { rehypeProjectSections } from "./src/app/utils/rehypeProjectSections.mjs";
 
@@ -15,15 +15,16 @@ export default defineConfig({
     format: "directory",
     inlineStylesheets: "auto",
   },
-  integrations: [
-    mdx(),
-    sitemap(),
-    solidJs(),
-    tailwind({ applyBaseStyles: false }),
-    pagefind(),
-  ],
+
+  // Keeps the space between adjacent inline elements.
+
+  compressHTML: true,
+
+  integrations: [mdx(), sitemap(), solidJs(), pagefind()],
   markdown: {
-    rehypePlugins: [rehypeProjectSections],
+    processor: unified({
+      rehypePlugins: [rehypeProjectSections],
+    }),
     shikiConfig: {
       theme: "github-dark",
       wrap: true,

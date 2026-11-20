@@ -10,7 +10,7 @@ The folder name becomes the URL slug, so `my-first-post` becomes `/blog/my-first
 
 ## Required frontmatter
 
-Every blog post must include the fields defined in `src/content/config.ts`:
+Every blog post must include the fields defined in `src/content.config.ts`:
 
 ```md
 ---
