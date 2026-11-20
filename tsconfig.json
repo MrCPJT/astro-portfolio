@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "strictNullChecks": true, // `base` 템플릿을 사용하는 경우 추가
+    "strictNullChecks": true,
     "allowJs": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
@@ -8,10 +8,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@pages/*": ["src/pages/*"],
-      "@shared/*": ["src/shared/*"],
-      "@types/*": ["src/types/*"]
+      "@pages/*": ["src/pages/*"]
     }
   },
   "extends": "astro/tsconfigs/base",

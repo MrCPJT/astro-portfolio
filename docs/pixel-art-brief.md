@@ -44,6 +44,7 @@ kwwfffffo......
 ...oo.ooo......
 
 DESIGN RULES
+
 - Size: about 11-17 pixels wide and 13-19 tall. Keep compact subjects (frogs, small birds) at the shorter end so they do not look stretched.
 - Pose: upright and slender, standing or sitting tall, with long necks, ears and legs where the animal has them. Keep the head and eye clear.
 - Shape: simple, clean shapes with one or two features that make the subject recognisable.
@@ -56,6 +57,7 @@ DESIGN RULES
 
 OUTPUT
 For each sprite, save:
+
 - The grid as <name>.json
 - A transparent PNG at native size as <name>.png
 - A transparent PNG at 8x as <name>@8x.png, using nearest-neighbour scaling
@@ -63,6 +65,7 @@ For each sprite, save:
 Also make one contact sheet showing every sprite at the same scale, once on cream (#F7F3EA) and once on charcoal (#1F2120).
 
 CHECK BEFORE FINISHING
+
 1. Run code to confirm that rows are equal in length, every character is in the palette, and all pixels are fully opaque or fully transparent.
 2. Run code to confirm that every eye pixel (dark and catchlight) has non-outline, non-transparent pixels on every side that faces away from the eye, and that each sprite is one connected shape.
 3. Open the contact sheet and look at it. If a sprite doesn't read as its subject straight away, redraw it.

@@ -20,15 +20,7 @@ highlights:
     title: "Positive control"
     caption: "Sonnet obeys the instruction to answer wrongly under six wordings and declines under the others."
 technologies:
-  [
-    "Python",
-    "Inspect",
-    "Anthropic API",
-    "pandas",
-    "matplotlib",
-    "pytest",
-    "uv",
-  ]
+  ["Python", "Inspect", "Anthropic API", "pandas", "matplotlib", "pytest", "uv"]
 link: "https://github.com/MrCPJT/sandbagging-eval"
 ---
 
