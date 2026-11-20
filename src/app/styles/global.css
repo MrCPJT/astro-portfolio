@@ -96,7 +96,7 @@
     U+FFFD, U+AC00-D7A3, U+1100-11FF, U+3130-318F;
 }
 
-/* 폰트 대체 설정 */
+/* Fallback font stack */
 :root {
   --font-fallback:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
