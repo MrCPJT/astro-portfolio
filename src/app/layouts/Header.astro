@@ -1,112 +1,233 @@
 ---
 import Search from "../components/Search.astro";
 import FoxLogo from "../components/FoxLogo.astro";
-import { FaSolidBars } from "solid-icons/fa";
+import PixelIcon from "../components/PixelIcon.astro";
 import { LINKS } from "@/app/config/route";
 
 const pathname = Astro.url.pathname;
+
+const isCurrent = (href: string) =>
+  pathname === href || pathname.startsWith(`${href}/`);
 ---
 
-<header>
-  <nav
-    class="fixed top-0 w-full border-b border-[var(--color-border)] bg-[var(--color-background)]/95 backdrop-blur-md z-10"
-  >
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex justify-between h-16 items-center">
-        <div class="flex items-center">
-          <a
-            href="/"
-            class="mr-8 flex items-center"
-            aria-label="Go to homepage"
-          >
-            <FoxLogo />
-          </a>
+<header class="site-header" data-site-header>
+  <div class="site-header-row">
+    <a href="/" class="keycap fox-key" aria-label="Go to homepage">
+      <FoxLogo />
+      <span class="keycap-face keycap-face-icon">
+        <span class="fox-head"></span>
+      </span>
+    </a>
 
-          <div class="hidden md:flex space-x-6">
-            {
-              LINKS.map(({ href, title }) => (
-                <a
-                  href={href}
-                  class:list={[
-                    "group flex items-center text-base transition-colors",
-                    {
-                      "text-[var(--color-text)]":
-                        pathname === href || pathname.startsWith(`${href}/`),
-                    },
-                    {
-                      "text-[var(--color-text-muted)] hover:text-[var(--color-primary)]":
-                        !(pathname === href || pathname.startsWith(`${href}/`)),
-                    },
-                  ]}
-                >
-                  <span class="hover-underline">{title}</span>
-                </a>
-              ))
-            }
-          </div>
-        </div>
+    <div class="header-keys">
+      <nav id="nav-menu" class="key-nav" aria-label="Main">
+        {
+          LINKS.map(({ href, title }) => (
+            <a
+              href={href}
+              class="keycap"
+              aria-current={isCurrent(href) ? "page" : undefined}
+            >
+              <span class="keycap-face">{title}</span>
+            </a>
+          ))
+        }
+      </nav>
 
-        <div class="flex items-center gap-2">
-          <Search />
-          <button
-            type="button"
-            class="theme-toggle inline-flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-[var(--color-surface-muted)]"
-            aria-label="Toggle color theme"
-            aria-pressed="false"
-            data-theme-toggle
-          >
+      <div class="key-tools">
+        <Search />
+        <button
+          type="button"
+          class="keycap theme-toggle"
+          aria-label="Toggle color theme"
+          aria-pressed="false"
+          data-theme-toggle
+        >
+          <span class="keycap-face keycap-face-icon">
             <span
               class="theme-icon theme-icon-sun hidden dark:inline-block"
               data-theme-icon="sun"></span>
             <span
               class="theme-icon theme-icon-moon inline-block dark:hidden"
               data-theme-icon="moon"></span>
-          </button>
-          <button
-            class="ml-2 text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-primary)] md:hidden"
-            aria-label="Menu"
-            aria-expanded="false"
-            aria-controls="nav-menu"
-            data-toggle-nav
-          >
-            <FaSolidBars size={20} />
-          </button>
-        </div>
-      </div>
-
-      <div
-        id="nav-menu"
-        class="md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
-        data-nav-menu
-      >
-        <div class="py-4 space-y-2">
-          {
-            LINKS.map(({ href, title }) => (
-              <a
-                href={href}
-                class:list={[
-                  "block py-2 px-4 text-base transition-colors",
-                  {
-                    "text-[var(--color-text)]":
-                      pathname === href || pathname.startsWith(`${href}/`),
-                  },
-                  {
-                    "text-[var(--color-text-muted)] hover:text-[var(--color-primary)]":
-                      !(pathname === href || pathname.startsWith(`${href}/`)),
-                  },
-                ]}
-              >
-                <span class="hover-underline">{title}</span>
-              </a>
-            ))
-          }
-        </div>
+          </span>
+        </button>
+        <button
+          type="button"
+          class="keycap menu-key"
+          aria-label="Menu"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          data-toggle-nav
+        >
+          <span class="keycap-face keycap-face-icon">
+            <PixelIcon name="menu" class="menu-icon-open" />
+            <PixelIcon name="close" class="menu-icon-close" />
+          </span>
+        </button>
       </div>
     </div>
-  </nav>
+  </div>
 </header>
 
 <style>
+  /*
+   * There is no bar. Each control is a free-standing keycap, and the page
+   * fades out behind them as it scrolls under the top edge.
+   */
+
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .site-header::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: -1;
+    height: 104px;
+    background: linear-gradient(var(--color-background) 35%, transparent);
+  }
+
+  .site-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 14px 1rem 0;
+  }
+
+  .site-header-row > * {
+    pointer-events: auto;
+  }
+
+  /*
+   * At the top of the page the fox sits free. Once the page scrolls, it
+   * swaps to its head on a key, so no sprite hangs over the text.
+   */
+
+  .fox-key {
+    margin-top: -6px;
+    padding: 0;
+  }
+
+  .fox-key .keycap-face {
+    display: none;
+  }
+
+  .site-header[data-scrolled] .fox-key {
+    margin-top: 0;
+    padding: 2px 2px 6px;
+  }
+
+  .site-header[data-scrolled] .fox-key :global([data-fox-logo]) {
+    display: none;
+  }
+
+  .site-header[data-scrolled] .fox-key .keycap-face {
+    display: flex;
+  }
+
+  .fox-head {
+    width: 32px;
+    height: 32px;
+    background: url("/sprites/fox-head.svg") center / 100% 100% no-repeat;
+    image-rendering: pixelated;
+  }
+
+  .header-keys {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .key-nav,
+  .key-tools {
+    display: flex;
+    gap: 10px;
+  }
+
+  .key-tools {
+    margin-left: 8px;
+  }
+
+  .menu-key,
+  .menu-icon-close,
+  .menu-key[aria-expanded="true"] .menu-icon-open {
+    display: none;
+  }
+
+  .menu-key[aria-expanded="true"] .menu-icon-close {
+    display: block;
+  }
+
+  /* Below 768px the page keys drop in a column under the menu key. */
+
+  @media (max-width: 767px) {
+    .header-keys {
+      gap: 0;
+    }
+
+    .key-tools {
+      gap: 6px;
+      margin-left: 0;
+    }
+
+    .menu-key {
+      display: inline-block;
+    }
+
+    .key-nav {
+      position: absolute;
+      top: 54px;
+      right: 0;
+      display: none;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .site-header[data-nav-open] .key-nav {
+      display: flex;
+    }
+
+    .key-nav .keycap-face {
+      height: 40px;
+      padding: 0 18px;
+      font-size: 0.9375rem;
+    }
+  }
+
+  @media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+    .site-header[data-nav-open] .key-nav .keycap {
+      animation: key-drop 180ms steps(3) backwards;
+    }
+
+    .site-header[data-nav-open] .key-nav .keycap:nth-child(2) {
+      animation-delay: 60ms;
+    }
+
+    .site-header[data-nav-open] .key-nav .keycap:nth-child(3) {
+      animation-delay: 120ms;
+    }
+
+    .site-header[data-nav-open] .key-nav .keycap:nth-child(4) {
+      animation-delay: 180ms;
+    }
+  }
+
+  @keyframes key-drop {
+    from {
+      transform: translateY(-12px);
+      opacity: 0;
+    }
+  }
+
   /*
    * Pixel sun and moon from public/sprites/*-toggle.png: 3 frames of 11×11,
    * drawn at 2x. The icon shows the mode a click switches to. Hover or focus

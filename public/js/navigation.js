@@ -1,35 +1,52 @@
-function setupNavigation() {
-  const toggleButton = document.querySelector("[data-toggle-nav]");
-  const navMenu = document.querySelector("[data-nav-menu]");
+(() => {
+  if (window.PortfolioNavigation) return;
+  window.PortfolioNavigation = true;
 
-  if (!toggleButton || !navMenu) return;
+  const SCROLL_THRESHOLD = 12;
 
-  let isExpanded = false;
+  const getHeader = () => document.querySelector("[data-site-header]");
 
-  const handleClick = () => {
-    isExpanded = !isExpanded;
+  // The page keys are a drop-down below 768px. The header reads this state.
 
-    if (isExpanded) {
-      navMenu.style.maxHeight = `${navMenu.scrollHeight}px`;
-      toggleButton.setAttribute("aria-expanded", "true");
-    } else {
-      navMenu.style.maxHeight = "0";
-      toggleButton.setAttribute("aria-expanded", "false");
+  function setOpen(open, { refocus = false } = {}) {
+    const header = getHeader();
+    const toggle = header?.querySelector("[data-toggle-nav]");
+    if (!header || !toggle) return;
+
+    header.toggleAttribute("data-nav-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    if (refocus) toggle.focus();
+  }
+
+  const isOpen = () => getHeader()?.hasAttribute("data-nav-open") ?? false;
+
+  function syncScroll() {
+    getHeader()?.toggleAttribute(
+      "data-scrolled",
+      window.scrollY > SCROLL_THRESHOLD,
+    );
+  }
+
+  // Delegated on document, so the listeners survive client-side page swaps.
+
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("[data-toggle-nav]")) {
+      setOpen(!isOpen());
+    } else if (isOpen() && !event.target.closest("#nav-menu")) {
+      setOpen(false);
     }
-  };
-
-  toggleButton.setAttribute("aria-expanded", "false");
-
-  toggleButton.addEventListener("click", handleClick);
-
-  document.addEventListener("astro:after-swap", () => {
-    isExpanded = false;
-    toggleButton.setAttribute("aria-expanded", "false");
   });
 
-  return () => {
-    toggleButton.removeEventListener("click", handleClick);
-  };
-}
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isOpen()) setOpen(false, { refocus: true });
+  });
 
-document.addEventListener("astro:page-load", setupNavigation);
+  window.addEventListener("scroll", syncScroll, { passive: true });
+
+  document.addEventListener("astro:page-load", () => {
+    setOpen(false);
+    syncScroll();
+  });
+
+  syncScroll();
+})();

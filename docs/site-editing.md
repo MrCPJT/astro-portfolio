@@ -11,6 +11,7 @@ Use this when you want to make small manual updates without hunting through the 
 - Resume page copy: edit `src/pages/resume.astro`. It links to the PDF below.
 - Uploaded resume PDF: replace `public/resume/connor-tynan-resume.pdf`.
 - Header logo: edit `src/app/components/FoxLogo.astro` and its sprite strip `public/sprites/fox-logo.png`.
+- Header keys: edit `src/app/layouts/Header.astro`. The keycap look is `.keycap` in `src/app/styles/global.css`, and the search and menu icons are grids in `src/app/components/PixelIcon.astro`.
 - Footer pets: edit `src/app/components/FooterPets.astro` and the walk strips in `public/sprites/pets/`.
 - Browser tab icons: replace `public/favicon.svg`, `public/favicon-32.png`, `public/favicon-96.png`, and `public/favicon-192.png`.
 - Footer social links: edit `src/app/layouts/Footer.astro`.

@@ -1,0 +1,77 @@
+---
+// Pixel icons on an 11×11 grid, drawn at 2x like the sun and moon sprites.
+// "#" is a filled pixel. The icon takes the current text colour.
+
+const GRIDS = {
+  search: [
+    "...####....",
+    "..#....#...",
+    ".#......#..",
+    ".#......#..",
+    ".#......#..",
+    ".#......#..",
+    "..#....#...",
+    "...#####...",
+    ".......##..",
+    "........##.",
+    ".........##",
+  ],
+  menu: [
+    "...........",
+    "...........",
+    ".#########.",
+    "...........",
+    "...........",
+    ".#########.",
+    "...........",
+    "...........",
+    ".#########.",
+    "...........",
+    "...........",
+  ],
+  close: [
+    "...........",
+    ".#.......#.",
+    "..#.....#..",
+    "...#...#...",
+    "....#.#....",
+    ".....#.....",
+    "....#.#....",
+    "...#...#...",
+    "..#.....#..",
+    ".#.......#.",
+    "...........",
+  ],
+} as const;
+
+interface Props {
+  name: keyof typeof GRIDS;
+  class?: string;
+}
+
+// The rest carries the parent's style scope, so its scoped rules reach the svg.
+
+const { name, ...rest } = Astro.props;
+
+// Each run of filled pixels in a row becomes one rect.
+
+const rects = GRIDS[name].flatMap((row, y) =>
+  [...row.matchAll(/#+/g)].map((run) => ({
+    x: run.index,
+    y,
+    width: run[0].length,
+  })),
+);
+---
+
+<svg
+  {...rest}
+  viewBox="0 0 11 11"
+  width="22"
+  height="22"
+  fill="currentColor"
+  shape-rendering="crispEdges"
+  aria-hidden="true"
+>
+  {rects.map((rect) => <rect {...rect} height="1" />)}
+</svg>
