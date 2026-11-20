@@ -19,17 +19,9 @@ export default function BlogPage(props: BlogPageProps) {
   const isAllSelected = () => selectedTags().length === props.allTags.length;
 
   const handleTagToggle = (tag: string) => {
-    if (tag === "all") {
-      if (isAllSelected()) {
-        setSelectedTags([]);
-      } else {
-        setSelectedTags([...props.allTags]);
-      }
-    } else {
-      setSelectedTags((prev) =>
-        prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
-      );
-    }
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+    );
   };
 
   createEffect(() => {
@@ -51,7 +43,6 @@ export default function BlogPage(props: BlogPageProps) {
         <FilterTagList
           tags={props.allTags}
           selectedTagsSignal={selectedTags}
-          isAllSelectedSignal={isAllSelected}
           onTagToggle={handleTagToggle}
         />
       </aside>
@@ -60,7 +51,6 @@ export default function BlogPage(props: BlogPageProps) {
           initialPosts={filteredPosts()}
           allTags={props.allTags}
           selectedTagsSignal={selectedTags}
-          isAllSelectedSignal={isAllSelected}
           onTagToggle={handleTagToggle}
         />
       </main>

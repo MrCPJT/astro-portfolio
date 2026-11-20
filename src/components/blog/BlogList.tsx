@@ -8,7 +8,6 @@ interface Props {
   initialPosts: CollectionEntry<"blog">[];
   allTags: string[];
   selectedTagsSignal: Accessor<string[]>;
-  isAllSelectedSignal: Accessor<boolean>;
   onTagToggle: (tag: string) => void;
 }
 
@@ -20,7 +19,6 @@ export default function BlogList(props: Props) {
         <FilterTagList
           tags={props.allTags}
           selectedTagsSignal={props.selectedTagsSignal}
-          isAllSelectedSignal={props.isAllSelectedSignal}
           onTagToggle={props.onTagToggle}
         />
       </div>

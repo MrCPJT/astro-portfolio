@@ -3,29 +3,21 @@ import { For, type Accessor } from "solid-js";
 interface FilterTagListProps {
   tags: string[];
   selectedTagsSignal: Accessor<string[]>;
-  isAllSelectedSignal: Accessor<boolean>;
   onTagToggle: (tag: string) => void;
 }
 
 export function FilterTagList(props: FilterTagListProps) {
-  const { tags, selectedTagsSignal, isAllSelectedSignal, onTagToggle } = props;
+  const { tags, selectedTagsSignal, onTagToggle } = props;
 
   return (
     <div class="surface-card flex flex-col space-y-4 rounded-lg border p-4 shadow-sm">
-      <button
-        onClick={() => {
-          onTagToggle("all");
-        }}
-        class={`text-left font-bold transition-colors ${
-          isAllSelectedSignal()
-            ? "text-[var(--color-text)]"
-            : "text-[var(--color-text-muted)] hover:text-[var(--color-primary)]"
-        }`}
-      >
-        All
-      </button>
+      <p class="font-bold text-[var(--color-text)]">Tags:</p>
 
-      <div class="flex flex-col space-y-2">
+      <div
+        class="flex flex-col space-y-2"
+        role="group"
+        aria-label="Filter posts by tag"
+      >
         <For each={tags}>
           {(tag) => (
             <label class="flex items-center space-x-2">
