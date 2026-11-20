@@ -1,5 +1,6 @@
 ---
 import Layout from "@/app/layouts/Layout.astro";
+import Animation from "@/app/components/Animation.astro";
 import BlogPage from "@/components/blog/BlogPage";
 import { getAllBlogPosts } from "@/app/api/blog";
 
@@ -12,5 +13,20 @@ const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
   title="Blog | Connor Tynan"
   description="Writing on data science projects, analysis workflows, notebooks, and career notes."
 >
-  <BlogPage posts={posts} allTags={allTags} client:load />
+  <Animation>
+    <section class="space-y-6">
+      <div>
+        <h1 class="text-3xl font-bold text-[var(--color-text)]">Blog</h1>
+        <p class="mt-3 text-[var(--color-text-muted)]">
+          Writing on data science projects, analysis workflows, notebooks, and
+          career notes.
+        </p>
+      </div>
+
+      {/* The island has display: contents, so this div takes the spacing. */}
+      <div>
+        <BlogPage posts={posts} allTags={allTags} client:load />
+      </div>
+    </section>
+  </Animation>
 </Layout>
