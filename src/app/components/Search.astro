@@ -1,5 +1,5 @@
 ---
-import { FaSolidMagnifyingGlass } from "solid-icons/fa";
+import PixelIcon from "./PixelIcon.astro";
 ---
 
 <site-search class={Astro.props.class}>
@@ -8,10 +8,14 @@ import { FaSolidMagnifyingGlass } from "solid-icons/fa";
     disabled
     aria-label="search"
     aria-keyshortcuts="Control+K"
-    class="flex h-10 items-center gap-2 rounded-lg px-3 text-[var(--color-text-muted)] transition-colors hover:bg-[var(--color-surface-muted)] hover:text-[var(--color-primary)]"
+    class="keycap"
   >
-    <FaSolidMagnifyingGlass size={20} />
-    <span class="hidden md:block text-sm">Search</span>
+    <span
+      class="keycap-face max-md:min-w-[34px] max-md:justify-center max-md:px-1.5"
+    >
+      <PixelIcon name="search" />
+      <span class="hidden md:block">Search</span>
+    </span>
   </button>
 
   <dialog class="site-search-dialog" aria-label="Search">

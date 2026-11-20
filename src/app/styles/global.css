@@ -19,6 +19,9 @@
     --color-button: #bc3f0b;
     --color-button-hover: #9a3412;
     --color-button-contrast: #ffffff;
+    --color-key-face: #ffffff;
+    --color-key-side: #d6d1c7;
+    --color-key-ink: #3f3b36;
     --color-gray-text: var(--color-text-muted);
     --color-gray-text-dark: #3f3b36;
     --color-gray-text-light: var(--color-text-muted);
@@ -40,6 +43,9 @@
     --color-button: #bc3f0b;
     --color-button-hover: #9a3412;
     --color-button-contrast: #ffffff;
+    --color-key-face: #2e2a26;
+    --color-key-side: #45403a;
+    --color-key-ink: #8f887c;
     --color-gray-text: var(--color-text-muted);
     --color-gray-text-dark: #e7e2d9;
     --color-gray-text-light: var(--color-text-muted);
@@ -103,8 +109,14 @@
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+/*
+ * The gutter keeps the scrollbar's width reserved on pages too short to
+ * scroll, so the header and the page do not shift sideways between pages.
+ */
+
 html {
   overflow-y: auto;
+  scrollbar-gutter: stable;
   color-scheme: light;
   background-color: var(--color-background);
   color: var(--color-text);
@@ -181,20 +193,81 @@ input:focus-visible {
     @apply transform transition-all duration-300 hover:-translate-y-1;
   }
 
-  .hover-underline {
-    @apply relative;
+  /*
+   * Keycap: a control whose face sits 4px proud of the page and sinks when
+   * pressed. Offset shadows draw the edge, the side and the base, and leave
+   * the corners empty like pixel art. The padding reserves room for them.
+   */
+
+  .keycap {
+    display: inline-block;
+    padding: 2px 2px 6px;
+    cursor: pointer;
   }
 
-  .hover-underline::after {
-    @apply absolute bottom-[-1.5px] left-0 w-full h-0.5 transition-transform transform scale-x-0;
+  .keycap:disabled {
+    cursor: default;
+  }
+
+  .keycap-face {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 34px;
+    padding: 0 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--color-text);
+    background-color: var(--color-key-face);
+    box-shadow:
+      0 4px 0 var(--color-key-side),
+      0 -2px 0 var(--color-key-ink),
+      -2px 0 0 var(--color-key-ink),
+      2px 0 0 var(--color-key-ink),
+      -2px 4px 0 var(--color-key-ink),
+      2px 4px 0 var(--color-key-ink),
+      0 6px 0 var(--color-key-ink);
+  }
+
+  .keycap-face-icon {
+    min-width: 34px;
+    justify-content: center;
+    padding: 0 6px;
+  }
+
+  .keycap:hover .keycap-face {
+    color: var(--color-primary);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .keycap:hover .keycap-face {
+      transform: translateY(-2px);
+      box-shadow:
+        0 6px 0 var(--color-key-side),
+        0 -2px 0 var(--color-key-ink),
+        -2px 0 0 var(--color-key-ink),
+        2px 0 0 var(--color-key-ink),
+        -2px 6px 0 var(--color-key-ink),
+        2px 6px 0 var(--color-key-ink),
+        0 8px 0 var(--color-key-ink);
+    }
+  }
+
+  .keycap:active .keycap-face,
+  .keycap[aria-current="page"] .keycap-face,
+  .keycap[aria-expanded="true"] .keycap-face {
+    transform: translateY(4px);
+    box-shadow:
+      0 -2px 0 var(--color-key-ink),
+      -2px 0 0 var(--color-key-ink),
+      2px 0 0 var(--color-key-ink),
+      0 2px 0 var(--color-key-ink);
+  }
+
+  .keycap[aria-current="page"] .keycap-face {
+    color: var(--color-primary-contrast);
     background-color: var(--color-primary);
-    content: "";
-    transform-origin: left;
-    margin-left: 0px;
-  }
-
-  .group:hover .hover-underline::after {
-    @apply scale-x-100;
   }
 }
 
