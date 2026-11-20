@@ -113,18 +113,24 @@ const duration = (STEPS * FRAME_MS) / 1000;
     }
   }
 
-  /* Without motion, the pets stand in a row. */
+  /*
+   * Without motion, the pets stand in a row at full size. The row wraps
+   * upwards, so the pets that don't fit land above the track and are clipped.
+   */
 
   @media (prefers-reduced-motion: reduce) {
     .pets {
       display: flex;
-      align-items: flex-end;
+      flex-wrap: wrap-reverse;
+      align-items: flex-start;
+      align-content: flex-start;
       justify-content: center;
       gap: 16px;
     }
 
     .pet {
       position: static;
+      flex: none;
       animation: none;
     }
   }
