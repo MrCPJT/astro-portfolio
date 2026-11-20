@@ -43,7 +43,11 @@ export const getProjectGroups = async (): Promise<ProjectGroup[]> => {
 
   const years = [...byYear.entries()]
     .sort(([a], [b]) => b - a)
-    .map(([year, projects]) => ({ key: String(year), label: String(year), projects }));
+    .map(([year, projects]) => ({
+      key: String(year),
+      label: String(year),
+      projects,
+    }));
 
   return current.length > 0
     ? [{ key: "current", label: "Current", projects: current }, ...years]
