@@ -2,11 +2,31 @@
 import Layout from "@/app/layouts/Layout.astro";
 import Animation from "@/app/components/Animation.astro";
 import BlogPage from "@/components/blog/BlogPage";
+import type { BlogPostSummary } from "@/components/blog/types";
 import { getAllBlogPosts } from "@/app/api/blog";
 
-const posts = await getAllBlogPosts();
+const dateLabel = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
-const allTags = [...new Set(posts.flatMap((post) => post.data.tags))].sort();
+// The island is hydrated from these props, so they carry only what a card
+// shows. Passing whole entries would ship every post body to the browser.
+
+const posts: BlogPostSummary[] = (await getAllBlogPosts()).map(
+  ({ slug, data }) => ({
+    slug,
+    title: data.title,
+    summary: data.summary,
+    tags: data.tags,
+    dateIso: data.date.toISOString(),
+    dateLabel: dateLabel.format(data.date),
+  }),
+);
+
+const allTags = [...new Set(posts.flatMap((post) => post.tags))].sort();
 ---
 
 <Layout
