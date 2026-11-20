@@ -1,11 +1,11 @@
 import { For } from "solid-js";
 import type { Accessor } from "solid-js";
-import type { CollectionEntry } from "astro:content";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { FilterTagList } from "@/components/blog/FilterTagList";
+import type { BlogPostSummary } from "@/components/blog/types";
 
 interface Props {
-  initialPosts: CollectionEntry<"blog">[];
+  posts: BlogPostSummary[];
   allTags: string[];
   selectedTagsSignal: Accessor<string[]>;
   isAllSelectedSignal: Accessor<boolean>;
@@ -27,9 +27,7 @@ export default function BlogList(props: Props) {
 
       {/* Blog list */}
       <div class="grid grid-cols-1 gap-6">
-        <For each={props.initialPosts}>
-          {(post) => <BlogCard post={post} />}
-        </For>
+        <For each={props.posts}>{(post) => <BlogCard post={post} />}</For>
       </div>
     </div>
   );
