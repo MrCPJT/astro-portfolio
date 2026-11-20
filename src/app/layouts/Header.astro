@@ -156,5 +156,7 @@ const pathname = Astro.url.pathname;
   }
 </style>
 
-<script is:inline src="/js/theme.js"></script>
-<script is:inline src="/js/navigation.js"></script>
+<script>
+  import "@/app/scripts/theme";
+  import "@/app/scripts/navigation";
+</script>
