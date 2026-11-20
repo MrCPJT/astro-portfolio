@@ -15,8 +15,8 @@ const dateLabel = new Intl.DateTimeFormat("en-GB", {
 // shows. Passing whole entries would ship every post body to the browser.
 
 const posts: BlogPostSummary[] = (await getAllBlogPosts()).map(
-  ({ slug, data }) => ({
-    slug,
+  ({ id, data }) => ({
+    slug: id,
     title: data.title,
     summary: data.summary,
     tags: data.tags,
