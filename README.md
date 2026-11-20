@@ -105,6 +105,8 @@ The converter:
 - moves generated notebook assets to `public/notebooks/<slug>/`
 - rewrites asset links so Astro can serve them from `/notebooks/<slug>/`
 
+The slug may hold lowercase letters, digits and single hyphens. The converter refuses to overwrite an existing `index.md` unless you add `--force` after the slug.
+
 Review converted posts before publishing. Keep `draft: true` until the narrative, charts, and conclusions are ready.
 
 Draft posts show in `pnpm dev` but are excluded from production builds, the blog index, and the RSS feed.

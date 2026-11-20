@@ -9,12 +9,18 @@ import {
 import { basename, dirname, extname, join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 
+const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const FORCE_FLAG = "--force";
+
 const args = process.argv.slice(2).filter((arg) => arg !== "--");
-const [notebookArg, collectionArg = "blog", slugArg] = args;
+const force = args.includes(FORCE_FLAG);
+const [notebookArg, collectionArg = "blog", slugArg] = args.filter(
+  (arg) => arg !== FORCE_FLAG,
+);
 
 if (!notebookArg) {
   console.error(
-    "Usage: pnpm run notebook:convert -- notebooks/source/example.ipynb blog example-slug",
+    "Usage: pnpm run notebook:convert -- notebooks/source/example.ipynb blog example-slug [--force]",
   );
   process.exit(1);
 }
@@ -38,8 +44,26 @@ if (!["blog", "projects"].includes(collection)) {
   process.exit(1);
 }
 
+// The slug names folders that this script creates and deletes.
+
+if (!SLUG_PATTERN.test(slug)) {
+  console.error(
+    `Slug must be lowercase letters, digits and single hyphens: "${slug}"`,
+  );
+  process.exit(1);
+}
+
 const contentDir = resolve("src", "content", collection, slug);
 const publicAssetDir = resolve("public", "notebooks", slug);
+const mdPath = join(contentDir, "index.md");
+
+if (existsSync(mdPath) && !force) {
+  console.error(
+    `${mdPath} already exists. Pass ${FORCE_FLAG} to overwrite it.`,
+  );
+  process.exit(1);
+}
+
 mkdirSync(contentDir, { recursive: true });
 mkdirSync(publicAssetDir, { recursive: true });
 
@@ -55,10 +79,8 @@ const nbconvert = spawnSync(
     contentDir,
     notebookPath,
   ],
-  { stdio: "inherit", shell: true },
+  { stdio: "inherit" },
 );
-
-const mdPath = join(contentDir, "index.md");
 
 if (nbconvert.status !== 0) {
   console.warn(
