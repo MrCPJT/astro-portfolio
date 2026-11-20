@@ -109,8 +109,14 @@
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+/*
+ * The gutter keeps the scrollbar's width reserved on pages too short to
+ * scroll, so the header and the page do not shift sideways between pages.
+ */
+
 html {
   overflow-y: auto;
+  scrollbar-gutter: stable;
   color-scheme: light;
   background-color: var(--color-background);
   color: var(--color-text);
