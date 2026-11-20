@@ -2,14 +2,14 @@
 import { FaSolidArrowUp } from "solid-icons/fa";
 ---
 
-<scroll-to-top>
-  <button
-    scroll-to-top
-    aria-label="Scroll to top"
-    class="invisible fixed bottom-8 right-8 rounded-full bg-[var(--color-button)] p-3 text-[var(--color-button-contrast)] opacity-0 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[var(--color-button-hover)]"
-  >
-    <FaSolidArrowUp size={20} />
-  </button>
-</scroll-to-top>
+<button
+  data-scroll-to-top
+  aria-label="Scroll to top"
+  class="invisible fixed bottom-8 right-8 rounded-full bg-[var(--color-button)] p-3 text-[var(--color-button-contrast)] opacity-0 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[var(--color-button-hover)]"
+>
+  <FaSolidArrowUp size={20} />
+</button>
 
-<script is:inline src="/js/scrollToTop.js"></script>
+<script>
+  import "@/app/scripts/scrollToTop";
+</script>

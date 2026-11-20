@@ -29,12 +29,22 @@ const chipClass =
         aria-label="Filter projects by year"
         data-year-filter
       >
-        <button type="button" class={chipClass} data-year="all" aria-pressed="true">
+        <button
+          type="button"
+          class={chipClass}
+          data-year="all"
+          aria-pressed="true"
+        >
           All
         </button>
         {
           groups.map(({ key, label }) => (
-            <button type="button" class={chipClass} data-year={key} aria-pressed="false">
+            <button
+              type="button"
+              class={chipClass}
+              data-year={key}
+              aria-pressed="false"
+            >
               {label}
             </button>
           ))
@@ -43,7 +53,11 @@ const chipClass =
 
       {
         groups.map(({ key, label, projects }) => (
-          <section class="space-y-4" data-year-section={key} aria-labelledby={`year-${key}`}>
+          <section
+            class="space-y-4"
+            data-year-section={key}
+            aria-labelledby={`year-${key}`}
+          >
             <h2
               id={`year-${key}`}
               class="border-b border-[var(--color-border)] pb-2 text-xl font-semibold text-[var(--color-text)]"
@@ -71,11 +85,16 @@ const chipClass =
     const filter = document.querySelector("[data-year-filter]");
     if (!filter) return;
 
-    const chips = filter.querySelectorAll<HTMLButtonElement>("button[data-year]");
-    const sections = document.querySelectorAll<HTMLElement>("[data-year-section]");
+    const chips =
+      filter.querySelectorAll<HTMLButtonElement>("button[data-year]");
+    const sections = document.querySelectorAll<HTMLElement>(
+      "[data-year-section]",
+    );
 
     filter.addEventListener("click", (event) => {
-      const chip = (event.target as HTMLElement).closest<HTMLButtonElement>("button[data-year]");
+      const chip = (event.target as HTMLElement).closest<HTMLButtonElement>(
+        "button[data-year]",
+      );
       if (!chip) return;
 
       const year = chip.dataset.year;

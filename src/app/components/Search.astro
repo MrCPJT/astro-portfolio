@@ -37,7 +37,9 @@ import PixelIcon from "./PixelIcon.astro";
   </dialog>
 </site-search>
 
-<script is:inline src="/js/search.js"></script>
+<script>
+  import "@/app/scripts/search";
+</script>
 
 <style is:global>
   .site-search-dialog {

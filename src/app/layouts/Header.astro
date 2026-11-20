@@ -255,10 +255,18 @@ const isCurrent = (href: string) =>
   }
 
   @keyframes theme-icon-play {
-    0% { background-position: -22px 0; }
-    18.92% { background-position: -44px 0; }
-    62.16% { background-position: -22px 0; }
-    81.08% { background-position: 0 0; }
+    0% {
+      background-position: -22px 0;
+    }
+    18.92% {
+      background-position: -44px 0;
+    }
+    62.16% {
+      background-position: -22px 0;
+    }
+    81.08% {
+      background-position: 0 0;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -269,5 +277,7 @@ const isCurrent = (href: string) =>
   }
 </style>
 
-<script is:inline src="/js/theme.js"></script>
-<script is:inline src="/js/navigation.js"></script>
+<script>
+  import "@/app/scripts/theme";
+  import "@/app/scripts/navigation";
+</script>

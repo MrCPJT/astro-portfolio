@@ -96,13 +96,21 @@ const duration = (STEPS * FRAME_MS) / 1000;
   }
 
   @keyframes pet-walk {
-    from { background-position: 0 0; }
-    to { background-position: calc(var(--sheet) * -1) 0; }
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: calc(var(--sheet) * -1) 0;
+    }
   }
 
   @keyframes pet-travel {
-    from { transform: translateX(100cqw); }
-    to { transform: translateX(calc(100cqw - var(--travel))); }
+    from {
+      transform: translateX(100cqw);
+    }
+    to {
+      transform: translateX(calc(100cqw - var(--travel)));
+    }
   }
 
   /* Without motion, the pets stand in a row. */

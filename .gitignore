@@ -38,3 +38,8 @@ notebooks/source/.ipynb_checkpoints/
 
 # Claude Code local config
 .claude/
+
+# Sprite source files and exports kept beside the repo
+/art-work/
+/sprite-kit.zip
+/*.png

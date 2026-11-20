@@ -79,7 +79,7 @@ html.dark {
 }
 ```
 
-Dark mode redefines the same names, so no component needs to know which theme is active. A small script in `public/js/theme.js` reads the saved choice, or falls back to the system setting, and toggles the `dark` class on `<html>`.
+Dark mode redefines the same names, so no component needs to know which theme is active. A small script in `src/app/scripts/theme.ts` reads the saved choice, or falls back to the system setting, and toggles the `dark` class on `<html>`.
 
 The buttons are the one exception. They use their own tokens that stay the same in both modes, white on `#bc3f0b`, which keeps a 5.45:1 contrast ratio either way.
 

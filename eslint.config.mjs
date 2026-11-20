@@ -1,3 +1,4 @@
+import astroParser from "astro-eslint-parser";
 import eslintPluginAstro from "eslint-plugin-astro";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
@@ -9,18 +10,20 @@ export default [
       "**/.astro/**",
       "**/dist/**",
       "**/.vercel/**",
+      "**/.claude/**",
       "**/*.min.js",
       "**/*.d.ts",
-      "**/*.astro",
     ],
   },
   {
     files: ["**/*.astro"],
     plugins: { astro: eslintPluginAstro },
     languageOptions: {
+      parser: astroParser,
       parserOptions: {
         parser: tsParser,
         extraFileExtensions: [".astro"],
+        sourceType: "module",
       },
     },
     rules: {
