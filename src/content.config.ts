@@ -45,6 +45,8 @@ const projects = defineCollection({
         .optional(),
       technologies: z.array(z.string()),
       link: z.string().optional(),
+      /** Lists the project ahead of unpinned ones on the projects page. */
+      pinned: z.boolean().optional(),
     }),
 });
 

@@ -5,8 +5,13 @@ export const getAllProjects = async (): Promise<
   CollectionEntry<"projects">[]
 > => {
   const projects = await getCollection("projects");
+
+  // Pinned projects come first, then newest start date.
+
   return projects.sort(
-    (a, b) => b.data.startDate.getTime() - a.data.startDate.getTime(),
+    (a, b) =>
+      Number(b.data.pinned ?? false) - Number(a.data.pinned ?? false) ||
+      b.data.startDate.getTime() - a.data.startDate.getTime(),
   );
 };
 
