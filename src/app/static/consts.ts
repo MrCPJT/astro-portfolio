@@ -4,7 +4,7 @@ export const SITE_DESCRIPTION =
 
 /** Ids of the projects shown on the home page, in display order. */
 export const FEATURED_PROJECTS = [
+  "literature-review-pipeline",
   "sandbagging-eval",
   "sms-spam-detection",
-  "student-success-predictor",
 ];

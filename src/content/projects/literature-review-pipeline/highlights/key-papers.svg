@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 330" width="560" height="330" role="img" aria-label="Fate of 67 key papers across four finished reviews">
+<rect width="560" height="330" fill="#ffffff"/>
+<text x="20" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="600" fill="#1f1d1a">Where the key papers go</text>
+<text x="20" y="54" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#5c5852">67 key papers from held-out surveys, four finished reviews</text>
+<line x1="230.0" y1="70" x2="230.0" y2="302" stroke="#5c5852" stroke-width="1"/>
+<text x="230.0" y="320" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">0</text>
+<line x1="326.7" y1="70" x2="326.7" y2="302" stroke="#d6d1c7" stroke-width="1"/>
+<text x="326.7" y="320" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">10</text>
+<line x1="423.3" y1="70" x2="423.3" y2="302" stroke="#d6d1c7" stroke-width="1"/>
+<text x="423.3" y="320" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">20</text>
+<line x1="520.0" y1="70" x2="520.0" y2="302" stroke="#d6d1c7" stroke-width="1"/>
+<text x="520.0" y="320" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#5c5852">30</text>
+<text x="218" y="89" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Never found by search</text>
+<path d="M230 73 h170.0 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-170.0 z" fill="#c9c3b6"/>
+<text x="412.0" y="89" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">18</text>
+<text x="218" y="135" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Screened out</text>
+<path d="M230 119 h25.0 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-25.0 z" fill="#c9c3b6"/>
+<text x="267.0" y="135" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">3</text>
+<text x="218" y="181" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Passed screening, never read</text>
+<path d="M230 165 h257.0 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-257.0 z" fill="#bc3f0b"/>
+<text x="499.0" y="181" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">27</text>
+<text x="218" y="227" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Dropped at triage</text>
+<path d="M230 211 h83.0 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-83.0 z" fill="#c9c3b6"/>
+<text x="325.0" y="227" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">9</text>
+<text x="218" y="273" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" fill="#1f1d1a">Cited in the review</text>
+<path d="M230 257 h92.7 a4 4 0 0 1 4 4 v14 a4 4 0 0 1 -4 4 h-92.7 z" fill="#c9c3b6"/>
+<text x="334.7" y="273" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#1f1d1a">10</text>
+</svg>
