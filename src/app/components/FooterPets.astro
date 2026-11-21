@@ -1,8 +1,8 @@
 ---
-// Pixel pets walking right to left along the top edge of the footer.
-// Each sprite is a walk strip in public/sprites/pets/ (8 frames, or 16 for
-// the hoppers), drawn at 2x. The pets share the header fox's pixel style.
-// The tallest frames are 30 px, so the track is 60 px.
+// Pixel dinosaurs walking right to left along the top edge of the footer.
+// Each sprite is an 8-frame walk strip in public/sprites/pets/, drawn at 2x.
+// The pets share the header fox's pixel style. The tallest frames are 30 px,
+// so the track is 60 px.
 //
 // The strips are ground-locked: a planted foot moves back 1 native px per
 // frame. So the pets travel in SCALE px steps, one per frame, and their feet
@@ -10,32 +10,21 @@
 // whole number of frames, so both animations step at the same instant.
 //
 // Every pet covers the same TRAVEL distance, starting SPACING px behind the
-// one before. TRAVEL is longer than the widest track (max-w-6xl), so the
-// parade loops without bunching on any screen width.
+// one before. TRAVEL is longer than the widest track (max-w-6xl) plus the
+// widest pet, so each pet is off screen when it loops.
 
 const SCALE = 2;
 const FRAME_MS = 70;
-const SPACING = 160; // px between pets
+const SPACING = 176; // px between pets
 
 const PETS = [
-  { name: "elephant", width: 32, height: 25, frames: 8 },
   { name: "trex", width: 34, height: 27, frames: 8 },
-  { name: "duck", width: 24, height: 23, frames: 8 },
-  { name: "crane", width: 25, height: 30, frames: 8 },
   { name: "triceratops", width: 36, height: 25, frames: 8 },
-  { name: "frog", width: 40, height: 25, frames: 16 },
-  { name: "zebra", width: 31, height: 25, frames: 8 },
   { name: "pteranodon", width: 34, height: 30, frames: 8 },
-  { name: "penguin", width: 21, height: 22, frames: 8 },
   { name: "stegosaurus", width: 34, height: 26, frames: 8 },
-  { name: "flamingo", width: 26, height: 30, frames: 8 },
   { name: "brachiosaurus", width: 32, height: 30, frames: 8 },
-  { name: "bunny", width: 36, height: 26, frames: 16 },
   { name: "velociraptor", width: 34, height: 25, frames: 8 },
-  { name: "toucan", width: 34, height: 24, frames: 16 },
-  { name: "giraffe", width: 26, height: 30, frames: 8 },
   { name: "ankylosaurus", width: 36, height: 20, frames: 8 },
-  { name: "turtle", width: 30, height: 19, frames: 8 },
 ];
 
 const TRAVEL = PETS.length * SPACING;
@@ -118,8 +107,8 @@ const duration = (STEPS * FRAME_MS) / 1000;
   /*
    * Without motion, the pets stand in a row at full size. The row wraps
    * upwards, so the pets that don't fit land above the track and are clipped.
-   * The crane is as tall as the track and fits the first row on any screen,
-   * so no second row shows.
+   * The pteranodon is as tall as the track and fits the first row on any
+   * screen, so no second row shows.
    */
 
   @media (prefers-reduced-motion: reduce) {

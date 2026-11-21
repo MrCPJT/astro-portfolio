@@ -10,6 +10,8 @@ const isCurrent = (href: string) =>
   pathname === href || pathname.startsWith(`${href}/`);
 ---
 
+<div class="scroll-sentinel" data-scroll-sentinel aria-hidden="true"></div>
+
 <header class="site-header" data-site-header>
   <div class="site-header-row">
     <a href="/" class="keycap fox-key" aria-label="Go to homepage">
@@ -107,8 +109,19 @@ const isCurrent = (href: string) =>
 
   /*
    * At the top of the page the fox sits free. Once the page scrolls, it
-   * swaps to its head on a key, so no sprite hangs over the text.
+   * swaps to its head on a key, so no sprite hangs over the text. The page
+   * counts as scrolled once the sentinel, the top 12px of the page, has left
+   * the screen.
    */
+
+  .scroll-sentinel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 12px;
+    pointer-events: none;
+  }
 
   .fox-key {
     margin-top: -6px;
