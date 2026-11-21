@@ -2,13 +2,16 @@
 // to its head on a key once the page scrolls. Both states are attributes on
 // the header, which a client-side page swap replaces, so each page starts
 // closed and re-reads the scroll position.
+//
+// The scroll state follows a sentinel at the top of the page, so it stays
+// right when the page moves without a scroll event.
 
 const HEADER_SELECTOR = "[data-site-header]";
 const TOGGLE_SELECTOR = "[data-toggle-nav]";
 const MENU_SELECTOR = "#nav-menu";
+const SENTINEL_SELECTOR = "[data-scroll-sentinel]";
 const OPEN_ATTRIBUTE = "data-nav-open";
 const SCROLLED_ATTRIBUTE = "data-scrolled";
-const SCROLL_THRESHOLD = 12;
 
 const getHeader = () => document.querySelector<HTMLElement>(HEADER_SELECTOR);
 
@@ -24,11 +27,25 @@ function setOpen(open: boolean, { refocus = false } = {}) {
   if (refocus) toggle.focus();
 }
 
-function syncScroll() {
-  getHeader()?.toggleAttribute(
-    SCROLLED_ATTRIBUTE,
-    window.scrollY > SCROLL_THRESHOLD,
-  );
+function setScrolled(scrolled: boolean) {
+  getHeader()?.toggleAttribute(SCROLLED_ATTRIBUTE, scrolled);
+}
+
+const topObserver = new IntersectionObserver((entries) => {
+  const entry = entries.at(-1);
+  if (entry?.target.isConnected) setScrolled(!entry.isIntersecting);
+});
+
+// Reads the position at once, so a swapped-in page is right on its first
+// frame, then follows the page's sentinel.
+
+function watchTop() {
+  const sentinel = document.querySelector(SENTINEL_SELECTOR);
+  topObserver.disconnect();
+  if (!sentinel) return;
+
+  setScrolled(sentinel.getBoundingClientRect().bottom < 0);
+  topObserver.observe(sentinel);
 }
 
 document.addEventListener("click", (event) => {
@@ -45,7 +62,6 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && isOpen()) setOpen(false, { refocus: true });
 });
 
-window.addEventListener("scroll", syncScroll, { passive: true });
-document.addEventListener("astro:page-load", syncScroll);
+document.addEventListener("astro:after-swap", watchTop);
 
-syncScroll();
+watchTop();
